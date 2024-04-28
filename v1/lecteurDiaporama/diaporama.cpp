@@ -5,15 +5,15 @@
 // Les constructeurs
 Diaporama::Diaporama() :
     _titre(""),
-    _vitesseDefilement(0),
     _localisationImages({}),
+    _vitesseDefilement(0),
     _posImageCourante(0)
     {}
 
 Diaporama::Diaporama(string titre, unsigned int vitesseDefilement, ImagesDuDiaporama _localisationImages, unsigned int posImgCourante) :
     _titre(titre),
-    _vitesseDefilement(vitesseDefilement),
     _localisationImages(_localisationImages),
+    _vitesseDefilement(vitesseDefilement),
     _posImageCourante(posImgCourante)
     {}
 
@@ -87,8 +87,7 @@ void Diaporama::ajouterImage(const imageDansDiaporama& imgDuDiapo)
 void Diaporama::avancer()
 {
     // Vérifier la postion actuelle (si c'est la dernière image du diaporama, on passe à l'indice 0 (la première))
-    if (getPosImageCourante() == getNombreImages() - 1)
-    {
+    if (getPosImageCourante() == getNombreImages() - 1){
         setPosImageCourante(0);
     }
     else {
@@ -100,12 +99,10 @@ void Diaporama::avancer()
 void Diaporama::reculer()
 {
     // Vérifier la postion actuelle (si c'est la première image du diaporama, on passe à l'indice -1 ( la dernière))
-    if (getPosImageCourante() == 0)
-    {
+    if (getPosImageCourante() == 0){
        setPosImageCourante(getNombreImages() - 1);
     }
-    else
-    {
+    else {
         setPosImageCourante(getPosImageCourante() - 1);
     }
 }

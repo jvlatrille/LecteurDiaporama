@@ -113,8 +113,7 @@ void Lecteur::saisieChoixActionImageCourante(char& pChoixAction)
 
 unsigned int Lecteur::saisieChoixDiaporama()
 {
-    unsigned int choixSaisi;
-    int choixDiaporama; // valeur retournée
+    int choixDiaporama;
 
     while (true)
     {
@@ -132,8 +131,7 @@ unsigned int Lecteur::saisieChoixDiaporama()
         }
 
         // Proposer la saisie
-        cout << ".......  votre choix ? "; cin >> choixSaisi;
-        choixDiaporama = choixSaisi;
+        cout << ".......  votre choix ? "; cin >> choixDiaporama;
 
         // Vérifier la saisie
         if ((choixDiaporama >= 1)&&(choixDiaporama < static_cast<unsigned int>(this->getNombreDiapos())))
@@ -142,7 +140,6 @@ unsigned int Lecteur::saisieChoixDiaporama()
         }
     }
 
-    // Retourner le choix de l'utilisateur
     return choixDiaporama;
 }
 

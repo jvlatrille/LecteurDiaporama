@@ -2,7 +2,6 @@
 #define DIAPORAMA_H
 
 #include <vector>
-#include "image.h"
 #include "imagedansdiaporama.h"
 
 // Création d'un alias ImagesDuDiaporama pour le type vector
@@ -12,15 +11,15 @@ class Diaporama {
 private:
     // Attributs
     string _titre;
-    unsigned int _vitesseDefilement;
     ImagesDuDiaporama _localisationImages;
+    unsigned int _vitesseDefilement;
     unsigned int _posImageCourante;
 
 public:
     // Les constructeurs
     Diaporama(); // Par défaut
-    Diaporama(string, unsigned int = 1, ImagesDuDiaporama = {}, unsigned int = 0); // Avec paramètres optionelles
-    Diaporama(string, unsigned int, unsigned int); // Avec paramètres obligatoires
+    Diaporama(string, unsigned int = 1, ImagesDuDiaporama = {}, unsigned int = 0);
+    Diaporama(string, unsigned int, unsigned int);
 
     // Les getters
     string getTitre()const;
