@@ -5,6 +5,7 @@
 #include "image.h"
 #include "imagedansdiaporama.h"
 
+// Création d'un alias ImagesDuDiaporama pour le type vector
 typedef vector<imageDansDiaporama> ImagesDuDiaporama;
 
 class Diaporama {
@@ -17,9 +18,9 @@ private:
 
 public:
     // Les constructeurs
-    Diaporama();
-    Diaporama(string, unsigned int = 1, ImagesDuDiaporama = {}, unsigned int = 0);
-    Diaporama(string, unsigned int, unsigned int);
+    Diaporama(); // Par défaut
+    Diaporama(string, unsigned int = 1, ImagesDuDiaporama = {}, unsigned int = 0); // Avec paramètres optionelles
+    Diaporama(string, unsigned int, unsigned int); // Avec paramètres obligatoires
 
     // Les getters
     string getTitre()const;
@@ -42,9 +43,6 @@ public:
     void afficherImageCouranteDansDiaporamaCourant () const;
     void triCroissantRang ();
 };
-
-
-
 
 
 #endif // DIAPORAMA_H

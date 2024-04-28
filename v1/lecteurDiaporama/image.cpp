@@ -1,5 +1,7 @@
 #include "image.h"
 
+// Les constructeurs
+
 Image::Image(): // Constructeur par défaut
     _titre(""),
     _categorie(""),
@@ -19,7 +21,7 @@ Image::Image(string pCategorie, string pTitre, string pChemin): // Constructeur 
 {}
 
 
-
+// Les getters
 string Image::getCategorie() const
 {
     return _categorie;
@@ -36,6 +38,7 @@ string Image::getChemin() const
 }
 
 
+// Les setters
 
 void Image::setCategorie(string pCategorie)
 {
@@ -53,10 +56,9 @@ void Image::setChemin(string pChemin)
 }
 
 
-
+// Sous-programmes
 void Image::afficher() const
 {
-
     cout << "Image : titre: " << getTitre(); cout << ", categorie: "
          << getCategorie(); cout << ", chemin: "<< getChemin() << "" << endl;
 }

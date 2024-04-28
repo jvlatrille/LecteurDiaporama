@@ -3,7 +3,6 @@
 #include <iostream>
 using namespace std;
 
-// Module de manipulation d'éléments de type Image
 
 class Image
 {
@@ -15,9 +14,9 @@ private:
 
 public:
     // Les constructeurs
-    Image();
-    Image(const Image&);
-    Image(string, string, string);
+    Image(); // Par défaut
+    Image(const Image&); // De copie
+    Image(string, string, string); // Complet
 
     // Les getters
     string getCategorie() const; // Get la categorie

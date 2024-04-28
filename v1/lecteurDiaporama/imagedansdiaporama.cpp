@@ -5,26 +5,29 @@
  **********************/
 
 
-/*** Constructeurs ***/
+// Les constructeurs
 
 imageDansDiaporama::imageDansDiaporama():
     Image(),
     _rang(0),
-    _pos(0){}
+    _pos(0)
+{}
 
 imageDansDiaporama::imageDansDiaporama(const Image& img, unsigned int rang, unsigned int pos ):
     Image(img),
     _rang(rang),
-    _pos(pos){}
+    _pos(pos)
+{}
 
 imageDansDiaporama::imageDansDiaporama(Images& images, unsigned int pos, unsigned int rang):
     Image(images[pos]),
     _rang(rang),
-    _pos(pos) {}
+    _pos(pos)
+{}
 
 
 
-/*** Getters ***/
+// Les getters
 unsigned int imageDansDiaporama::getRang() const
 {
     return _rang;
@@ -41,7 +44,7 @@ const Image& imageDansDiaporama::getImage() const
 }
 
 
-/*** Setters ***/
+// Les setters
 void imageDansDiaporama::setRang(unsigned int rang)
 {
     _rang = rang;
@@ -54,7 +57,7 @@ void imageDansDiaporama::setPos(unsigned int pos)
 
 
 
-/*** Autres méthodes ***/
+// Sous-programme
 void imageDansDiaporama::afficherImageCourante() const
 {
     cout << getRang() << " : ";

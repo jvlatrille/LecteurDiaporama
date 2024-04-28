@@ -1,7 +1,6 @@
 #ifndef LECTEUR_H
 #define LECTEUR_H
 
-// Inclusions
 #include <vector>
 #include "diaporama.h"
 using namespace std;
@@ -20,8 +19,8 @@ private:
 
 public:
     // Les constructeurs
-    Lecteur();
-    Lecteur(Diaporamas, unsigned int);
+    Lecteur(); // Par défaut
+    Lecteur(Diaporamas, unsigned int); // Avec le diaporama et l'indice
 
 
     // Les getters

@@ -4,7 +4,7 @@
 #include "image.h"
 #include <vector>
 
-// Types et classes nécessaires
+// Création d'un alias Image pour le type vector
 typedef vector<Image> Images;
 
 class imageDansDiaporama : public Image
@@ -15,9 +15,9 @@ private:
 
 public:
     // Les constructeurs
-    imageDansDiaporama();
-    imageDansDiaporama(const Image&, unsigned int, unsigned int);
-    imageDansDiaporama(Images&, unsigned int, unsigned int);
+    imageDansDiaporama(); // Par défaut
+    imageDansDiaporama(const Image&, unsigned int, unsigned int); // Avec une image const
+    imageDansDiaporama(Images&, unsigned int, unsigned int); // Avec le vector
 
     // Les getters
     unsigned int getRang() const;

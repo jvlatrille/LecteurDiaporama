@@ -3,12 +3,9 @@
 #include "image.h"
 #include <limits>
 
-/***********************
- *      METHODES
- **********************/
 
 
-/*** Constructeurs ***/
+// Les constructeurs
 Lecteur::Lecteur():
     _numDiapoCourant(0)
 {}
@@ -19,7 +16,7 @@ Lecteur::Lecteur(Diaporamas diapos, unsigned int numDiapoCourant) :
 {}
 
 
-/*** Getters ***/
+// Les getters
 Diaporamas Lecteur::getAllDiapos() const
 {
     return _allDiapos;
@@ -41,7 +38,7 @@ unsigned int Lecteur::getNombreDiapos() const
 }
 
 
-/*** Setters ***/
+// Les setters
 void Lecteur::setAllDiapos(const Diaporamas& vecteurDiapos)
 {
     _allDiapos = vecteurDiapos;
@@ -55,7 +52,8 @@ void Lecteur::setNumDiapoCourant(unsigned int numDiapoCourant)
 
 
 
-/*** Autres méthodes ***/
+// Sous programmes
+
 void Lecteur::afficherDiapoCourant() {
     cout << "Diaporama courant :\n";
     cout << "Titre : " << getDiapoCourant().getTitre() << endl;
