@@ -2,6 +2,9 @@
 #define LECTEURDIAPORAMA_H
 
 #include <QMainWindow>
+#include <QDebug>
+#include <QShortcut>
+#include <QWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class lecteurDiaporama; }
@@ -14,6 +17,12 @@ class lecteurDiaporama : public QMainWindow
 public:
     lecteurDiaporama(QWidget *parent = nullptr);
     ~lecteurDiaporama();
+
+public slots:
+    void sl_suivant();
+    void sl_precedent();
+    void sl_pause();
+    void sl_quitter();
 
 private:
     Ui::lecteurDiaporama *ui;
