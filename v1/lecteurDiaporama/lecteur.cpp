@@ -183,7 +183,7 @@ void Lecteur::chargerDiapos(Images images)
 
     // Ajout de l'unique image du diaporama par défaut
     imageDansDiapo = imageDansDiaporama(images,0,1);
-    diapoDefaut.addImage(imageDansDiapo);
+    diapoDefaut.ajouterImage(imageDansDiapo);
 
     // Ajout du diaporama dans le tableau de diaporamas
     _allDiapos.push_back(diapoDefaut);
@@ -194,16 +194,16 @@ void Lecteur::chargerDiapos(Images images)
 
     // Les images du diaporama de Pantxika
     imageDansDiapo = imageDansDiaporama (images, 4, 3);
-    diapoPantxika.addImage(imageDansDiapo);
+    diapoPantxika.ajouterImage(imageDansDiapo);
 
     imageDansDiapo = imageDansDiaporama (images,1 ,2);
-    diapoPantxika.addImage(imageDansDiapo);
+    diapoPantxika.ajouterImage(imageDansDiapo);
 
     imageDansDiapo = imageDansDiaporama (images,2, 4);
-    diapoPantxika.addImage(imageDansDiapo);
+    diapoPantxika.ajouterImage(imageDansDiapo);
 
     imageDansDiapo = imageDansDiaporama (images,3 ,1);
-    diapoPantxika.addImage(imageDansDiapo);
+    diapoPantxika.ajouterImage(imageDansDiapo);
 
     // Tri des images par leur rang
     diapoPantxika.triCroissantRang();
@@ -217,16 +217,16 @@ void Lecteur::chargerDiapos(Images images)
 
     // Les images du diaporama de Thierry
     imageDansDiapo = imageDansDiaporama(images,4 ,1);
-    diapoThierry.addImage(imageDansDiapo);
+    diapoThierry.ajouterImage(imageDansDiapo);
 
     imageDansDiapo = imageDansDiaporama(images,1 ,2);
-    diapoThierry.addImage(imageDansDiapo);
+    diapoThierry.ajouterImage(imageDansDiapo);
 
     imageDansDiapo = imageDansDiaporama(images,2 ,3);
-    diapoThierry.addImage(imageDansDiapo);
+    diapoThierry.ajouterImage(imageDansDiapo);
 
     imageDansDiapo = imageDansDiaporama(images,3 ,4);
-    diapoThierry.addImage(imageDansDiapo);
+    diapoThierry.ajouterImage(imageDansDiapo);
 
     // Tri des images par leur rang
     diapoThierry.triCroissantRang();
@@ -240,16 +240,16 @@ void Lecteur::chargerDiapos(Images images)
 
     // Les images du diaporama de Yann
     imageDansDiapo = imageDansDiaporama(images,4 ,2);
-    DiapoYann.addImage(imageDansDiapo);
+    DiapoYann.ajouterImage(imageDansDiapo);
 
     imageDansDiapo = imageDansDiaporama(images,1 ,1);
-    DiapoYann.addImage(imageDansDiapo);
+    DiapoYann.ajouterImage(imageDansDiapo);
 
     imageDansDiapo = imageDansDiaporama(images,2 ,4);
-    DiapoYann.addImage(imageDansDiapo);
+    DiapoYann.ajouterImage(imageDansDiapo);
 
     imageDansDiapo = imageDansDiaporama(images,3 ,3);
-    DiapoYann.addImage(imageDansDiapo);
+    DiapoYann.ajouterImage(imageDansDiapo);
 
     // Tri des images par leur rang
     DiapoYann.triCroissantRang();
@@ -264,16 +264,16 @@ void Lecteur::chargerDiapos(Images images)
 
     // Les images du diaporama de Manu
     imageDansDiapo = imageDansDiaporama(images,4 ,4);
-    DiapoManu.addImage(imageDansDiapo);
+    DiapoManu.ajouterImage(imageDansDiapo);
 
     imageDansDiapo = imageDansDiaporama(images,1 ,3);
-    DiapoManu.addImage(imageDansDiapo);
+    DiapoManu.ajouterImage(imageDansDiapo);
 
     imageDansDiapo = imageDansDiaporama(images,2 ,2);
-    DiapoManu.addImage(imageDansDiapo);
+    DiapoManu.ajouterImage(imageDansDiapo);
 
     imageDansDiapo = imageDansDiaporama(images,3 ,1);
-    DiapoManu.addImage(imageDansDiapo);
+    DiapoManu.ajouterImage(imageDansDiapo);
 
     // Tri des images par leur rang
     DiapoManu.triCroissantRang();
