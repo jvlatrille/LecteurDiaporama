@@ -35,9 +35,9 @@ public:
 
     // Sous-programmes
     void declencherAction(char);
-    void saisieVerifChoixActionSurImageCourante(char&);
-    unsigned int saisieVerifChoixDiaporama();
-    void charger(Images&);
+    void saisieChoixActionImageCourante(char&);
+    unsigned int saisieChoixDiaporama();
+    void chargerImages(Images&);
     void chargerDiapos(Images);
     void afficherDiapoCourant();
 };

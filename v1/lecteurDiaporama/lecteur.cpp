@@ -77,7 +77,7 @@ void Lecteur::declencherAction(char pChoixAction)
     case 'C':
         // L'utilisateur demande à changer de diaporama
         cout << "Choisissez un Diaporama " << endl;
-        choixDiaporama = saisieVerifChoixDiaporama();
+        choixDiaporama = saisieChoixDiaporama();
         setNumDiapoCourant(choixDiaporama);
         getDiapoCourant().setPosImageCourante(0);
         break;
@@ -86,7 +86,7 @@ void Lecteur::declencherAction(char pChoixAction)
     }
 }
 
-void Lecteur::saisieVerifChoixActionSurImageCourante(char& pChoixAction)
+void Lecteur::saisieChoixActionImageCourante(char& pChoixAction)
 {
 
     cout << endl << endl;
@@ -111,7 +111,7 @@ void Lecteur::saisieVerifChoixActionSurImageCourante(char& pChoixAction)
     }
 }
 
-unsigned int Lecteur::saisieVerifChoixDiaporama()
+unsigned int Lecteur::saisieChoixDiaporama()
 {
     unsigned int choixSaisi;
     int choixDiaporama; // valeur retournée
@@ -146,7 +146,7 @@ unsigned int Lecteur::saisieVerifChoixDiaporama()
     return choixDiaporama;
 }
 
-void Lecteur::charger(Images& images) {
+void Lecteur::chargerImages(Images& images) {
     Image imageACharger("objet", "", "C:\\cartesDisney\\Disney_tapis.gif");
     images.push_back(imageACharger);
 

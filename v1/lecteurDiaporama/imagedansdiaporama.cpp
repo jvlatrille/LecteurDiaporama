@@ -6,7 +6,6 @@
 
 
 // Les constructeurs
-
 imageDansDiaporama::imageDansDiaporama():
     Image(),
     _rang(0),

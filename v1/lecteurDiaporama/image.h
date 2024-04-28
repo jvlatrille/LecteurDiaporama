@@ -19,14 +19,14 @@ public:
     Image(string, string, string); // Complet
 
     // Les getters
-    string getCategorie() const; // Get la categorie
     string getTitre() const; // Get le titre
     string getChemin() const; // Get le chemin
+    string getCategorie() const; // Get la categorie
 
     // Les setters
-    void setCategorie(string); // Set la categorie
     void setTitre(string); // Set le titre
     void setChemin(string); // Set le chemin
+    void setCategorie(string); // Set la categorie
 
     // Sous-programmes
     void afficher() const; // affiche tous les champs de l'image

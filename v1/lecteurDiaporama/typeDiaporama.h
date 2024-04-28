@@ -4,6 +4,7 @@
 using namespace std;
 #include <vector>
 #include "image.h"
+#include "imagedansdiaporama.h"
 
 
 class Diaporama
