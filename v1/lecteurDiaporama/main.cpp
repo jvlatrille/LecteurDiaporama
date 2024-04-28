@@ -39,7 +39,7 @@ int main()
 
     /* Faire fonctionner le lecteur
        --------------*/
-    char choixAction = ' ' ;              // pour saisir le choix de l'utilisateur dans le menu d'actions possibles
+    char choixAction;              // pour saisir le choix de l'utilisateur dans le menu d'actions possibles
     while (true)
     {
 
