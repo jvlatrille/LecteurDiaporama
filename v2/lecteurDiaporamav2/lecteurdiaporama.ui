@@ -13,7 +13,107 @@
   <property name="windowTitle">
    <string>lecteurDiaporama</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="1,5,1">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QLabel" name="titreDiapo">
+          <property name="text">
+           <string>TitreDiapo</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="titreImage">
+          <property name="text">
+           <string>TitreImage</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="categorieImage">
+          <property name="text">
+           <string>Categorie</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="rangImage">
+          <property name="text">
+           <string>Rang</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="imageDiapo">
+        <property name="text">
+         <string>Image diapo</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bPrecedent">
+          <property name="text">
+           <string>Précédent</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bPause">
+          <property name="text">
+           <string>Pause</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bSuivant">
+          <property name="text">
+           <string>Suivant</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
