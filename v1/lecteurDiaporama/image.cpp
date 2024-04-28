@@ -1,28 +1,62 @@
 #include "image.h"
 
-Image::Image(string pCategorie, string pTitre, string pChemin):
-    _categorie(pCategorie),
+Image::Image(): // Constructeur par défaut
+    _titre(""),
+    _categorie(""),
+    _chemin("")
+{}
+
+Image::Image(const Image& origine): // Constructeur de copie
+    _titre(origine.getTitre()),
+    _categorie(origine.getCategorie()),
+    _chemin(origine.getChemin())
+{}
+
+Image::Image(string pCategorie, string pTitre, string pChemin): // Constructeur avec tout
     _titre(pTitre),
-    _chemin(pChemin){
-}
+    _categorie(pCategorie),
+    _chemin(pChemin)
+{}
+
+
 
 string Image::getCategorie() const
 {
-    return this->_categorie;
+    return _categorie;
 }
 
 string Image::getTitre() const
 {
-    return this->_titre;
+    return _titre;
 }
 
 string Image::getChemin() const
 {
-    return this->_chemin;
+    return _chemin;
 }
+
+
+
+void Image::setCategorie(string pCategorie)
+{
+    _categorie = pCategorie;
+}
+
+void Image::setTitre(string pTitre)
+{
+    _titre = pTitre;
+}
+
+void Image::setChemin(string pChemin)
+{
+    _chemin = pChemin;
+}
+
+
 
 void Image::afficher() const
 {
-    cout << "image(titre:" << this->getTitre() << ", categorie:"
-         << this->getCategorie() << ", chemin:"<< this->getChemin() << ")" << endl;
+
+    cout << "Image : titre: " << getTitre(); cout << ", categorie: "
+         << getCategorie(); cout << ", chemin: "<< getChemin() << "" << endl;
 }
