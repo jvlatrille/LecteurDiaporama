@@ -3,38 +3,38 @@
 // Les constructeurs
 
 Image::Image(): // Constructeur par défaut
-    d_titre(""),
-    d_categorie(""),
-    d_chemin("")
+    m_titre(""),
+    m_categorie(""),
+    m_chemin("")
 {}
 
 Image::Image(const Image& origine): // Constructeur de copie
-    d_titre(origine.getTitre()),
-    d_categorie(origine.getCategorie()),
-    d_chemin(origine.getChemin())
+    m_titre(origine.getTitre()),
+    m_categorie(origine.getCategorie()),
+    m_chemin(origine.getChemin())
 {}
 
 Image::Image(string pCategorie, string pTitre, string pChemin): // Constructeur avec tout
-    d_titre(pTitre),
-    d_categorie(pCategorie),
-    d_chemin(pChemin)
+    m_titre(pTitre),
+    m_categorie(pCategorie),
+    m_chemin(pChemin)
 {}
 
 
 // Les getters
 string Image::getCategorie() const
 {
-    return d_categorie;
+    return m_categorie;
 }
 
 string Image::getTitre() const
 {
-    return d_titre;
+    return m_titre;
 }
 
 string Image::getChemin() const
 {
-    return d_chemin;
+    return m_chemin;
 }
 
 
@@ -42,17 +42,17 @@ string Image::getChemin() const
 
 void Image::setCategorie(string pCategorie)
 {
-    d_categorie = pCategorie;
+    m_categorie = pCategorie;
 }
 
 void Image::setTitre(string pTitre)
 {
-    d_titre = pTitre;
+    m_titre = pTitre;
 }
 
 void Image::setChemin(string pChemin)
 {
-    d_chemin = pChemin;
+    m_chemin = pChemin;
 }
 
 
