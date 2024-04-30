@@ -4,17 +4,17 @@
 
 // Les constructeurs
 Diaporama::Diaporama() :
-    _titre(""),
-    _localisationImages({}),
-    _vitesseDefilement(0),
-    _posImageCourante(0)
+    d_titre(""),
+    d_localisationImages({}),
+    d_vitesseDefilement(0),
+    d_posImageCourante(0)
     {}
 
-Diaporama::Diaporama(string titre, unsigned int vitesseDefilement, ImagesDuDiaporama _localisationImages, unsigned int posImgCourante) :
-    _titre(titre),
-    _localisationImages(_localisationImages),
-    _vitesseDefilement(vitesseDefilement),
-    _posImageCourante(posImgCourante)
+Diaporama::Diaporama(string titre, unsigned int vitesseDefilement, ImagesDuDiaporama d_localisationImages, unsigned int posImgCourante) :
+    d_titre(titre),
+    d_localisationImages(d_localisationImages),
+    d_vitesseDefilement(vitesseDefilement),
+    d_posImageCourante(posImgCourante)
     {}
 
 
@@ -23,27 +23,27 @@ Diaporama::Diaporama(string titre, unsigned int vitesseDefilement, ImagesDuDiapo
 
 string Diaporama::getTitre() const
 {
-    return _titre;
+    return d_titre;
 }
 
 ImagesDuDiaporama Diaporama::getLocalisationImages() const
 {
-    return _localisationImages;
+    return d_localisationImages;
 }
 
 unsigned int Diaporama::getVitesseDefilement() const
 {
-    return _vitesseDefilement;
+    return d_vitesseDefilement;
 }
 
 unsigned int Diaporama::getNombreImages() const
 {
-    return _localisationImages.size();
+    return d_localisationImages.size();
 }
 
 unsigned int Diaporama::getPosImageCourante() const
 {
-    return _posImageCourante;
+    return d_posImageCourante;
 }
 
 imageDansDiaporama Diaporama::getImageCourante() const
@@ -57,22 +57,22 @@ imageDansDiaporama Diaporama::getImageCourante() const
 
 void Diaporama::setTitre(const string& titre)
 {
-    _titre = titre;
+    d_titre = titre;
 }
 
 void Diaporama::setVitesseDefilement(unsigned int vitesseDefilement)
 {
-    _vitesseDefilement = vitesseDefilement;
+    d_vitesseDefilement = vitesseDefilement;
 }
 
 void Diaporama::setLocalisationImages(const ImagesDuDiaporama& localisationImages)
 {
-    _localisationImages = localisationImages;
+    d_localisationImages = localisationImages;
 }
 
 void Diaporama::setPosImageCourante(unsigned int pPosCourante)
 {
-    _posImageCourante = pPosCourante;
+    d_posImageCourante = pPosCourante;
 }
 
 
@@ -81,7 +81,7 @@ void Diaporama::setPosImageCourante(unsigned int pPosCourante)
 
 void Diaporama::ajouterImage(const imageDansDiaporama& imgDuDiapo)
 {
-    _localisationImages.push_back(imgDuDiapo);
+    d_localisationImages.push_back(imgDuDiapo);
 }
 
 void Diaporama::avancer()
@@ -119,7 +119,7 @@ void Diaporama::afficherImageCouranteDansDiaporamaCourant () const
 
 // Tri à bulles
 void Diaporama::triCroissantRang() {
-    unsigned int taille = _localisationImages.size();
+    unsigned int taille = d_localisationImages.size();
 
     // Parcourir le tableau jusqu'à ce qu'il n'y ait plus d'échanges à effectuer
     for (unsigned int i = 0; i < taille - 1; i++) {
@@ -128,9 +128,9 @@ void Diaporama::triCroissantRang() {
         // Parcourir le tableau à partir de la première image
         for (unsigned int j = 0; j < taille - i - 1; j++) {
             // Comparer le rang de l'image actuelle avec celui de l'image suivante
-            if (this->_localisationImages[j].getRang() > this->_localisationImages[j + 1].getRang()) {
+            if (this->d_localisationImages[j].getRang() > this->d_localisationImages[j + 1].getRang()) {
                 // Échanger les deux images si elles ne sont pas dans le bon ordre
-                swap(this->_localisationImages[j], this->_localisationImages[j + 1]);
+                swap(this->d_localisationImages[j], this->d_localisationImages[j + 1]);
                 estEchange = true; // Indiquer qu'un échange a été effectué
             }
         }

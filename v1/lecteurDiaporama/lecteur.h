@@ -13,8 +13,8 @@ class Image;
 class Lecteur
 {
 private:
-    Diaporamas _touteDiapos;
-    unsigned int _numDiapoCourant;
+    Diaporamas d_touteDiapos;
+    unsigned int d_numDiapoCourant;
 
 
 public:

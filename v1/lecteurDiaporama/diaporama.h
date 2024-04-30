@@ -10,10 +10,10 @@ typedef vector<imageDansDiaporama> ImagesDuDiaporama;
 class Diaporama {
 private:
     // Attributs
-    string _titre;
-    ImagesDuDiaporama _localisationImages;
-    unsigned int _vitesseDefilement;
-    unsigned int _posImageCourante;
+    string d_titre;
+    ImagesDuDiaporama d_localisationImages;
+    unsigned int d_vitesseDefilement;
+    unsigned int d_posImageCourante;
 
 public:
     // Les constructeurs

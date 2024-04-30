@@ -7,46 +7,46 @@
 
 // Les constructeurs
 Lecteur::Lecteur():
-    _numDiapoCourant(0)
+    d_numDiapoCourant(0)
 {}
 
 Lecteur::Lecteur(Diaporamas diapos, unsigned int numDiapoCourant) :
-    _touteDiapos(diapos),
-    _numDiapoCourant(numDiapoCourant)
+    d_touteDiapos(diapos),
+    d_numDiapoCourant(numDiapoCourant)
 {}
 
 
 // Les getters
 Diaporamas Lecteur::getToutesDiapos() const
 {
-    return _touteDiapos;
+    return d_touteDiapos;
 }
 
 Diaporama& Lecteur::getDiapoCourant()
 {
-    return _touteDiapos[getNumDiapoCourant()];
+    return d_touteDiapos[getNumDiapoCourant()];
 }
 
 unsigned int Lecteur::getNumDiapoCourant() const
 {
-    return _numDiapoCourant;
+    return d_numDiapoCourant;
 }
 
 unsigned int Lecteur::getNombreDiapos() const
 {
-    return _touteDiapos.size();
+    return d_touteDiapos.size();
 }
 
 
 // Les setters
 void Lecteur::setAllDiapos(const Diaporamas& vecteurDiapos)
 {
-    _touteDiapos = vecteurDiapos;
+    d_touteDiapos = vecteurDiapos;
 }
 
 void Lecteur::setNumDiapoCourant(unsigned int numDiapoCourant)
 {
-    _numDiapoCourant = numDiapoCourant;
+    d_numDiapoCourant = numDiapoCourant;
 }
 
 
@@ -183,7 +183,7 @@ void Lecteur::chargerDiapos(Images images)
     diapoDefaut.ajouterImage(imageDansDiapo);
 
     // Ajout du diaporama dans le tableau de diaporamas
-    _touteDiapos.push_back(diapoDefaut);
+    d_touteDiapos.push_back(diapoDefaut);
 
     // Diaporama de Pantxika
     Diaporama diapoPantxika ("Diaporama Pantxika");
@@ -206,7 +206,7 @@ void Lecteur::chargerDiapos(Images images)
     diapoPantxika.triCroissantRang();
 
     // Ajout du diaporama dans le tableau de diaporamas
-    _touteDiapos.push_back(diapoPantxika);
+    d_touteDiapos.push_back(diapoPantxika);
 
     // Diaporama de Thierry
     Diaporama diapoThierry("Diaporama Thierry");
@@ -229,7 +229,7 @@ void Lecteur::chargerDiapos(Images images)
     diapoThierry.triCroissantRang();
 
     // Ajout du diaporama dans le tableau de diaporamas
-    _touteDiapos.push_back(diapoThierry);
+    d_touteDiapos.push_back(diapoThierry);
 
     // Diaporama de Yann
     Diaporama DiapoYann("Diaporama Yann");
@@ -252,7 +252,7 @@ void Lecteur::chargerDiapos(Images images)
     DiapoYann.triCroissantRang();
 
     // Ajout du diaporama dans le tableau de diaporamas
-    _touteDiapos.push_back(DiapoYann);
+    d_touteDiapos.push_back(DiapoYann);
 
 
     // Diaporama de Manu
@@ -276,7 +276,7 @@ void Lecteur::chargerDiapos(Images images)
     DiapoManu.triCroissantRang();
 
     // Ajout du diaporama dans le tableau de diaporamas
-    _touteDiapos.push_back(DiapoManu);
+    d_touteDiapos.push_back(DiapoManu);
 
 }
 

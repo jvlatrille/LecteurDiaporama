@@ -10,8 +10,8 @@ typedef vector<Image> Images;
 class imageDansDiaporama : public Image
 {   
 private:
-    unsigned int _rang; // Rang de l'image dans le tableau d'images
-    unsigned int _pos; // Position de l'image dans le diaporama
+    unsigned int d_rang; // Rang de l'image dans le tableau d'images
+    unsigned int d_pos; // Position de l'image dans le diaporama
 
 public:
     // Les constructeurs

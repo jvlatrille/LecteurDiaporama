@@ -7,9 +7,9 @@ using namespace std;
 class Image
 {
 private:
-    string _titre; // intitulé de l'image
-    string _categorie; // catégorie de l'image (personne, animal, objet)
-    string _chemin;
+    string d_titre; // intitulé de l'image
+    string d_categorie; // catégorie de l'image (personne, animal, objet)
+    string d_chemin;
 
 
 public:

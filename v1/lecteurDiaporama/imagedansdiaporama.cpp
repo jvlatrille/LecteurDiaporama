@@ -8,20 +8,20 @@
 // Les constructeurs
 imageDansDiaporama::imageDansDiaporama():
     Image(),
-    _rang(0),
-    _pos(0)
+    d_rang(0),
+    d_pos(0)
 {}
 
 imageDansDiaporama::imageDansDiaporama(const Image& img, unsigned int rang, unsigned int pos ):
     Image(img),
-    _rang(rang),
-    _pos(pos)
+    d_rang(rang),
+    d_pos(pos)
 {}
 
 imageDansDiaporama::imageDansDiaporama(Images& images, unsigned int pos, unsigned int rang):
     Image(images[pos]),
-    _rang(rang),
-    _pos(pos)
+    d_rang(rang),
+    d_pos(pos)
 {}
 
 
@@ -29,12 +29,12 @@ imageDansDiaporama::imageDansDiaporama(Images& images, unsigned int pos, unsigne
 // Les getters
 unsigned int imageDansDiaporama::getRang() const
 {
-    return _rang;
+    return d_rang;
 }
 
 unsigned int imageDansDiaporama::getPos() const
 {
-    return _pos;
+    return d_pos;
 }
 
 const Image& imageDansDiaporama::getImage() const
@@ -46,12 +46,12 @@ const Image& imageDansDiaporama::getImage() const
 // Les setters
 void imageDansDiaporama::setRang(unsigned int rang)
 {
-    _rang = rang;
+    d_rang = rang;
 }
 
 void imageDansDiaporama::setPos(unsigned int pos)
 {
-    _pos = pos;
+    d_pos = pos;
 }
 
 
