@@ -1,3 +1,3 @@
 Présentation de la version 1 : 
-Cette version est essenciélement non graphique.
-Noux y avons implémenté les classes figurant sur notre diagramme UML : Les classes Image, imageDansDiaporama, Diaporama et Lecteur sont implémentées avec leurs méthodes permettant d'ajouter, afficher et naviguer à travers les diaporamas et les images. Le fichier main.cpp permet de tester le fonctionnement du lecteur en créant les objets principaux, affichant leur contenu, saisissant les demandes de l'utilisateur et activant les méthodes des objets en fonction de ces demandes.
+Cette version est essentiellement non graphique.
+Nous y avons implémenté les classes figurant sur notre diagramme UML : Les classes Image, imageDansDiaporama, Diaporama et Lecteur sont implémentées avec leurs méthodes permettant d'ajouter, afficher et naviguer à travers les diaporamas et les images. Le fichier main.cpp permet de tester le fonctionnement du lecteur en créant les objets principaux, affichant leur contenu, saisissant les demandes de l'utilisateur et activant les méthodes des objets en fonction de ces demandes.
