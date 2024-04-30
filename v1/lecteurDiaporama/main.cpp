@@ -28,7 +28,7 @@ int main()
     for(unsigned int i = 1; i < lecteurDiapos.getNombreDiapos(); i++)
     {
         cout << "Tri numéro " << i << endl;
-        lecteurDiapos.getAllDiapos()[i].triCroissantRang();
+        lecteurDiapos.getToutesDiapos()[i].triCroissantRang();
     }
 
 

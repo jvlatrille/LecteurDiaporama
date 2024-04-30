@@ -13,7 +13,7 @@ class Image;
 class Lecteur
 {
 private:
-    Diaporamas _allDiapos;
+    Diaporamas _touteDiapos;
     unsigned int _numDiapoCourant;
 
 
@@ -24,7 +24,7 @@ public:
 
 
     // Les getters
-    Diaporamas getAllDiapos() const;
+    Diaporamas getToutesDiapos() const;
     Diaporama& getDiapoCourant();
     unsigned int getNumDiapoCourant() const;
     unsigned int getNombreDiapos() const;
