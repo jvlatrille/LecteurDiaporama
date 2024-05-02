@@ -22,7 +22,8 @@ lecteurDiaporama::lecteurDiaporama(QWidget *parent)
     QObject::connect(ui->actionAPropos, SIGNAL(triggered()), this, SLOT(sl_aPropos()));
 
     //navigation entre les bouton avec tab
-    QWidget::setTabOrder({ui->bPrecedent, ui->bPause, ui->bSuivant});
+    QWidget::setTabOrder(ui->bPrecedent, ui->bPause);
+    QWidget::setTabOrder(ui->bPause, ui->bSuivant);
 }
 
 lecteurDiaporama::~lecteurDiaporama()
