@@ -22,9 +22,16 @@ public slots:
     void sl_suivant();
     void sl_precedent();
     void sl_pause();
+    void sl_chargerDiapo();
     void sl_quitter();
+    void sl_enleverDipo();
+    void sl_vitesseDefilement();
+    void sl_modeAuto();
+    void sl_modeManuel();
+    void sl_aPropos();
 
 private:
     Ui::lecteurDiaporama *ui;
+
 };
 #endif // LECTEURDIAPORAMA_H

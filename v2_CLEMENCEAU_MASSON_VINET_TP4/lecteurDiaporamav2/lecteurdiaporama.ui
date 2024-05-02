@@ -82,7 +82,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="bPause">
+         <widget class="QToolButton" name="bPause">
           <property name="text">
            <string>Pause</string>
           </property>
@@ -127,14 +127,68 @@
     <property name="title">
      <string>Fichier</string>
     </property>
+    <addaction name="actionChargerDiapo"/>
     <addaction name="actionQuitter"/>
    </widget>
+   <widget class="QMenu" name="menuParam_tres">
+    <property name="title">
+     <string>Paramètres</string>
+    </property>
+    <addaction name="actionVitesseDefilement"/>
+    <addaction name="actionEnleverDiapo"/>
+   </widget>
+   <widget class="QMenu" name="menuAide">
+    <property name="title">
+     <string>Aide</string>
+    </property>
+    <addaction name="actionAPropos"/>
+   </widget>
+   <widget class="QMenu" name="menuMode">
+    <property name="title">
+     <string>Mode</string>
+    </property>
+    <addaction name="actionAutomatique"/>
+    <addaction name="actionManuel"/>
+   </widget>
    <addaction name="menuFichier"/>
+   <addaction name="menuParam_tres"/>
+   <addaction name="menuMode"/>
+   <addaction name="menuAide"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionQuitter">
    <property name="text">
     <string>Quitter</string>
+   </property>
+  </action>
+  <action name="actionVitesseDefilement">
+   <property name="text">
+    <string>Vitesse de défilement</string>
+   </property>
+  </action>
+  <action name="actionChargerDiapo">
+   <property name="text">
+    <string>Charger diaporama</string>
+   </property>
+  </action>
+  <action name="actionEnleverDiapo">
+   <property name="text">
+    <string>Enlever diaporama</string>
+   </property>
+  </action>
+  <action name="actionAPropos">
+   <property name="text">
+    <string>A propos</string>
+   </property>
+  </action>
+  <action name="actionAutomatique">
+   <property name="text">
+    <string>Automatique</string>
+   </property>
+  </action>
+  <action name="actionManuel">
+   <property name="text">
+    <string>Manuel</string>
    </property>
   </action>
  </widget>
