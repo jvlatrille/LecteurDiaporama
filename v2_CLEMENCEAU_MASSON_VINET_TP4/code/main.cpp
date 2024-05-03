@@ -1,4 +1,4 @@
-#include "lecteurdiaporama.h"
+#include "lecteurvue.h"
 
 #include <QApplication>
 
