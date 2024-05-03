@@ -20,7 +20,6 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -48,7 +47,7 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer;
     QPushButton *bPrecedent;
-    QToolButton *bPause;
+    QPushButton *bPause;
     QPushButton *bSuivant;
     QSpacerItem *horizontalSpacer_2;
     QMenuBar *menubar;
@@ -128,7 +127,7 @@ public:
 
         horizontalLayout_4->addWidget(bPrecedent);
 
-        bPause = new QToolButton(centralwidget);
+        bPause = new QPushButton(centralwidget);
         bPause->setObjectName("bPause");
 
         horizontalLayout_4->addWidget(bPause);

@@ -42,7 +42,7 @@ constexpr auto qt_meta_stringdata_CLASSlecteurVueENDCLASS = QtMocHelpers::string
     "sl_pause",
     "sl_chargerDiapo",
     "sl_quitter",
-    "sl_enleverDipo",
+    "sl_enleverDiapo",
     "sl_vitesseDefilement",
     "sl_modeAuto",
     "sl_modeManuel",
@@ -112,7 +112,7 @@ Q_CONSTINIT const QMetaObject lecteurVue::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'sl_quitter'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'sl_enleverDipo'
+        // method 'sl_enleverDiapo'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'sl_vitesseDefilement'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
@@ -137,7 +137,7 @@ void lecteurVue::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 2: _t->sl_pause(); break;
         case 3: _t->sl_chargerDiapo(); break;
         case 4: _t->sl_quitter(); break;
-        case 5: _t->sl_enleverDipo(); break;
+        case 5: _t->sl_enleverDiapo(); break;
         case 6: _t->sl_vitesseDefilement(); break;
         case 7: _t->sl_modeAuto(); break;
         case 8: _t->sl_modeManuel(); break;

@@ -82,7 +82,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="bPause">
+         <widget class="QPushButton" name="bPause">
           <property name="text">
            <string>Pause</string>
           </property>
