@@ -1,9 +1,9 @@
 #include "lecteurvue.h"
 #include "ui_lecteurvue.h"
 
-lecteurDiaporama::lecteurDiaporama(QWidget *parent)
+lecteurVue::lecteurVue(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::lecteurDiaporama)
+    , ui(new Ui::lecteurVue)
 {
     ui->setupUi(this);
 
@@ -26,57 +26,57 @@ lecteurDiaporama::lecteurDiaporama(QWidget *parent)
     QWidget::setTabOrder(ui->bPause, ui->bSuivant);
 }
 
-lecteurDiaporama::~lecteurDiaporama()
+lecteurVue::~lecteurVue()
 {
     delete ui;
 }
 
-void lecteurDiaporama::sl_suivant()
+void lecteurVue::sl_suivant()
 {
     qDebug() << "Image suivante";
 }
 
-void lecteurDiaporama::sl_precedent()
+void lecteurVue::sl_precedent()
 {
     qDebug() << "Image précédente";
 }
 
-void lecteurDiaporama::sl_pause()
+void lecteurVue::sl_pause()
 {
     qDebug() << "Défilement mis en pause / relancé (coché ou non)";
 }
 
-void lecteurDiaporama::sl_quitter()
+void lecteurVue::sl_quitter()
 {
     qDebug() << "Quitter";
 }
 
-void lecteurDiaporama::sl_chargerDiapo()
+void lecteurVue::sl_chargerDiapo()
 {
     qDebug() << "Charger diapo";
 }
 
-void lecteurDiaporama::sl_enleverDipo()
+void lecteurVue::sl_enleverDipo()
 {
     qDebug() << "Enlever diapo";
 }
 
-void lecteurDiaporama::sl_vitesseDefilement()
+void lecteurVue::sl_vitesseDefilement()
 {
     qDebug() << "Changement de la vitesse de défilement";
 }
 
-void lecteurDiaporama::sl_modeAuto()
+void lecteurVue::sl_modeAuto()
 {
     qDebug() << "Mode de défilement automatique";
 }
 
-void lecteurDiaporama::sl_modeManuel()
+void lecteurVue::sl_modeManuel()
 {
     qDebug() << "Mode de défilement manuel";
 }
 
-void lecteurDiaporama::sl_aPropos()
+void lecteurVue::sl_aPropos()
 {
     qDebug() << "À propos";
 }

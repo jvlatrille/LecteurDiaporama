@@ -7,16 +7,16 @@
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class lecteurDiaporama; }
+namespace Ui { class lecteurVue; }
 QT_END_NAMESPACE
 
-class lecteurDiaporama : public QMainWindow
+class lecteurVue : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    lecteurDiaporama(QWidget *parent = nullptr);
-    ~lecteurDiaporama();
+    lecteurVue(QWidget *parent = nullptr);
+    ~lecteurVue();
 
 public slots:
     void sl_suivant();
@@ -31,7 +31,7 @@ public slots:
     void sl_aPropos();
 
 private:
-    Ui::lecteurDiaporama *ui;
+    Ui::lecteurVue *ui;
 
 };
 #endif // LECTEURVUE_H
