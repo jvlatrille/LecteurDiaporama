@@ -75,6 +75,9 @@ public:
         actionAPropos->setObjectName("actionAPropos");
         actionAutomatique = new QAction(lecteurVue);
         actionAutomatique->setObjectName("actionAutomatique");
+        actionAutomatique->setCheckable(false);
+        actionAutomatique->setChecked(false);
+        actionAutomatique->setEnabled(true);
         actionManuel = new QAction(lecteurVue);
         actionManuel->setObjectName("actionManuel");
         centralwidget = new QWidget(lecteurVue);

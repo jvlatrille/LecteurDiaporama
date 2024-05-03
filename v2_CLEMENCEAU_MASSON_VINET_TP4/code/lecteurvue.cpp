@@ -56,7 +56,7 @@ void lecteurVue::sl_chargerDiapo()
     qDebug() << "Charger diapo";
 }
 
-void lecteurVue::sl_enleverDipo()
+void lecteurVue::sl_enleverDiapo()
 {
     qDebug() << "Enlever diapo";
 }
