@@ -50,6 +50,8 @@ public:
     QPushButton *bPause;
     QPushButton *bSuivant;
     QSpacerItem *horizontalSpacer_2;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *mode;
     QMenuBar *menubar;
     QMenu *menuFichier;
     QMenu *menuParam_tres;
@@ -144,6 +146,16 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_4);
 
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        mode = new QLabel(centralwidget);
+        mode->setObjectName("mode");
+
+        verticalLayout_2->addWidget(mode);
+
+
+        verticalLayout->addLayout(verticalLayout_2);
+
         verticalLayout->setStretch(0, 1);
         verticalLayout->setStretch(1, 5);
         verticalLayout->setStretch(2, 1);
@@ -202,6 +214,7 @@ public:
         bPrecedent->setText(QCoreApplication::translate("lecteurVue", "Pr\303\251c\303\251dent", nullptr));
         bPause->setText(QCoreApplication::translate("lecteurVue", "Pause", nullptr));
         bSuivant->setText(QCoreApplication::translate("lecteurVue", "Suivant", nullptr));
+        mode->setText(QCoreApplication::translate("lecteurVue", "Mode :", nullptr));
         menuFichier->setTitle(QCoreApplication::translate("lecteurVue", "Fichier", nullptr));
         menuParam_tres->setTitle(QCoreApplication::translate("lecteurVue", "Param\303\250tres", nullptr));
         menuAide->setTitle(QCoreApplication::translate("lecteurVue", "Aide", nullptr));
