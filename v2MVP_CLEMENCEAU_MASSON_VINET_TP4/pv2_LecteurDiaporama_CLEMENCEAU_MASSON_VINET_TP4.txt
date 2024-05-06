@@ -1,0 +1,3 @@
+Présentation de la version 2 : 
+Cette version est essentiellement graphique.
+Nous y avons implémenté l'interface graphique de l'application : tous les boutons et items de menus sont présents, ils ne déclechent dependant pas les opérations demandées. Elles communiquent seulement grâce à qDebug() à l'utilisateur lorsqu'il déclenche une action. Le fichier main.cpp permet de tester le fonctionnement de l'interface quand on appuie sur les boutons en répondant dans le terminal.
