@@ -1,6 +1,7 @@
 #include "lecteur.h"
 #include "diaporama.h"
 #include "image.h"
+#include <limits>
 
 
 
@@ -133,7 +134,7 @@ unsigned int Lecteur::saisieChoixDiaporama()
         cout << ".......  votre choix ? "; cin >> choixDiaporama;
 
         // Vérifier la saisie
-        if ((choixDiaporama >= 1)&&(choixDiaporama < static_cast<unsigned int>(this->getNombreDiapos())))
+        if ((choixDiaporama >= 1)&&(choixDiaporama <static_cast<unsigned int>(this->getNombreDiapos())))
         {
             break;
         }

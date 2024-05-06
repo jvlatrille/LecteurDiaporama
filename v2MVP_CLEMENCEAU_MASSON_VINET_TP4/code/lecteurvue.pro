@@ -14,14 +14,18 @@ SOURCES += \
     imagedansdiaporama.cpp \
     lecteur.cpp \
     lecteurvue.cpp \
-    main.cpp
+    main.cpp \
+    modele.cpp \
+    presentation.cpp
 
 HEADERS += \
     diaporama.h \
     image.h \
     imagedansdiaporama.h \
     lecteur.h \
-    lecteurvue.h
+    lecteurvue.h \
+    modele.h \
+    presentation.h
 
 FORMS += \
     lecteurvue.ui
