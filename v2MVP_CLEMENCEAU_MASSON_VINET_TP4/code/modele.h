@@ -1,32 +1,33 @@
 #ifndef MODELE_H
 #define MODELE_H
-#include "qDebug"
+
 #include <QObject>
 #include <vector>
-#include <imageDansDiaporama.h>
-#include <diaporama.h>
-#include <iostream>
-using namespace std;
+#include "imageDansDiaporama.h"
 
 class Modele : public QObject
 {
     Q_OBJECT
 private:
-    string m_titre;
+    std::string m_titre;
     unsigned int m_vitesseDefilement;
     unsigned int m_posImageCourante;
-    vector <imageDansDiaporama> m_localisationImages;
+    std::vector<imageDansDiaporama> m_localisationImages;
 public:
-    explicit Modele(/*UnEtat e=eteint*/ QObject *parent = nullptr);
-    string getTitre();
+    explicit Modele(QObject *parent = nullptr);
+    std::string getTitre() const;
+    unsigned int getVitesseDefilement() const;
+    unsigned int getNombreImages() const;
+    unsigned int getPosImageCourante() const;
 
-    //void allumer();
-    // modifie etat à valeur: allumer
-    //void eteindre();
-    // modifie etat à valeur :eteindre
-    //UnEtat getEtat();
-    // getter : retourne valeur de etat
+    void setTitre(const std::string&);
+    void setVitesseDefilement(unsigned int);
+    void setLocalisationImages(const std::vector<imageDansDiaporama>&);
+    void setPosImageCourante(unsigned int);
 
+    void avancer();
+    void reculer();
+    void triCroissantRang();
 };
 
 #endif // MODELE_H

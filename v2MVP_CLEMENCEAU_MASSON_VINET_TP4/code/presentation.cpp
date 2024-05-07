@@ -1,11 +1,9 @@
-#include "presentation.h"
-#include "lecteurvue.h"
 #include "ui_lecteurvue.h"
+#include "presentation.h"
 
 Presentation::Presentation(QObject *parent)
-    : QObject{parent}
+    : QObject(parent), _leModele(nullptr), _laVue(nullptr)
 {
-
 }
 
 void Presentation::setModel(Modele *m)
@@ -28,16 +26,25 @@ lecteurVue *Presentation::getVue()
     return _laVue;
 }
 
-/*void Presentation::demanderAllumer()
+void Presentation::demanderAvancer()
 {
-    _leModele->allumer();
-    _laVue->majInterface(_leModele->getEtat());
-    qDebug() << "Présentation solicitée par la vue pour allumer l'lecteur";
+    if (_leModele)
+    {
+        _leModele->avancer();
+        // Mettre à jour l'interface utilisateur via la vue
+    }
 }
 
-void Presentation::demanderEteindre()
+void Presentation::demanderReculer()
 {
-    _leModele->eteindre();
-    _laVue->majInterface(_leModele->getEtat());
-    qDebug() << "Présentation solicitée par la vue pour éteindre l'lecteur";
-}*/
+    if (_leModele)
+    {
+        _leModele->reculer();
+        // Mettre à jour l'interface utilisateur via la vue
+    }
+}
+
+void Presentation::demanderArret()
+{
+    // Demander l'arrêt de la lecture du diaporama s'il est en automatique
+}

@@ -1,10 +1,10 @@
 #ifndef PRESENTATION_H
 #define PRESENTATION_H
+
 #include <QObject>
 #include "modele.h"
+#include "lecteurVue.h"
 
-
-class lecteurVue;
 class Presentation : public QObject
 {
     Q_OBJECT
@@ -16,13 +16,15 @@ private:
     lecteurVue* _laVue;
 
 public:
+    Modele* getModele();
+    lecteurVue* getVue();
     void setModel(Modele* m);
     void setVue(lecteurVue* v);
-    Modele *getModele();
-    lecteurVue* getVue();
 
-    //void demanderAllumer();
-    //void demanderEteindre();
+public slots:
+    void demanderAvancer();
+    void demanderReculer();
+    void demanderArret();
 };
 
 #endif // PRESENTATION_H
