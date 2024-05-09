@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     Modele* m = new Modele();
     Presentation *p = new Presentation();
 
-    w.setPresentation(p);
+    // w.setPresentation(p);
     p->setModel(m);
     p->setVue(&w);
 

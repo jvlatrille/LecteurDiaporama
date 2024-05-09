@@ -18,6 +18,7 @@ private:
 public:
     Modele* getModele();
     lecteurVue* getVue();
+
     void setModel(Modele* m);
     void setVue(lecteurVue* v);
 
