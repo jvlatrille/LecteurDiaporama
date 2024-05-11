@@ -32,10 +32,6 @@ public slots:
     void demanderChangerVitesse();
     void demanderModeManuel();
     void demanderModeAutomatique();
-
-signals:
-    void avancerDiapo();
-    void reculerDiapo();
 };
 
 #endif // PRESENTATION_H
