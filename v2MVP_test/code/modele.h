@@ -18,6 +18,7 @@ private:
     unsigned int m_posImageCourante;
     std::vector<ImageDansDiaporama> m_localisationImages;
     unsigned int m_posImage;
+    Diaporama * m_diapo;
 
 public:
     Modele();

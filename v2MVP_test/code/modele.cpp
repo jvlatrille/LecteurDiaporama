@@ -27,12 +27,12 @@ void Modele::setVitesseDefilement(unsigned int vitesse)
 
 void Modele::setDiaporama(Diaporama *diaporama)
 {
-    // À implémenter
+        m_diapo = diaporama;
 }
 
 void Modele::avancer()
 {
-    // À implémenter
+
 }
 
 void Modele::reculer()
