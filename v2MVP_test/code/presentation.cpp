@@ -1,8 +1,8 @@
 #include "presentation.h"
 
-Presentation::Presentation() {
-    _leModele = nullptr;
-    _laVue = nullptr;
+Presentation::Presentation()
+{
+
 }
 
 Modele *Presentation::getModele()
