@@ -13,22 +13,26 @@ class Modele : public QObject
     Q_OBJECT
 
 private:
-    std::string m_titre;
+    string m_titre;
     unsigned int m_vitesseDefilement;
+    bool lecteurVide() const;
     unsigned int m_posImageCourante;
-    std::vector<ImageDansDiaporama> m_localisationImages;
-    unsigned int m_posImage;
-    Diaporama * m_diapo;
+    vector <ImageDansDiaporama> m_localisationImages;
+    Diaporama* m_MonDiapo;
+    ImagesDiaporama images;
 
 public:
     Modele();
 
     unsigned int getVitesseDefilement() const;
     unsigned int getPosImageCourante() const;
-    Diaporama * getDiaporama() const;
+    unsigned int nbImages() const;
+
+    Diaporama* getDiaporama() const;
 
     void setVitesseDefilement(unsigned int);
     void setDiaporama(Diaporama *);
+    void setPosImageCourante(unsigned int pPosImageCourante);
 
     void avancer();
     void reculer();
