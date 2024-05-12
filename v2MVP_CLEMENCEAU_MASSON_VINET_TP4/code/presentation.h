@@ -26,14 +26,24 @@ public slots:
     void demanderReculer();
     void demanderDepartArretAuto();
     void demanderChangerVitesse();
-    void demanderChangerMode();
+    void demanderChangerModeAutomatique();
+    void demanderChangerModeManuel();
+    void demanderChargerDiapo();
+    void demanderQuitter();
+    void demanderEnleverDiapo();
+    void demanderAPropos();
 
 signals:
     void s_avancer();
     void s_reculer();
     void s_departArret();
     void s_changerVitesse();
-    void s_changerMode();
+    void s_changerModeAuto();
+    void s_changerModeManuel();
+    void s_chargerDiapo();
+    void s_quitter();
+    void s_enleverDiapo();
+    void s_aPropos();
 
 };
 

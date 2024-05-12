@@ -49,10 +49,38 @@ void Presentation::demanderChangerVitesse()
         emit s_changerVitesse();
 }
 
-void Presentation::demanderChangerMode()
+void Presentation::demanderChangerModeAutomatique()
 {
-    qDebug() << "Demande à changer de mode";
-    emit s_changerMode();
+    qDebug() << "Demande à changer de mode en automatique";
+    emit s_changerModeAuto();
 }
 
+void Presentation::demanderChangerModeManuel()
+{
+    qDebug() << "Demande à changer de mode en Manuel";
+    emit s_changerModeManuel();
+}
 
+void Presentation::demanderChargerDiapo()
+{
+    qDebug() << "Demande à charger un nouveau diaporama";
+    emit s_chargerDiapo();
+}
+
+void Presentation::demanderQuitter()
+{
+    qDebug() << "Demande à quitter l'application";
+    emit s_quitter();
+}
+
+void Presentation::demanderEnleverDiapo()
+{
+    qDebug() << "Demande à enlever le diaporama courrant";
+    emit s_enleverDiapo();
+}
+
+void Presentation::demanderAPropos()
+{
+    qDebug() << "Demande à afficher la page a propos de l'application";
+    emit s_aPropos();
+}
