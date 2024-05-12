@@ -10,13 +10,22 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class lecteurVue; }
 QT_END_NAMESPACE
 
+class Presentation;
 class lecteurVue : public QMainWindow
 {
     Q_OBJECT
 
+private:
+    Ui::lecteurVue *ui;
+    Presentation * m_MaPresentation;
+
+
 public:
     lecteurVue(QWidget *parent = nullptr);
     ~lecteurVue();
+
+    Presentation * getPresentation() const;
+    void setPresentation(Presentation *);
 
 public slots:
     void sl_suivant();
@@ -29,9 +38,6 @@ public slots:
     void sl_modeAuto();
     void sl_modeManuel();
     void sl_aPropos();
-
-private:
-    Ui::lecteurVue *ui;
 
 };
 #endif // LECTEURVUE_H

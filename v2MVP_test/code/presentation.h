@@ -18,8 +18,8 @@ private:
 public:
     Presentation();
 
-    Modele* getModele();
-    lecteurVue* getVue();
+    Modele *getModele();
+    lecteurVue *getVue();
 
     void setModel(Modele* m);
     void setVue(lecteurVue* v);
@@ -27,11 +27,16 @@ public:
 public slots:
     void demanderAvancer();
     void demanderReculer();
-    void demanderDepart();  // Départ mode auto
-    void demanderArret();  // Arrêt mode auto
+    void demanderDepartArretAuto();
     void demanderChangerVitesse();
-    void demanderModeManuel();
-    void demanderModeAutomatique();
+    void demanderChangerMode();
+
+signals:
+    void s_avancer();
+    void s_reculer();
+    void s_departArret();
+    void s_changerVitesse();
+    void s_changerMode();
 };
 
 #endif // PRESENTATION_H
