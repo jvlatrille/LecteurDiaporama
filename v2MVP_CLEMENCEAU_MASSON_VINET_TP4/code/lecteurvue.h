@@ -39,5 +39,6 @@ public slots:
     void sl_modeManuel();
     void sl_aPropos();
 
+
 };
 #endif // LECTEURVUE_H

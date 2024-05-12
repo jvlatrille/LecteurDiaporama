@@ -15,7 +15,7 @@ lecteurVue::lecteurVue(QWidget *parent)
 
     // Connexions pour les actions du menu
     QObject::connect(ui->actionChargerDiapo, SIGNAL(triggered()), this, SLOT(sl_chargerDiapo()));
-    QObject::connect(ui->actionEnleverDiapo, SIGNAL(triggered()), this, SLOT(sl_enleverDipo()));
+    QObject::connect(ui->actionEnleverDiapo, SIGNAL(triggered()), this, SLOT(sl_enleverDiapo()));
     QObject::connect(ui->actionVitesseDefilement, SIGNAL(triggered()), this, SLOT(sl_vitesseDefilement()));
     QObject::connect(ui->actionAutomatique, SIGNAL(triggered()), this, SLOT(sl_modeAuto()));
     QObject::connect(ui->actionManuel, SIGNAL(triggered()), this, SLOT(sl_modeManuel()));

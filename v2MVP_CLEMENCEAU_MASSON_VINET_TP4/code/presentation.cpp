@@ -55,3 +55,4 @@ void Presentation::demanderChangerMode()
     emit s_changerMode();
 }
 
+

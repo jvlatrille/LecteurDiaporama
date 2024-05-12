@@ -34,6 +34,7 @@ signals:
     void s_departArret();
     void s_changerVitesse();
     void s_changerMode();
+
 };
 
 #endif // PRESENTATION_H
