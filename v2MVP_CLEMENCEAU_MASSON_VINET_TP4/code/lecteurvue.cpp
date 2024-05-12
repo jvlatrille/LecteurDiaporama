@@ -31,6 +31,17 @@ lecteurVue::~lecteurVue()
     delete ui;
 }
 
+Presentation *lecteurVue::getPresentation() const
+{
+    return m_MaPresentation;
+}
+
+void lecteurVue::setPresentation(Presentation * p)
+{
+    m_MaPresentation = p;
+}
+
+
 void lecteurVue::sl_suivant()
 {
     qDebug() << "Image suivante";

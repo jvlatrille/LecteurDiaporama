@@ -1,19 +1,8 @@
-#include "ui_lecteurvue.h"
 #include "presentation.h"
 
-Presentation::Presentation(QObject *parent)
-    : QObject(parent), _leModele(nullptr), _laVue(nullptr)
+Presentation::Presentation()
 {
-}
 
-void Presentation::setModel(Modele *m)
-{
-    _leModele = m;
-}
-
-void Presentation::setVue(lecteurVue *v)
-{
-    _laVue = v;
 }
 
 Modele *Presentation::getModele()
@@ -26,25 +15,43 @@ lecteurVue *Presentation::getVue()
     return _laVue;
 }
 
+void Presentation::setModel(Modele *m)
+{
+    _leModele = m;
+}
+
+void Presentation::setVue(lecteurVue *v)
+{
+    _laVue = v;
+}
+
 void Presentation::demanderAvancer()
 {
-    if (_leModele)
-    {
-        _leModele->avancer();
-        // Mettre à jour l'interface utilisateur via la vue
-    }
+    qDebug() << "Demande d'avancer";
+    emit s_avancer();
 }
 
 void Presentation::demanderReculer()
 {
-    if (_leModele)
-    {
-        _leModele->reculer();
-        // Mettre à jour l'interface utilisateur via la vue
-    }
+    qDebug() << "Demande à reculer";
+    emit s_reculer();
 }
 
-void Presentation::demanderArret()
+void Presentation::demanderDepartArretAuto()
 {
-    // Demander l'arrêt de la lecture du diaporama s'il est en automatique
+    qDebug() << "Demande à arrêter / démarer diapo (en fonction de l'etat)";
+    emit s_departArret();
 }
+
+void Presentation::demanderChangerVitesse()
+{
+    qDebug() << "Demande à changer la vitesse";
+        emit s_changerVitesse();
+}
+
+void Presentation::demanderChangerMode()
+{
+    qDebug() << "Demande à changer de mode";
+    emit s_changerMode();
+}
+

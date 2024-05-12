@@ -1,5 +1,3 @@
-#include "lecteurvue.h"
-#include "modele.h"
 #include "presentation.h"
 #include <QApplication>
 
@@ -10,9 +8,9 @@ int main(int argc, char *argv[])
     Modele* m = new Modele();
     Presentation *p = new Presentation();
 
-    // w.setPresentation(p);
     p->setModel(m);
     p->setVue(&w);
+    w.setPresentation(p);
 
     w.show();
     return a.exec();

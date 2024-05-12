@@ -3,27 +3,36 @@
 
 #include <QObject>
 #include <vector>
-#include "imageDansDiaporama.h"
+#include <iostream>
+#include "diaporama.h"
 
+class ImageDansDiaporama;
+typedef std::vector<ImageDansDiaporama*> ImagesDiaporama;
 class Modele : public QObject
 {
     Q_OBJECT
-private:
-    std::string m_titre;
-    unsigned int m_vitesseDefilement;
-    unsigned int m_posImageCourante;
-    std::vector<imageDansDiaporama> m_localisationImages;
-public:
-    explicit Modele(QObject *parent = nullptr);
-    std::string getTitre() const;
-    unsigned int getVitesseDefilement() const;
-    unsigned int getNombreImages() const;
-    unsigned int getPosImageCourante() const;
 
-    void setTitre(const std::string&);
+private:
+    string m_titre;
+    unsigned int m_vitesseDefilement;
+    bool lecteurVide() const;
+    unsigned int m_posImageCourante;
+    vector <ImageDansDiaporama> m_localisationImages;
+    Diaporama* m_MonDiapo;
+    ImagesDiaporama images;
+
+public:
+    Modele();
+
+    unsigned int getVitesseDefilement() const;
+    unsigned int getPosImageCourante() const;
+    unsigned int nbImages() const;
+
+    Diaporama* getDiaporama() const;
+
     void setVitesseDefilement(unsigned int);
-    void setLocalisationImages(const std::vector<imageDansDiaporama>&);
-    void setPosImageCourante(unsigned int);
+    void setDiaporama(Diaporama *);
+    void setPosImageCourante(unsigned int pPosImageCourante);
 
     void avancer();
     void reculer();

@@ -1,64 +1,58 @@
-#include "imagedansdiaporama.h"
+#include "imageDansDiaporama.h"
 
-/***********************
- *      METHODES
- **********************/
+ImageDansDiaporama::ImageDansDiaporama(unsigned int pRangDansDiaporama, string pCategorie, string pTitre, string pChemin)
+{
+    rangDansDiaporama = pRangDansDiaporama;
+    categorie = pCategorie;
+    titre = pTitre;
+    chemin = pChemin;
+}
 
-
-// Les constructeurs
-imageDansDiaporama::imageDansDiaporama():
-    Image(),
-    m_rang(0),
-    m_pos(0)
+ImageDansDiaporama::~ImageDansDiaporama()
 {}
 
-imageDansDiaporama::imageDansDiaporama(const Image& img, unsigned int rang, unsigned int pos ):
-    Image(img),
-    m_rang(rang),
-    m_pos(pos)
-{}
-
-imageDansDiaporama::imageDansDiaporama(Images& images, unsigned int pos, unsigned int rang):
-    Image(images[pos]),
-    m_rang(rang),
-    m_pos(pos)
-{}
-
-
-
-// Les getters
-unsigned int imageDansDiaporama::getRang() const
+unsigned int ImageDansDiaporama::getRangDansDiaporama() const
 {
-    return m_rang;
+    return rangDansDiaporama;
 }
 
-unsigned int imageDansDiaporama::getPos() const
+string ImageDansDiaporama::getCategorie() const
 {
-    return m_pos;
+    return categorie;
 }
 
-const Image& imageDansDiaporama::getImage() const
+string ImageDansDiaporama::getTitre() const
 {
-    return *this;
+    return titre;
 }
 
-
-// Les setters
-void imageDansDiaporama::setRang(unsigned int rang)
+string ImageDansDiaporama::getChemin() const
 {
-    m_rang = rang;
+    return chemin;
 }
 
-void imageDansDiaporama::setPos(unsigned int pos)
+void ImageDansDiaporama::afficher()
 {
-    m_pos = pos;
+    cout << "image( rang:" << getRangDansDiaporama() << ", titre:" << getTitre() << ", categorie:"
+         << getCategorie() << ", chemin:"<< getChemin() << ")" << endl;
 }
 
-
-
-// Sous-programme
-void imageDansDiaporama::afficherImageCourante() const
+void ImageDansDiaporama::setRangDansDiaporama(unsigned int pRangDansDiaporama)
 {
-    cout << getRang() << " : ";
-    afficher();
+    rangDansDiaporama = pRangDansDiaporama;
+}
+
+void ImageDansDiaporama::setTitre(string pTitre)
+{
+    titre = pTitre;
+}
+
+void ImageDansDiaporama::setCategorie(string pCategorie)
+{
+    categorie = pCategorie;
+}
+
+void ImageDansDiaporama::setChemin(string pChemin)
+{
+    chemin = pChemin;
 }

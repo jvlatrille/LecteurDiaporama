@@ -1,13 +1,7 @@
 #include "modele.h"
 
-Modele::Modele(QObject *parent)
-    : QObject(parent), m_vitesseDefilement(1), m_posImageCourante(0)
+Modele::Modele()
 {
-}
-
-std::string Modele::getTitre() const
-{
-    return m_titre;
 }
 
 unsigned int Modele::getVitesseDefilement() const
@@ -15,9 +9,9 @@ unsigned int Modele::getVitesseDefilement() const
     return m_vitesseDefilement;
 }
 
-unsigned int Modele::getNombreImages() const
+bool Modele::lecteurVide() const
 {
-    return m_localisationImages.size();
+    return (getDiaporama() == nullptr);
 }
 
 unsigned int Modele::getPosImageCourante() const
@@ -25,67 +19,82 @@ unsigned int Modele::getPosImageCourante() const
     return m_posImageCourante;
 }
 
-void Modele::setTitre(const std::string& titre)
+unsigned int Modele::nbImages() const
 {
-    m_titre = titre;
+    if (lecteurVide())
+    {
+        throw string ("lecteur vide");
+    }
+    return m_MonDiapo->nbImages();
 }
 
-void Modele::setVitesseDefilement(unsigned int vitesseDefilement)
+
+Diaporama *Modele::getDiaporama() const
 {
-    m_vitesseDefilement = vitesseDefilement;
+    return m_MonDiapo;
 }
 
-void Modele::setLocalisationImages(const std::vector<imageDansDiaporama>& localisationImages)
+void Modele::setVitesseDefilement(unsigned int vitesse)
 {
-    m_localisationImages = localisationImages;
+    m_vitesseDefilement = vitesse;
 }
 
-void Modele::setPosImageCourante(unsigned int posImageCourante)
+void Modele::setPosImageCourante(unsigned int pPosImageCourante)
 {
-    m_posImageCourante = posImageCourante;
+    m_posImageCourante = pPosImageCourante;
+}
+
+
+void Modele::setDiaporama(Diaporama *diaporama)
+{
+        m_MonDiapo = diaporama;
 }
 
 void Modele::avancer()
 {
-    // Vérifier la postion actuelle (si c'est la dernière image du diaporama, on passe à l'indice 0 (la première))
-    if (getPosImageCourante() == getNombreImages() - 1){
-        setPosImageCourante(0);
-    }
-    else {
-        setPosImageCourante(getPosImageCourante() + 1);
+    if (!lecteurVide())
+    {
+        if (getPosImageCourante() == nbImages()- 1)
+        {
+            setPosImageCourante(0);
+        }
+        else {
+            setPosImageCourante(getPosImageCourante() + 1);
+        }
     }
 }
 
 void Modele::reculer()
 {
-    // Vérifier la postion actuelle (si c'est la première image du diaporama, on passe à l'indice -1 ( la dernière))
-    if (getPosImageCourante() == 0){
-        setPosImageCourante(getNombreImages() - 1);
-    }
-    else {
-        setPosImageCourante(getPosImageCourante() - 1);
+    if (!lecteurVide())
+    {
+        if (getPosImageCourante() == 0)
+        {
+            setPosImageCourante(nbImages()- 1);
+        }
+        else {
+            setPosImageCourante(getPosImageCourante() - 1);
+        }
     }
 }
 
-void Modele::triCroissantRang(){
-    unsigned int taille = m_localisationImages.size();
-
-    // Parcourir le tableau jusqu'à ce qu'il n'y ait plus d'échanges à effectuer
-    for (unsigned int i = 0; i < taille - 1; i++) {
-        bool estEchange = false;
-
-        // Parcourir le tableau à partir de la première image
-        for (unsigned int j = 0; j < taille - i - 1; j++) {
-            // Comparer le rang de l'image actuelle avec celui de l'image suivante
-            if (this->m_localisationImages[j].getRang() > this->m_localisationImages[j + 1].getRang()) {
-                // Échanger les deux images si elles ne sont pas dans le bon ordre
-                swap(this->m_localisationImages[j], this->m_localisationImages[j + 1]);
-                estEchange = true; // Indiquer qu'un échange a été effectué
+void Modele::triCroissantRang()
+{
+    ImageDansDiaporama* pteurImage;
+    unsigned int taille = nbImages();
+    for (unsigned int ici = taille-1; ici >=1 ; ici--)
+    {
+        // faire monter la bulle ici = déplacer l'élément de rang le plus grand en position ici
+        // par échanges successifs
+        for (unsigned int i = 0; i < ici; i++)
+        {
+            if (images[i]->getRangDansDiaporama() > images[i+1]->getRangDansDiaporama())
+            {
+                // echanger les 2 éléments
+                pteurImage = images[i];
+                images[i] = images[i+1];
+                images[i+1] = pteurImage;
             }
-        }
-        // Si aucun échange n'a été effectué pendant cette itération, le tableau est déjà trié
-        if (!estEchange) {
-            break;
         }
     }
 }

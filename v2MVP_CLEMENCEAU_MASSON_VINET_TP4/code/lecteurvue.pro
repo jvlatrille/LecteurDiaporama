@@ -10,7 +10,6 @@ CONFIG += c++17
 
 SOURCES += \
     diaporama.cpp \
-    image.cpp \
     imagedansdiaporama.cpp \
     lecteur.cpp \
     lecteurvue.cpp \
@@ -20,7 +19,6 @@ SOURCES += \
 
 HEADERS += \
     diaporama.h \
-    image.h \
     imagedansdiaporama.h \
     lecteur.h \
     lecteurvue.h \
