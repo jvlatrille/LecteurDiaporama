@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QShortcut>
 #include <QWidget>
+#include "lecteur.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class lecteurVue; }
@@ -17,20 +18,16 @@ class lecteurVue : public QMainWindow
 
 private:
     Ui::lecteurVue *ui;
-    Presentation * m_MaPresentation;
-
+    Lecteur *l;
 
 public:
     lecteurVue(QWidget *parent = nullptr);
     ~lecteurVue();
 
-    Presentation * getPresentation() const;
-    void setPresentation(Presentation *);
-
 public slots:
     void sl_suivant();
     void sl_precedent();
-    void sl_pause();
+    void sl_departArret();
     void sl_chargerDiapo();
     void sl_quitter();
     void sl_enleverDiapo();
@@ -39,6 +36,17 @@ public slots:
     void sl_modeManuel();
     void sl_aPropos();
 
-
+    /*
+signals:
+    void s_avancer();
+    void s_reculer();
+    void s_departArret();
+    void s_changerVitesse();
+    void s_changerModeAuto();
+    void s_changerModeManuel();
+    void s_chargerDiapo();
+    void s_quitter();
+    void s_enleverDiapo();
+    void s_aPropos();*/
 };
 #endif // LECTEURVUE_H

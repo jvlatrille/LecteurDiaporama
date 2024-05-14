@@ -13,17 +13,13 @@ SOURCES += \
     imagedansdiaporama.cpp \
     lecteur.cpp \
     lecteurvue.cpp \
-    main.cpp \
-    modele.cpp \
-    presentation.cpp
+    main.cpp
 
 HEADERS += \
     diaporama.h \
     imagedansdiaporama.h \
     lecteur.h \
-    lecteurvue.h \
-    modele.h \
-    presentation.h
+    lecteurvue.h
 
 FORMS += \
     lecteurvue.ui \

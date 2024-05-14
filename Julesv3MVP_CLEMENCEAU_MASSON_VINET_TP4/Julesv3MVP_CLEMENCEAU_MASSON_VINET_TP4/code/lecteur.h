@@ -3,6 +3,7 @@
 #include "imageDansDiaporama.h"
 #include "diaporama.h"
 #include <vector>
+#include <QObject>
 
 /* Caractéristiques du lecteur :
  * - au lancement de l'application, le lecteur est vide  = aucun diaporama n'est associé au lecteur.
@@ -11,7 +12,7 @@
      diaporama qui lui aurait été associé.
 */
 
-class Lecteur
+class Lecteur : public QObject
 {
 public:
     Lecteur();
@@ -31,31 +32,31 @@ public:
     void setPosImageCourante(unsigned int pPosImageCourante);
 
     void changerDiaporama(unsigned int pId, string pTitre="", unsigned int pVitesse=0);
-    /* Permet de choisir un diaporama, 0 si aucun souhaité.
-         * 2 formes d'appels :
-         * - 1 appel signifiant la demande de chargement d'1 diaporama : utiliser les 3 paramètres, avec pId !=0
-         * - 1 appel signifiant la demande de 'vidage' du lecteur : utiliser un seul paramètre : changerDiaporama(0);
-          Sera remplacée par la méthode :
-               void changerDiaporama(unsigned int pId);
-          lorsque les données du diaporama d'identifiant pId proviendront de la Base de données */
-    void avancer();
-    /* si 1 diaporama non vide est associé au lecteur : incrémente posImageCourante, modulo nbImages()
-         * sinon : ne fait rien */
-    void reculer();
-    /* si 1 diaporama non vide est associé au lecteur : décrémente posImageCourante, modulo nbImages()
-         * sinon : ne fait rien */
-    void viderLecteur();        // s'il en existe un, enlève le diaporama courant du lecteur
+
+    void viderLecteur();
 
 private:
-    unsigned idDiaporama;             /* identifiant en Base de Données du diaporama courant,
-                                         = 0 si pas de diaporama dans le lecteur */
-    Diaporama* diaporama;             /* pointeur vers le diaporama associé au lecteur,
-                                         = nullptr si pas de diaporama dans le lecteur) */
-    unsigned int posImageCourante;    /* position de l'image courante du diaporama courant.
-                                         Indéfinie quand lecteur vide ou diaporama vide.
-                                         >= 0 quand lecteur non vide et diaporama non vide */
-private:
-    void chargerDiaporamaCourant();    // charge dans le lecteur ImageDansDiaporama du numDiaporamaCourant
+    unsigned idDiaporama;
+    Diaporama* diaporama;
+    unsigned int posImageCourante;
+
+    void chargerDiaporamaCourant();
+
+
+public slots:
+    void avancer();
+    void reculer();
+    void departArretAuto();
+    void changerVitesse();
+    void changerModeAutomatique();
+    void changerModeManuel();
+    void chargerDiapo();    //
+    void quitter();
+    void enleverDiapo();
+    void ouvrirAPropos();
+
+
+
 };
 
 #endif // LECTEUR_H

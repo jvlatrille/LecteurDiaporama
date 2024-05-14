@@ -1,8 +1,9 @@
 #include "lecteur.h"
+#include "lecteurvue.h"
+#include <QDebug>
 
 Lecteur::Lecteur() : idDiaporama(0), diaporama(nullptr)
 {
-    // posImageCourante indéfini
 }
 
 Lecteur::~Lecteur()
@@ -141,6 +142,18 @@ void Lecteur::changerDiaporama(unsigned int pId, string pTitre, unsigned int pVi
         }
 }
 
+void Lecteur::viderLecteur()
+{
+    // supprime les images du diaporama,  et réinitialise les attributs du lecteur
+    if (!lecteurVide())
+    {
+        diaporama->vider();
+        setDiaporama(nullptr);
+        setIdDiaporama(0);
+    }
+}
+
+
 void Lecteur::avancer()
 {
     if (!lecteurVide())
@@ -177,19 +190,46 @@ void Lecteur::chargerDiaporamaCourant()
     { setPosImageCourante(0) ;}
 }
 
-void Lecteur::viderLecteur()
+
+
+void Lecteur::departArretAuto()
 {
-    // supprime les images du diaporama,  et réinitialise les attributs du lecteur
-    if (!lecteurVide())
-    {
-        diaporama->vider();
-        setDiaporama(nullptr);
-        setIdDiaporama(0);
-    }
+    qDebug() << "Demande à arrêter / démarer diapo (en fonction de l'etat)";
 }
 
 
+void Lecteur::changerVitesse()
+{
+    qDebug() << "Demande à changer la vitesse";
+}
 
+void Lecteur::changerModeAutomatique()
+{
+    qDebug() << "Demande à changer de mode en automatique";
+}
 
+void Lecteur::changerModeManuel()
+{
+    qDebug() << "Demande à changer de mode en Manuel";
+}
 
+void Lecteur::chargerDiapo()
+{
+    qDebug() << "Demande à charger un nouveau diaporama";
+}
+
+void Lecteur::quitter()
+{
+    qDebug() << "Demande à quitter l'application";
+}
+
+void Lecteur::enleverDiapo()
+{
+    qDebug() << "Demande à enlever le diaporama courrant";
+}
+
+void Lecteur::ouvrirAPropos()
+{
+    qDebug() << "Demande à afficher la page a propos de l'application";
+}
 
