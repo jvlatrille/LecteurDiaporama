@@ -26,6 +26,7 @@ HEADERS += \
     presentation.h
 
 FORMS += \
+    lecteurvue.ui \
     lecteurvue.ui
 
 # Default rules for deployment.
