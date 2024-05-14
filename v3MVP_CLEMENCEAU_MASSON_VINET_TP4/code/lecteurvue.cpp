@@ -1,5 +1,6 @@
 #include "lecteurvue.h"
 #include "ui_lecteurvue.h"
+#include "presentation.h"
 
 lecteurVue::lecteurVue(QWidget *parent)
     : QMainWindow(parent)
@@ -8,18 +9,18 @@ lecteurVue::lecteurVue(QWidget *parent)
     ui->setupUi(this);
 
     // Connexions pour les boutons
-    QObject::connect(ui->bSuivant, SIGNAL(clicked()), this, SLOT(sl_suivant()));
-    QObject::connect(ui->bPrecedent, SIGNAL(clicked()), this, SLOT(sl_precedent()));
-    QObject::connect(ui->bPause, SIGNAL(clicked()), this, SLOT(sl_pause()));
-    QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(sl_quitter()));
+    QObject::connect(ui->bSuivant, SIGNAL(clicked()), this, SLOT(demanderAvancer()));
+    QObject::connect(ui->bPrecedent, SIGNAL(clicked()), this, SLOT(demanderReculer()));
+    QObject::connect(ui->bPause, SIGNAL(clicked()), this, SLOT(demanderDepartArretAuto()));
+    QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(demanderQuitter()));
 
     // Connexions pour les actions du menu
     QObject::connect(ui->actionChargerDiapo, SIGNAL(triggered()), this, SLOT(sl_chargerDiapo()));
     QObject::connect(ui->actionEnleverDiapo, SIGNAL(triggered()), this, SLOT(sl_enleverDiapo()));
-    QObject::connect(ui->actionVitesseDefilement, SIGNAL(triggered()), this, SLOT(sl_vitesseDefilement()));
-    QObject::connect(ui->actionAutomatique, SIGNAL(triggered()), this, SLOT(sl_modeAuto()));
-    QObject::connect(ui->actionManuel, SIGNAL(triggered()), this, SLOT(sl_modeManuel()));
-    QObject::connect(ui->actionAPropos, SIGNAL(triggered()), this, SLOT(sl_aPropos()));
+    QObject::connect(ui->actionVitesseDefilement, SIGNAL(triggered()), this, SLOT(demanderEnleverDiapo()));
+    QObject::connect(ui->actionAutomatique, SIGNAL(triggered()), this, SLOT(demanderChangerModeAutomatique()));
+    QObject::connect(ui->actionManuel, SIGNAL(triggered()), this, SLOT(demanderChangerModeManuel()));
+    QObject::connect(ui->actionAPropos, SIGNAL(triggered()), this, SLOT(demanderAProposs()));
 
     //navigation entre les bouton avec tab
     QWidget::setTabOrder(ui->bPrecedent, ui->bPause);
