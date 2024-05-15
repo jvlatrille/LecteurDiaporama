@@ -11,7 +11,8 @@ lecteurVue::lecteurVue(QWidget *parent)
     QObject::connect(ui->bSuivant, SIGNAL(clicked()), this, SLOT(demanderAvancer()));
     QObject::connect(ui->bPrecedent, SIGNAL(clicked()), this, SLOT(demanderReculer()));
     QObject::connect(ui->bPause, SIGNAL(clicked()), this, SLOT(demanderDepartArretAuto()));
-    // QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, &QMainWindow::close());
+    QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(quitterApplication()));
+
 
     // Connexions pour les actions du menu
     QObject::connect(ui->actionChargerDiapo, SIGNAL(triggered()), this, SLOT(demanderChargerDiapo()));
@@ -94,6 +95,10 @@ void lecteurVue::demanderChargerDiapo(){
 void lecteurVue::demanderEnleverDiapo(){
     qDebug() << "On retire le diapo";
     m_MaPresentation->demanderEnleverDiapo();
+}
+
+void lecteurVue::quitterApplication() {
+    QApplication::quit();
 }
 
 void lecteurVue::demanderAPropos(){

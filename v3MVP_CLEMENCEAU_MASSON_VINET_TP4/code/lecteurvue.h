@@ -38,6 +38,7 @@ public slots:
     void demanderChargerDiapo();
     void demanderEnleverDiapo();
     void demanderAPropos();
+    void quitterApplication();
 /*
 public slots:
     void sl_suivant();

@@ -52,7 +52,7 @@ void Modele::setDiaporama(Diaporama *diaporama)
 }
 
 void Modele::avancer()
-{
+{/*
     if (!lecteurVide())
     {
         if (getPosImageCourante() == nbImages()- 1)
@@ -62,11 +62,11 @@ void Modele::avancer()
         else {
             setPosImageCourante(getPosImageCourante() + 1);
         }
-    }
+    }*/
 }
 
 void Modele::reculer()
-{
+{/*
     if (!lecteurVide())
     {
         if (getPosImageCourante() == 0)
@@ -76,7 +76,7 @@ void Modele::reculer()
         else {
             setPosImageCourante(getPosImageCourante() - 1);
         }
-    }
+    }*/
 }
 
 
