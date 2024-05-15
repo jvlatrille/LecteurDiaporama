@@ -26,6 +26,7 @@ public:
     ~lecteurVue();
 
     void majInterface(Modele::UnEtat e);
+    void majPresentation(ImageDansDiaporama * d);
     void setPresentation(Presentation *);
 
 public slots:
@@ -39,19 +40,5 @@ public slots:
     void demanderEnleverDiapo();
     void demanderAPropos();
     void quitterApplication();
-/*
-public slots:
-    void sl_suivant();
-    void sl_precedent();
-    void sl_pause();
-    void sl_chargerDiapo();
-    void sl_quitter();
-    void sl_enleverDiapo();
-    void sl_vitesseDefilement();
-    void sl_modeAuto();
-    void sl_modeManuel();
-    void sl_aPropos();*/
-
-
 };
 #endif // LECTEURVUE_H

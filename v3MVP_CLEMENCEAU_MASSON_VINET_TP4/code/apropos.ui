@@ -56,6 +56,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Date de création : 14 mai 2024</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Auteurs de l'application : </string>

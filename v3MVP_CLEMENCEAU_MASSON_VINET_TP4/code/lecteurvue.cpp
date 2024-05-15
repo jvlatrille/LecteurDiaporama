@@ -50,6 +50,15 @@ void lecteurVue::majInterface(Modele::UnEtat e){
     }*/
 }
 
+void lecteurVue::majPresentation(ImageDansDiaporama *d)
+{
+    ui->titreDiapo->setText(QString::fromStdString(d->getTitre())); // tester lequel des deux est bon quand on aura les images
+    ui->titreImage->setText(QString::fromStdString(d->getTitre())); // """
+    ui->categorieImage->setText(QString::fromStdString(d->getCategorie()));
+    ui->rangImage->setText(QString::number(d->getRangDansDiaporama()));
+    // ui->imageDiapo->setPixmap(QPixmap(QString::fromStdString(d->getImage().getImage().getChemin()))); // jsp comment faire pour l'instant
+}
+
 void lecteurVue::setPresentation(Presentation * p)
 {
     m_MaPresentation = p;
@@ -57,43 +66,44 @@ void lecteurVue::setPresentation(Presentation * p)
 
 
 
+
 void lecteurVue::demanderAvancer(){
-    qDebug() << "L'image avance";
+    qDebug() << "Demande d'avancer";
     m_MaPresentation->demanderAvancer();
 }
 
 void lecteurVue::demanderReculer(){
-    qDebug() << "L'image recule";
+    qDebug() << "Demande à reculer";
     m_MaPresentation->demanderReculer();
 }
 
 void lecteurVue::demanderDepartArretAuto(){
-    qDebug() << "Le défilement d'image se met en pause / avance en mode auto";
+    qDebug() << "Demande à arrêter / démarer diapo (en fonction de l'etat)";
     m_MaPresentation->demanderDepartArretAuto();
 }
 
 void lecteurVue::demanderChangerVitesse(){
-    qDebug() << "La fenêtre pour changer la vitesse apparait";
+    qDebug() << "Demande à changer la vitesse";
     m_MaPresentation->demanderChangerVitesse();
 }
 
 void lecteurVue::demanderChangerModeAutomatique(){
-    qDebug() << "Le mode change en automatique";
+    qDebug() << "Demande à changer de mode en automatique";
     m_MaPresentation->demanderChangerModeAutomatique();
 }
 
 void lecteurVue::demanderChangerModeManuel(){
-    qDebug() << "Le mode change en manuel";
+    qDebug() << "Demande à changer de mode en Manuel";
     m_MaPresentation->demanderChangerModeManuel();
 }
 
 void lecteurVue::demanderChargerDiapo(){
-    qDebug() << "On charges une nouvelle diapo";
+    qDebug() << "Demande à charger un nouveau diaporama";
     m_MaPresentation->demanderChargerDiapo();
 }
 
 void lecteurVue::demanderEnleverDiapo(){
-    qDebug() << "On retire le diapo";
+    qDebug() << "Demande à enlever le diaporama courrant";
     m_MaPresentation->demanderEnleverDiapo();
 }
 

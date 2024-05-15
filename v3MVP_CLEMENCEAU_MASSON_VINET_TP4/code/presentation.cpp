@@ -27,58 +27,59 @@ void Presentation::setVue(lecteurVue *v)
 
 void Presentation::demanderAvancer()
 {
-    qDebug() << "Demande d'avancer";
     _leModele->avancer();
     _laVue->majInterface(_leModele->getEtat());
+    qDebug() << "L'image avance";
 }
 
 void Presentation::demanderReculer()
 {
-    qDebug() << "Demande à reculer";
     _leModele->reculer();
     _laVue->majInterface(_leModele->getEtat());
+    qDebug() << "L'image recule";
 }
 
 void Presentation::demanderDepartArretAuto()
 {
-    qDebug() << "Demande à arrêter / démarer diapo (en fonction de l'etat)";
     _leModele->departArretAuto();
     _laVue->majInterface(_leModele->getEtat());
+    qDebug() << "Le défilement d'image se met en pause / avance en mode auto";
 }
 
 void Presentation::demanderChangerVitesse()
 {
-    qDebug() << "Demande à changer la vitesse";
+
     _leModele->changerVitesse();
     _laVue->majInterface(_leModele->getEtat());
+    qDebug() << "La fenêtre pour changer la vitesse apparait";
 }
 
 void Presentation::demanderChangerModeAutomatique()
 {
-    qDebug() << "Demande à changer de mode en automatique";
     _leModele->etatAutomatique();
     _laVue->majInterface(_leModele->getEtat());
+    qDebug() << "Le mode change en automatique";
 }
 
 void Presentation::demanderChangerModeManuel()
 {
-    qDebug() << "Demande à changer de mode en Manuel";
     _leModele->etatManuel();
     _laVue->majInterface(_leModele->getEtat());
+    qDebug() << "Le mode change en manuel";
 }
 
 void Presentation::demanderChargerDiapo()
 {
-    qDebug() << "Demande à charger un nouveau diaporama";
     _leModele->chargerDiapo();
     _laVue->majInterface(_leModele->getEtat());
+    qDebug() << "On charges une nouvelle diapo";
 }
 
 void Presentation::demanderEnleverDiapo()
 {
-    qDebug() << "Demande à enlever le diaporama courrant";
     _leModele->enleverDiapo();
     _laVue->majInterface(_leModele->getEtat());
+    qDebug() << "On retire le diapo courant";
 }
 
 void Presentation::demanderAPropos()
