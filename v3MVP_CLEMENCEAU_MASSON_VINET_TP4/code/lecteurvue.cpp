@@ -64,7 +64,7 @@ void lecteurVue::demanderAvancer(){
 
 void lecteurVue::demanderReculer(){
     qDebug() << "L'image recule";
-    m_MaPresentation->demanderAvancer();
+    m_MaPresentation->demanderReculer();
 }
 
 void lecteurVue::demanderDepartArretAuto(){
