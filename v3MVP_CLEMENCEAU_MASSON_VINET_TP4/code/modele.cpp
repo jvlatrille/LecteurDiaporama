@@ -34,6 +34,7 @@ Diaporama *Modele::getDiaporama() const
     return m_MonDiapo;
 }
 
+
 void Modele::setVitesseDefilement(unsigned int vitesse)
 {
     m_vitesseDefilement = vitesse;
@@ -109,4 +110,28 @@ void Modele::triCroissantRang()
             }
         }
     }
+}
+
+Modele::UnEtat Modele::getEtat() const {
+    return _etat;
+}
+
+void Modele::departArretAuto() {
+    // Implémentation du départ/arrêt automatique
+}
+
+void Modele::changerVitesse() {
+    // Implémentation du changement de vitesse
+}
+
+void Modele::chargerDiapo() {
+    // Implémentation du chargement de diaporama
+}
+
+void Modele::enleverDiapo() {
+    // Implémentation de l'enlèvement de diaporama
+}
+
+void Modele::aPropos() {
+    // Implémentation de la fonction à propos
 }

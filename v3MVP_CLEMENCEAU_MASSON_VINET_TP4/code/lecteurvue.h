@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <QShortcut>
 #include <QWidget>
-#include "presentation.h"
+#include "modele.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class lecteurVue; }

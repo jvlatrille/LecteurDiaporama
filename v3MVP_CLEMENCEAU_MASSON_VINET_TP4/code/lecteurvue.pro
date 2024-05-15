@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    apropos.cpp \
     diaporama.cpp \
     imagedansdiaporama.cpp \
     lecteur.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
     presentation.cpp
 
 HEADERS += \
+    apropos.h \
     diaporama.h \
     imagedansdiaporama.h \
     lecteur.h \
@@ -26,6 +28,7 @@ HEADERS += \
     presentation.h
 
 FORMS += \
+    apropos.ui \
     lecteurvue.ui \
     lecteurvue.ui
 

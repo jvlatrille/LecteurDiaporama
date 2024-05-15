@@ -25,10 +25,13 @@ private:
 public:
     Modele();
 
+    enum UnEtat {manuel, automatique};
+
     unsigned int getVitesseDefilement() const;
     unsigned int getPosImageCourante() const;
     unsigned int nbImages() const;
 
+    UnEtat getEtat() const;
     Diaporama* getDiaporama() const;
 
     void setVitesseDefilement(unsigned int);
@@ -46,8 +49,8 @@ public:
     void aPropos();
 
 
-    enum UnEtat {manuel, automatique};
-    UnEtat getEtat();
+
+
 
 private :
     UnEtat _etat;
