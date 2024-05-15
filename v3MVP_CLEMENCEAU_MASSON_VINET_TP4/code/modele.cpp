@@ -78,6 +78,18 @@ void Modele::reculer()
     }
 }
 
+
+void Modele::etatAutomatique()
+{
+    _etat = UnEtat::automatique;
+}
+
+void Modele::etatManuel()
+{
+    _etat = UnEtat::manuel;
+}
+
+
 void Modele::triCroissantRang()
 {
     ImageDansDiaporama* pteurImage;

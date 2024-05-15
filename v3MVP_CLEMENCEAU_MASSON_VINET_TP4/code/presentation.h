@@ -15,13 +15,11 @@ private:
 public:
     Presentation();
 
+    void setModel(Modele* m);
+    void setVue(lecteurVue* v);
     Modele *getModele();
     lecteurVue *getVue();
 
-    void setModel(Modele* m);
-    void setVue(lecteurVue* v);
-
-public slots:
     void demanderAvancer();
     void demanderReculer();
     void demanderDepartArretAuto();
@@ -29,10 +27,10 @@ public slots:
     void demanderChangerModeAutomatique();
     void demanderChangerModeManuel();
     void demanderChargerDiapo();
-    void demanderQuitter();
     void demanderEnleverDiapo();
     void demanderAPropos();
 
+    /*
 signals:
     void s_avancer();
     void s_reculer();
@@ -43,7 +41,7 @@ signals:
     void s_chargerDiapo();
     void s_quitter();
     void s_enleverDiapo();
-    void s_aPropos();
+    void s_aPropos();*/
 
 };
 

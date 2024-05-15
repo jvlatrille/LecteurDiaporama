@@ -20,6 +20,7 @@ private:
     vector <ImageDansDiaporama> m_localisationImages;
     Diaporama* m_MonDiapo;
     ImagesDiaporama images;
+    void triCroissantRang();
 
 public:
     Modele();
@@ -36,7 +37,20 @@ public:
 
     void avancer();
     void reculer();
-    void triCroissantRang();
+    void departArretAuto();
+    void changerVitesse();
+    void etatAutomatique();
+    void etatManuel();
+    void chargerDiapo();
+    void enleverDiapo();
+    void aPropos();
+
+
+    enum UnEtat {manuel, automatique};
+    UnEtat getEtat();
+
+private :
+    UnEtat _etat;
 };
 
 #endif // MODELE_H

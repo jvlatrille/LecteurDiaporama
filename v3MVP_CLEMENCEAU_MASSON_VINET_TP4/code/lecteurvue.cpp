@@ -1,4 +1,3 @@
-#include "lecteurvue.h"
 #include "ui_lecteurvue.h"
 #include "presentation.h"
 
@@ -12,12 +11,12 @@ lecteurVue::lecteurVue(QWidget *parent)
     QObject::connect(ui->bSuivant, SIGNAL(clicked()), this, SLOT(demanderAvancer()));
     QObject::connect(ui->bPrecedent, SIGNAL(clicked()), this, SLOT(demanderReculer()));
     QObject::connect(ui->bPause, SIGNAL(clicked()), this, SLOT(demanderDepartArretAuto()));
-    QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(demanderQuitter()));
+    // QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, &QMainWindow::close());
 
     // Connexions pour les actions du menu
-    QObject::connect(ui->actionChargerDiapo, SIGNAL(triggered()), this, SLOT(sl_chargerDiapo()));
-    QObject::connect(ui->actionEnleverDiapo, SIGNAL(triggered()), this, SLOT(sl_enleverDiapo()));
-    QObject::connect(ui->actionVitesseDefilement, SIGNAL(triggered()), this, SLOT(demanderEnleverDiapo()));
+    QObject::connect(ui->actionChargerDiapo, SIGNAL(triggered()), this, SLOT(demanderChargerDiapo()));
+    QObject::connect(ui->actionEnleverDiapo, SIGNAL(triggered()), this, SLOT(demanderEnleverDiapo()));
+    QObject::connect(ui->actionVitesseDefilement, SIGNAL(triggered()), this, SLOT(demanderChangerVitesse()));
     QObject::connect(ui->actionAutomatique, SIGNAL(triggered()), this, SLOT(demanderChangerModeAutomatique()));
     QObject::connect(ui->actionManuel, SIGNAL(triggered()), this, SLOT(demanderChangerModeManuel()));
     QObject::connect(ui->actionAPropos, SIGNAL(triggered()), this, SLOT(demanderAProposs()));
@@ -32,9 +31,22 @@ lecteurVue::~lecteurVue()
     delete ui;
 }
 
-Presentation *lecteurVue::getPresentation() const
-{
-    return m_MaPresentation;
+void lecteurVue::majInterface(Modele::UnEtat e){
+    /*switch (e){
+        case Modele::automatique:
+            ui->label->setText("allumé !");
+            ui->label->setPixmap(QPixmap::fromImage(QImage(":/ampoule/images/ampouleAllumee2.PNG")));
+            ui->bPause->setEnabled(false);
+            ui->bEteindre->setEnabled(true);
+            break;
+        case Modele::manuel:
+            ui->label->setText("éteint !");
+            ui->label->setPixmap(QPixmap::fromImage(QImage(":/ampoule/images/ampouleEteinte2.PNG")));
+            ui->bAllumer->setEnabled(true);
+            ui->bEteindre->setEnabled(false);
+            break;
+       default: break;
+    }*/
 }
 
 void lecteurVue::setPresentation(Presentation * p)
@@ -43,52 +55,48 @@ void lecteurVue::setPresentation(Presentation * p)
 }
 
 
-void lecteurVue::sl_suivant()
-{
-    qDebug() << "Image suivante";
+
+void lecteurVue::demanderAvancer(){
+    qDebug() << "L'image avance";
+    m_MaPresentation->demanderAvancer();
 }
 
-void lecteurVue::sl_precedent()
-{
-    qDebug() << "Image précédente";
+void lecteurVue::demanderReculer(){
+    qDebug() << "L'image recule";
+    m_MaPresentation->demanderAvancer();
 }
 
-void lecteurVue::sl_pause()
-{
-    qDebug() << "Défilement mis en pause / relancé (coché ou non)";
+void lecteurVue::demanderDepartArretAuto(){
+    qDebug() << "Le défilement d'image se met en pause / avance en mode auto";
+    m_MaPresentation->demanderDepartArretAuto();
 }
 
-void lecteurVue::sl_quitter()
-{
-    qDebug() << "Quitter";
+void lecteurVue::demanderChangerVitesse(){
+    qDebug() << "La fenêtre pour changer la vitesse apparait";
+    m_MaPresentation->demanderChangerVitesse();
 }
 
-void lecteurVue::sl_chargerDiapo()
-{
-    qDebug() << "Charger diapo";
+void lecteurVue::demanderChangerModeAutomatique(){
+    qDebug() << "Le mode change en automatique";
+    m_MaPresentation->demanderChangerModeAutomatique();
 }
 
-void lecteurVue::sl_enleverDiapo()
-{
-    qDebug() << "Enlever diapo";
+void lecteurVue::demanderChangerModeManuel(){
+    qDebug() << "Le mode change en manuel";
+    m_MaPresentation->demanderChangerModeManuel();
 }
 
-void lecteurVue::sl_vitesseDefilement()
-{
-    qDebug() << "Changement de la vitesse de défilement";
+void lecteurVue::demanderChargerDiapo(){
+    qDebug() << "On charges une nouvelle diapo";
+    m_MaPresentation->demanderChargerDiapo();
 }
 
-void lecteurVue::sl_modeAuto()
-{
-    qDebug() << "Mode de défilement automatique";
+void lecteurVue::demanderEnleverDiapo(){
+    qDebug() << "On retire le diapo";
+    m_MaPresentation->demanderEnleverDiapo();
 }
 
-void lecteurVue::sl_modeManuel()
-{
-    qDebug() << "Mode de défilement manuel";
-}
-
-void lecteurVue::sl_aPropos()
-{
-    qDebug() << "À propos";
+void lecteurVue::demanderAPropos(){
+    qDebug() << "On affiche la fenêtre à propos";
+    m_MaPresentation->demanderAPropos();
 }

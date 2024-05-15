@@ -27,82 +27,63 @@ void Presentation::setVue(lecteurVue *v)
 
 void Presentation::demanderAvancer()
 {
+    _leModele->avancer();
+    _laVue->majInterface(_leModele->getEtat());
     qDebug() << "Demande d'avancer";
-    if (!lecteurVide())
-    {
-        if (getPosImageCourante() == nbImages()- 1)
-        {
-            setPosImageCourante(0);
-        }
-        else {
-            setPosImageCourante(getPosImageCourante() + 1);
-        }
-    }
-    emit s_avancer();
 }
 
 void Presentation::demanderReculer()
 {
+    _leModele->reculer();
+    _laVue->majInterface(_leModele->getEtat());
     qDebug() << "Demande à reculer";
-    if (!lecteurVide())
-    {
-        if (getPosImageCourante() == 0)
-        {
-            setPosImageCourante(nbImages()- 1);
-        }
-        else {
-            setPosImageCourante(getPosImageCourante() - 1);
-        }
-    }
-    emit s_reculer();
 }
 
 void Presentation::demanderDepartArretAuto()
 {
+    _leModele->departArretAuto();
+    _laVue->majInterface(_leModele->getEtat());
     qDebug() << "Demande à arrêter / démarer diapo (en fonction de l'etat)";
-    // Voir avec etet diapo si auto ou non etc...
-    emit s_departArret();
 }
 
 void Presentation::demanderChangerVitesse()
 {
+    _leModele->changerVitesse();
+    _laVue->majInterface(_leModele->getEtat());
     qDebug() << "Demande à changer la vitesse";
-    //
-    emit s_changerVitesse();
 }
 
 void Presentation::demanderChangerModeAutomatique()
 {
+    _leModele->etatAutomatique();
+    _laVue->majInterface(_leModele->getEtat());
     qDebug() << "Demande à changer de mode en automatique";
-    emit s_changerModeAuto();
 }
 
 void Presentation::demanderChangerModeManuel()
 {
+    _leModele->etatManuel();
+    _laVue->majInterface(_leModele->getEtat());
     qDebug() << "Demande à changer de mode en Manuel";
-    emit s_changerModeManuel();
 }
 
 void Presentation::demanderChargerDiapo()
 {
+    _leModele->chargerDiapo();
+    _laVue->majInterface(_leModele->getEtat());
     qDebug() << "Demande à charger un nouveau diaporama";
-    emit s_chargerDiapo();
-}
-
-void Presentation::demanderQuitter()
-{
-    qDebug() << "Demande à quitter l'application";
-    emit s_quitter();
 }
 
 void Presentation::demanderEnleverDiapo()
 {
+    _leModele->enleverDiapo();
+    _laVue->majInterface(_leModele->getEtat());
     qDebug() << "Demande à enlever le diaporama courrant";
-    emit s_enleverDiapo();
 }
 
 void Presentation::demanderAPropos()
 {
-    qDebug() << "Demande à afficher la page a propos de l'application";
-    emit s_aPropos();
+    _leModele->aPropos();
+    _laVue->majInterface(_leModele->getEtat());
+    qDebug() << "Demande à afficher la fenêtre a propos de l'application";
 }
