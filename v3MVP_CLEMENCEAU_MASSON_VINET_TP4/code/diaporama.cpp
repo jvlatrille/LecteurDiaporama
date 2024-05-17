@@ -29,6 +29,15 @@ ImagesDiaporama Diaporama::getImages() const
     return images;
 }
 
+unsigned int Diaporama::getPosImageCourante() const
+{
+    return posImageCourante;
+}
+
+ImageDansDiaporama* Diaporama::getImageCourante() const
+{
+    return getImages()[getPosImageCourante()];
+}
 
 unsigned int Diaporama::nbImages() const
 {

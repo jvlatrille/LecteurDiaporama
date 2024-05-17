@@ -20,6 +20,9 @@ public:
     Modele *getModele();
     lecteurVue *getVue();
 
+    ImageDansDiaporama* getImageActuelle();
+    Diaporama * getDiapoActuel();
+
     void demanderAvancer();
     void demanderReculer();
     void demanderDepartArretAuto();

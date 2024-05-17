@@ -20,7 +20,7 @@ lecteurVue::lecteurVue(QWidget *parent)
     QObject::connect(ui->actionVitesseDefilement, SIGNAL(triggered()), this, SLOT(demanderChangerVitesse()));
     QObject::connect(ui->actionAutomatique, SIGNAL(triggered()), this, SLOT(demanderChangerModeAutomatique()));
     QObject::connect(ui->actionManuel, SIGNAL(triggered()), this, SLOT(demanderChangerModeManuel()));
-    QObject::connect(ui->actionAPropos, SIGNAL(triggered()), this, SLOT(demanderAProposs()));
+    QObject::connect(ui->actionAPropos, SIGNAL(triggered()), this, SLOT(demanderAPropos()));
 
     //navigation entre les bouton avec tab
     QWidget::setTabOrder(ui->bPrecedent, ui->bPause);
@@ -30,6 +30,11 @@ lecteurVue::lecteurVue(QWidget *parent)
 lecteurVue::~lecteurVue()
 {
     delete ui;
+}
+
+Presentation *lecteurVue::getPresentation() const
+{
+    return m_MaPresentation;
 }
 
 void lecteurVue::majInterface(Modele::UnEtat e){
@@ -50,20 +55,21 @@ void lecteurVue::majInterface(Modele::UnEtat e){
     }*/
 }
 
-void lecteurVue::majPresentation(ImageDansDiaporama *d)
+void lecteurVue::majPresentation(Diaporama *d)
 {
-    ui->titreDiapo->setText(QString::fromStdString(d->getTitre())); // tester lequel des deux est bon quand on aura les images
-    ui->titreImage->setText(QString::fromStdString(d->getTitre())); // """
-    ui->categorieImage->setText(QString::fromStdString(d->getCategorie()));
-    ui->rangImage->setText(QString::number(d->getRangDansDiaporama()));
-    // ui->imageDiapo->setPixmap(QPixmap(QString::fromStdString(d->getImage().getImage().getChemin()))); // jsp comment faire pour l'instant
+    ui->titreDiapo->setText(QString::fromStdString(d->getTitre()));
+    ImageDansDiaporama* imageCourante = d->getImageCourante();
+    ui->titreImage->setText(QString::fromStdString(imageCourante->getTitre()));
+    ui->categorieImage->setText(QString::fromStdString(imageCourante->getCategorie()));
+    ui->rangImage->setText(QString::number(imageCourante->getRangDansDiaporama()));
+    ui->imageDiapo->setPixmap(QPixmap(QString::fromStdString(imageCourante->getChemin())));
 }
 
 void lecteurVue::setPresentation(Presentation * p)
 {
     m_MaPresentation = p;
+    //majPresentation(getPresentation()->getDiapoActuel()); fait planter le prog
 }
-
 
 
 

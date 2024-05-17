@@ -24,10 +24,11 @@ private:
 public:
     lecteurVue(QWidget *parent = nullptr);
     ~lecteurVue();
-
+    Presentation * getPresentation() const;
     void majInterface(Modele::UnEtat e);
-    void majPresentation(ImageDansDiaporama * d);
+    void majPresentation(Diaporama * d);
     void setPresentation(Presentation *);
+
 
 public slots:
     void demanderAvancer();

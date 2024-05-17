@@ -14,6 +14,8 @@ public:
     string getTitre() const;
     int getVitesseDefilement() const;
     ImagesDiaporama getImages() const;
+    ImageDansDiaporama* getImageCourante() const; // retourne l'image courante du diaporama
+    unsigned int getPosImageCourante() const; // retourne la position de l'image courante dans le diaporama
 
     unsigned int nbImages() const;  // nbre de pointeurs d'images contenus dans diaporama
 
@@ -31,6 +33,7 @@ private:
     unsigned int id;                // identifiant du diaporama dans la Base de données
     string titre ;                  // titre du diaporama
     unsigned int vitesseDefilement; // vitesse de défilement des images du diaporama
+    unsigned int posImageCourante;  // position de l'image courante dans le diaporama
     ImagesDiaporama images;         // vecteur de pointeurs sur les objets ImageDansDiaporama de ce diaporama
     void trierParRangCroissant(); // trie les images du diaporama par ordre de rang croissant
 };

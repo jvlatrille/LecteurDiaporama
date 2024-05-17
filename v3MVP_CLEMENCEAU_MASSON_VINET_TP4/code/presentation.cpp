@@ -25,6 +25,16 @@ void Presentation::setVue(lecteurVue *v)
     _laVue = v;
 }
 
+ImageDansDiaporama* Presentation::getImageActuelle()
+{
+    return _leModele->getDiaporama()->getImageCourante();
+}
+
+Diaporama *Presentation::getDiapoActuel()
+{
+    return getModele()->getDiaporama();
+}
+
 void Presentation::demanderAvancer()
 {
     _leModele->avancer();
