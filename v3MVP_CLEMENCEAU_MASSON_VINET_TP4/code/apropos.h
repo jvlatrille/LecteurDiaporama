@@ -1,22 +1,22 @@
 #ifndef APROPOS_H
 #define APROPOS_H
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
-class aPropos;
+class apropos;
 }
 
-class aPropos : public QWidget
+class apropos : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit aPropos(QWidget *parent = nullptr);
-    ~aPropos();
+    explicit apropos(QWidget *parent = nullptr);
+    ~apropos();
 
 private:
-    Ui::aPropos *ui;
+    Ui::apropos *ui;
 };
 
 #endif // APROPOS_H

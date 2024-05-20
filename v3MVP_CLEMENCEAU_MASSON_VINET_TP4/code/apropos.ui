@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>aPropos</class>
- <widget class="QWidget" name="aPropos">
+ <class>apropos</class>
+ <widget class="QDialog" name="apropos">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
@@ -20,12 +20,12 @@
       <widget class="QLabel" name="label">
        <property name="font">
         <font>
-         <pointsize>20</pointsize>
+         <pointsize>25</pointsize>
          <bold>true</bold>
         </font>
        </property>
        <property name="text">
-        <string>A propos</string>
+        <string>A propos : </string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -42,35 +42,35 @@
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>10</width>
-         <height>20</height>
+         <width>20</width>
+         <height>40</height>
         </size>
        </property>
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="label_2">
        <property name="text">
         <string>Version : V3 MVP</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="label_3">
        <property name="text">
         <string>Date de création : 14 mai 2024</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="label_4">
        <property name="text">
         <string>Auteurs de l'application : </string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="label_5">
        <property name="text">
         <string>CLEMENCEAU Edouard, MASSON Rafael, VINET LATRILLE Jules</string>
        </property>
@@ -87,7 +87,7 @@
        <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
-         <height>20</height>
+         <height>40</height>
         </size>
        </property>
       </spacer>

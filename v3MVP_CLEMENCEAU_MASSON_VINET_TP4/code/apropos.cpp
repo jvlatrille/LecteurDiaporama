@@ -1,14 +1,14 @@
 #include "apropos.h"
 #include "ui_apropos.h"
 
-aPropos::aPropos(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::aPropos)
+apropos::apropos(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::apropos)
 {
     ui->setupUi(this);
 }
 
-aPropos::~aPropos()
+apropos::~apropos()
 {
     delete ui;
 }

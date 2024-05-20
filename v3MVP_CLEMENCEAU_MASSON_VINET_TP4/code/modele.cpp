@@ -1,4 +1,7 @@
 #include "modele.h"
+#include <QDialog>
+#include "ui_apropos.h"
+
 
 Modele::Modele()
 {
@@ -133,5 +136,14 @@ void Modele::enleverDiapo() {
 }
 
 void Modele::aPropos() {
-    // Implémentation de la fonction à propos
+    // Créer une instance de la fenêtre à propos
+    QDialog* aproposDialog = new QDialog();
+    // Charger l'interface utilisateur depuis le fichier .ui
+    Ui::apropos aproposUi; // Utiliser 'apropos' au lieu de 'AProposDialog'
+    aproposUi.setupUi(aproposDialog);
+    // Afficher la fenêtre à propos
+    aproposDialog->exec();
+    // Libérer la mémoire utilisée par la fenêtre après sa fermeture
+    delete aproposDialog;
 }
+
