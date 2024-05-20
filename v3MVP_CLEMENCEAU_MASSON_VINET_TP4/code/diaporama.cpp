@@ -153,7 +153,6 @@ void Diaporama::charger()
     }
 
     trierParRangCroissant();  // selon le rang de l'image dans le diaporama
-
     // post-condition : nbImages() >= 0
 }
 
