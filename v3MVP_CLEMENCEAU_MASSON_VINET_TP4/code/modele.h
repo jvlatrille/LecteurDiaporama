@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include "diaporama.h"
+#include "lecteur.h"
 
 class ImageDansDiaporama;
 typedef std::vector<ImageDansDiaporama*> ImagesDiaporama;
@@ -20,6 +21,7 @@ private:
     vector <ImageDansDiaporama> m_localisationImages;
     Diaporama* m_MonDiapo;
     ImagesDiaporama images;
+    Lecteur lecteur;
     void triCroissantRang();
 
 public:
@@ -51,6 +53,9 @@ public:
 
 
 
+
+    Lecteur getLecteur() const;
+    void setLecteur(Lecteur &newLecteur);
 
 private :
     UnEtat _etat;

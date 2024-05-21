@@ -37,15 +37,49 @@ Diaporama *Presentation::getDiapoActuel()
 
 void Presentation::demanderAvancer()
 {
+    if (!_leModele) {
+        qDebug() << "_leModele est nul";
+        return;
+    }
+    if (!_laVue) {
+        qDebug() << "_laVue est nul";
+        return;
+    }
+    qDebug()<< "J'avance 3";
     _leModele->avancer();
-    _laVue->majInterface(_leModele->getEtat());
+    qDebug()<< "J'avance 4";
+
+    auto diapo = _leModele->getLecteur().getDiaporama();
+    if (!diapo) {
+        qDebug() << "Diaporama est nul";
+        return;
+    }
+
+    _laVue->majPresentation(diapo);
     qDebug() << "L'image avance";
 }
 
+
 void Presentation::demanderReculer()
 {
+    if (!_leModele) {
+        qDebug() << "_leModele est nul";
+        return;
+    }
+    if (!_laVue) {
+        qDebug() << "_laVue est nul";
+        return;
+    }
+
     _leModele->reculer();
-    _laVue->majInterface(_leModele->getEtat());
+
+    auto diapo = _leModele->getDiaporama();
+    if (!diapo) {
+        qDebug() << "Diaporama est nul";
+        return;
+    }
+
+    _laVue->majPresentation(diapo);
     qDebug() << "L'image recule";
 }
 

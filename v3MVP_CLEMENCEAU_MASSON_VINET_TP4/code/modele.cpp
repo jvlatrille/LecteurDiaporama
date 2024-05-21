@@ -5,6 +5,7 @@
 
 Modele::Modele()
 {
+    lecteur.changerDiaporama(3);
 }
 
 unsigned int Modele::getVitesseDefilement() const
@@ -15,6 +16,16 @@ unsigned int Modele::getVitesseDefilement() const
 bool Modele::lecteurVide() const
 {
     return (getDiaporama() == nullptr);
+}
+
+Lecteur Modele::getLecteur() const
+{
+    return lecteur;
+}
+
+void Modele::setLecteur(Lecteur &newLecteur)
+{
+    lecteur = newLecteur;
 }
 
 unsigned int Modele::getPosImageCourante() const
@@ -56,30 +67,14 @@ void Modele::setDiaporama(Diaporama *diaporama)
 
 void Modele::avancer()
 {
-    if (!lecteurVide())
-    {
-        if (getPosImageCourante() == nbImages()- 1)
-        {
-            setPosImageCourante(0);
-        }
-        else {
-            setPosImageCourante(getPosImageCourante() + 1);
-        }
-    }
+    qDebug()<< "J'avance 1";
+    lecteur.avancer();
+    qDebug()<< "J'avance 2";
 }
 
 void Modele::reculer()
-{/*
-    if (!lecteurVide())
-    {
-        if (getPosImageCourante() == 0)
-        {
-            setPosImageCourante(nbImages()- 1);
-        }
-        else {
-            setPosImageCourante(getPosImageCourante() - 1);
-        }
-    }*/
+{
+    lecteur.reculer();
 }
 
 
