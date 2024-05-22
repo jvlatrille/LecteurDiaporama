@@ -79,7 +79,7 @@ void Presentation::demanderReculer()
 
     _leModele->reculer();
 
-    auto diapo = _leModele->getDiaporama();
+    Diaporama * diapo = _leModele->getDiaporama();
     if (!diapo) {
         qDebug() << "Diaporama est nul";
         return;
