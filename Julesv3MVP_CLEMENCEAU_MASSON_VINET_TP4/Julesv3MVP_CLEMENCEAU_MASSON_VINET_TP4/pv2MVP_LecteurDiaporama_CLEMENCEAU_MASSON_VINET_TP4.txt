@@ -1,3 +1,0 @@
-Présentation de la version 2 MVP : 
-Cette version à pour but de "fusionner" la v1 et la v2, en intégrant les classes de la v1 dans la v2.
-Nous n'avons pas utilisé notre v1 mais celle de Mme Dagorret pour être sûr que le programme (de la v1) soit complet.

@@ -7,7 +7,7 @@ class ImageDansDiaporama
 {
 public:
     ImageDansDiaporama(unsigned int pRangDansDiaporama=0,
-                       string pCategorie="", string pTitre="", string pChemin = "");
+                       string pCategorie="defaut", string pTitre="defaut", string pChemin = ":/images/Disney_tapis.gif");
     ~ImageDansDiaporama();
     unsigned int getRangDansDiaporama() const;
     string getCategorie() const;
