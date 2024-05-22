@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/images">
-        <file>images.qrc</file>
         <file>cartesDisney/Disney_0.gif</file>
         <file>cartesDisney/Disney_0.png</file>
         <file>cartesDisney/Disney_1.gif</file>

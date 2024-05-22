@@ -31,8 +31,9 @@ FORMS += \
     apropos.ui \
     lecteurvue.ui \
     lecteurvue.ui
+
 RESOURCES += \
-    images.qrc
+    ressources.qrc
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
