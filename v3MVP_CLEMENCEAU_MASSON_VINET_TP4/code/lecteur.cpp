@@ -161,10 +161,11 @@ void Lecteur::reculer()
     {
         if (getPosImageCourante() == 0)
         {
-            setPosImageCourante(nbImages()- 1);
+            setPosImageCourante(nbImages() - 1);  // Aller à la dernière image si on est à la première
         }
-        else {
-            setPosImageCourante(getPosImageCourante() - 1);
+        else
+        {
+            setPosImageCourante(getPosImageCourante() - 1);  // Aller à l'image précédente
         }
     }
 }

@@ -3,7 +3,6 @@
 
 #include <QObject>
 #include <vector>
-#include <iostream>
 #include "diaporama.h"
 #include "lecteur.h"
 
@@ -21,7 +20,7 @@ private:
     vector <ImageDansDiaporama> m_localisationImages;
     Diaporama* m_MonDiapo;
     ImagesDiaporama images;
-    Lecteur lecteur;
+    Lecteur * lecteur;
     void triCroissantRang();
 
 public:
@@ -54,8 +53,8 @@ public:
 
 
 
-    Lecteur getLecteur() const;
-    void setLecteur(Lecteur &newLecteur);
+    Lecteur *  getLecteur() const;
+    void setLecteur(Lecteur * newLecteur);
 
 private :
     UnEtat _etat;

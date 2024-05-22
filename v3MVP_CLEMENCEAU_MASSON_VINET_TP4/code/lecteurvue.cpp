@@ -4,6 +4,7 @@
 lecteurVue::lecteurVue(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::lecteurVue)
+    , m_MaPresentation(new Presentation())
 {
     ui->setupUi(this);
 
@@ -22,7 +23,7 @@ lecteurVue::lecteurVue(QWidget *parent)
     QObject::connect(ui->actionManuel, SIGNAL(triggered()), this, SLOT(demanderChangerModeManuel()));
     QObject::connect(ui->actionAPropos, SIGNAL(triggered()), this, SLOT(demanderAPropos()));
 
-    //navigation entre les bouton avec tab
+    // navigation entre les bouton avec tab
     QWidget::setTabOrder(ui->bPrecedent, ui->bPause);
     QWidget::setTabOrder(ui->bPause, ui->bSuivant);
 }

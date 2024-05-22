@@ -5,6 +5,7 @@
 #include "modele.h"
 #include "lecteurVue.h"
 
+
 class Presentation : public QObject
 {
     Q_OBJECT

@@ -1,6 +1,6 @@
 #include "diaporama.h"
 
-Diaporama::Diaporama():id(0), titre(""), vitesseDefilement(0) {
+Diaporama::Diaporama():id(1), titre(""), vitesseDefilement(0) {
     images.clear();
 }
 

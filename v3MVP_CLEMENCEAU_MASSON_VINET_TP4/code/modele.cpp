@@ -5,7 +5,7 @@
 
 Modele::Modele()
 {
-    lecteur.changerDiaporama(3);
+
 }
 
 unsigned int Modele::getVitesseDefilement() const
@@ -18,12 +18,12 @@ bool Modele::lecteurVide() const
     return (getDiaporama() == nullptr);
 }
 
-Lecteur Modele::getLecteur() const
+Lecteur* Modele::getLecteur() const
 {
     return lecteur;
 }
 
-void Modele::setLecteur(Lecteur &newLecteur)
+void Modele::setLecteur(Lecteur* newLecteur)
 {
     lecteur = newLecteur;
 }
@@ -68,13 +68,13 @@ void Modele::setDiaporama(Diaporama *diaporama)
 void Modele::avancer()
 {
     qDebug()<< "J'avance 1";
-    lecteur.avancer();
+    lecteur->avancer();
     qDebug()<< "J'avance 2";
 }
 
 void Modele::reculer()
 {
-    lecteur.reculer();
+    lecteur->reculer();
 }
 
 

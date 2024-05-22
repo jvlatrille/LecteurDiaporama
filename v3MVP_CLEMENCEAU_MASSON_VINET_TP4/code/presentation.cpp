@@ -49,7 +49,13 @@ void Presentation::demanderAvancer()
     _leModele->avancer();
     qDebug()<< "J'avance 4";
 
-    auto diapo = _leModele->getLecteur().getDiaporama();
+    Lecteur* lecteur = _leModele->getLecteur();
+    if (!lecteur)
+    {
+        qDebug() << "Lecteur est nul";
+        return;
+    }
+    Diaporama * diapo = lecteur->getDiaporama();
     if (!diapo) {
         qDebug() << "Diaporama est nul";
         return;
