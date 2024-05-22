@@ -1,5 +1,6 @@
 #include "ui_lecteurvue.h"
 #include "presentation.h"
+#include <QImage>
 
 lecteurVue::lecteurVue(QWidget *parent)
     : QMainWindow(parent)
@@ -38,25 +39,7 @@ Presentation *lecteurVue::getPresentation() const
     return m_MaPresentation;
 }
 
-void lecteurVue::majInterface(Modele::UnEtat e){
-    /*switch (e){
-        case Modele::automatique:
-            ui->label->setText("allumé !");
-            ui->label->setPixmap(QPixmap::fromImage(QImage(":/ampoule/images/ampouleAllumee2.PNG")));
-            ui->bPause->setEnabled(false);
-            ui->bEteindre->setEnabled(true);
-            break;
-        case Modele::manuel:
-            ui->label->setText("éteint !");
-            ui->label->setPixmap(QPixmap::fromImage(QImage(":/ampoule/images/ampouleEteinte2.PNG")));
-            ui->bAllumer->setEnabled(true);
-            ui->bEteindre->setEnabled(false);
-            break;
-       default: break;
-    }*/
-}
-
-void lecteurVue::majPresentation(Diaporama *d)
+void lecteurVue::majPresentation(Diaporama *d, Modele::UnEtat etat)
 {
     ui->titreDiapo->setText(QString::fromStdString(d->getTitre()));
     ImageDansDiaporama* imageCourante = d->getImageCourante();
@@ -64,6 +47,32 @@ void lecteurVue::majPresentation(Diaporama *d)
     ui->categorieImage->setText(QString::fromStdString(imageCourante->getCategorie()));
     ui->rangImage->setText(QString::number(imageCourante->getRangDansDiaporama()));
     ui->imageDiapo->setPixmap(QPixmap(QString::fromStdString(imageCourante->getChemin())));
+
+    if (getPresentation()->getDiapoActuel() == 0)
+    {
+        ui->bPrecedent->setDisabled(true);
+        ui->bSuivant->setDisabled(true);
+        //ui->bArreterDiaporama->setDisabled(true);
+        //ui->bLancerDiaporama->setDisabled(true);
+    }
+    else
+    {
+        ui->bPrecedent->setDisabled(false);
+        ui->bSuivant->setDisabled(false);
+        /*ui->bLancerDiaporama->setDisabled(false);
+
+        switch (etat) {
+        case Modele::manuel:
+            ui->bArreterDiaporama->setDisabled(true);
+            break;
+        case Modele::automatique:
+            ui->bArreterDiaporama->setDisabled(false);
+            break;
+        default:
+            ui->bArreterDiaporama->setDisabled(true);
+            break;
+        }*/
+    }
 }
 
 void lecteurVue::setPresentation(Presentation * p)

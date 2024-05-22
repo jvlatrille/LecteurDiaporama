@@ -25,8 +25,7 @@ public:
     lecteurVue(QWidget *parent = nullptr);
     ~lecteurVue();
     Presentation * getPresentation() const;
-    void majInterface(Modele::UnEtat e);
-    void majPresentation(Diaporama * d);
+    void majPresentation(Diaporama * d, Modele::UnEtat etat);
     void setPresentation(Presentation *);
 
 
