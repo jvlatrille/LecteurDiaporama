@@ -42,31 +42,6 @@ Presentation *lecteurVue::getPresentation() const
 }
 
 
-
-void lecteurVue::majPresentation(Diaporama *d, Modele::UnEtat etat)
-{
-    qDebug() << "Maj Presentation commence";
-    ui->titreDiapo->setText(QString::fromStdString(d->getTitre()));
-    ImageDansDiaporama* imageCourante = d->getImageCourante();
-    ui->titreImage->setText(QString::fromStdString(imageCourante->getTitre()));
-    ui->categorieImage->setText(QString::fromStdString(imageCourante->getCategorie()));
-    ui->rangImage->setText(QString::number(imageCourante->getRangDansDiaporama()));
-    ui->imageDiapo->setPixmap(QPixmap(QString::fromStdString(imageCourante->getChemin())));
-    qDebug() << "Position image courante : " << d->getPosImageCourante();
-    if (d->nbImages() > 0)
-    {
-        ui->bPrecedent->setEnabled(true);
-        ui->bSuivant->setEnabled(true);
-    }
-    else
-    {
-        ui->bPrecedent->setDisabled(true);
-        ui->bSuivant->setDisabled(true);
-    }
-
-}
-
-
 void lecteurVue::majPresentationSlot(const QString &titreDiapo, const QString &titreImage, const QString &categorie, const QString &rang, const QString &chemin) {
     qDebug() << "Émission de imageChange avec: " << titreDiapo << titreImage << categorie << rang << chemin;
     ui->titreDiapo->setText(titreDiapo);
