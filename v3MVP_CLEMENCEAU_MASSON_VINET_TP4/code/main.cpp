@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     p->setModel(m);
     p->setVue(&w);
     w.setPresentation(p);
-    l->changerDiaporama(2, "Diapo test",2);
+    l->changerDiaporama(1, "Diapo test", 1);
     m->setLecteur(l);
     qDebug() << "Everything is set";
 

@@ -35,6 +35,7 @@ Diaporama *Presentation::getDiapoActuel()
     return getModele()->getDiaporama();
 }
 
+
 void Presentation::demanderAvancer()
 {
     if (!_leModele) {

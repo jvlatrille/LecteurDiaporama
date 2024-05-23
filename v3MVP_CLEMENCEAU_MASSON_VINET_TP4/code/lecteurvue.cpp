@@ -39,6 +39,8 @@ Presentation *lecteurVue::getPresentation() const
     return m_MaPresentation;
 }
 
+
+
 void lecteurVue::majPresentation(Diaporama *d, Modele::UnEtat etat)
 {
     ui->titreDiapo->setText(QString::fromStdString(d->getTitre()));
@@ -48,32 +50,20 @@ void lecteurVue::majPresentation(Diaporama *d, Modele::UnEtat etat)
     ui->rangImage->setText(QString::number(imageCourante->getRangDansDiaporama()));
     ui->imageDiapo->setPixmap(QPixmap(QString::fromStdString(imageCourante->getChemin())));
 
-    if (getPresentation()->getDiapoActuel() == 0)
+    if (d->nbImages() > 0)
     {
-        ui->bPrecedent->setDisabled(true);
-        ui->bSuivant->setDisabled(true);
-        //ui->bArreterDiaporama->setDisabled(true);
-        //ui->bLancerDiaporama->setDisabled(true);
+        ui->bPrecedent->setEnabled(true);
+        ui->bSuivant->setEnabled(true);
     }
     else
     {
-        ui->bPrecedent->setDisabled(false);
-        ui->bSuivant->setDisabled(false);
-        /*ui->bLancerDiaporama->setDisabled(false);
-
-        switch (etat) {
-        case Modele::manuel:
-            ui->bArreterDiaporama->setDisabled(true);
-            break;
-        case Modele::automatique:
-            ui->bArreterDiaporama->setDisabled(false);
-            break;
-        default:
-            ui->bArreterDiaporama->setDisabled(true);
-            break;
-        }*/
+        ui->bPrecedent->setDisabled(true);
+        ui->bSuivant->setDisabled(true);
     }
+
 }
+
+
 
 void lecteurVue::setPresentation(Presentation * p)
 {
