@@ -35,7 +35,6 @@ Diaporama *Presentation::getDiapoActuel()
 }
 
 
-
 void Presentation::demanderAvancer() {
     if (!_leModele) {
         qDebug() << "_leModele est nul";
@@ -53,7 +52,6 @@ void Presentation::demanderAvancer() {
         qDebug() << "Diaporama est nul";
         return;
     }
-
     qDebug() << "L'image avance";
 }
 
@@ -74,7 +72,6 @@ void Presentation::demanderReculer() {
         qDebug() << "Diaporama est nul";
         return;
     }
-
     qDebug() << "L'image recule";
 }
 
