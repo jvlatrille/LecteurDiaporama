@@ -66,29 +66,32 @@ void Modele::setDiaporama(Diaporama *diaporama)
 }
 
 void Modele::avancer() {
-    qDebug() << "Modele::avance";
-    lecteur->avancer();
-    qDebug() << "le lecteur à avancé";
+    if (_etat != automatique) {
+        qDebug() << "Modele::avance";
+        lecteur->avancer();
+        qDebug() << "le lecteur à avancé";
 
-    if (!lecteur->getDiaporama()) {
-        qDebug() << "Diaporama est nul";
-        return;
+        if (!lecteur->getDiaporama()) {
+            qDebug() << "Diaporama est nul";
+            return;
+        }
+
+        ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
+        if (!imageCourante) {
+            qDebug() << "Aucune image courante";
+            return;
+        }
+
+        qDebug() << "Image courante créée";
+        emit imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()),
+                         QString::fromStdString(imageCourante->getTitre()),
+                         QString::fromStdString(imageCourante->getCategorie()),
+                         QString::number(imageCourante->getRangDansDiaporama()),
+                         QString::fromStdString(imageCourante->getChemin()));
+
+        qDebug() << "Signaux à jour envoyés";
     }
-
-    ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
-    if (!imageCourante) {
-        qDebug() << "Aucune image courante";
-        return;
-    }
-
-    qDebug() << "Image courante créée";
-    emit imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()),
-                     QString::fromStdString(imageCourante->getTitre()),
-                     QString::fromStdString(imageCourante->getCategorie()),
-                     QString::number(imageCourante->getRangDansDiaporama()),
-                     QString::fromStdString(imageCourante->getChemin()));
-
-    qDebug() << "Signaux à jour envoyés";
+    _etat = UnEtat::manuel;
 }
 
 
@@ -96,29 +99,32 @@ void Modele::avancer() {
 
 void Modele::reculer()
 {
-    qDebug() << "Modele::recule";
-    lecteur->reculer();
-    qDebug() << "le lecteur à reculé";
+    if (_etat != automatique) {
+        qDebug() << "Modele::recule";
+        lecteur->reculer();
+        qDebug() << "le lecteur à reculé";
 
-    if (!lecteur->getDiaporama()) {
-        qDebug() << "Diaporama est nul";
-        return;
+        if (!lecteur->getDiaporama()) {
+            qDebug() << "Diaporama est nul";
+            return;
+        }
+
+        ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
+        if (!imageCourante) {
+            qDebug() << "Aucune image courante";
+            return;
+        }
+
+        qDebug() << "Image courante créée";
+        emit imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()),
+                         QString::fromStdString(imageCourante->getTitre()),
+                         QString::fromStdString(imageCourante->getCategorie()),
+                         QString::number(imageCourante->getRangDansDiaporama()),
+                         QString::fromStdString(imageCourante->getChemin()));
+
+        qDebug() << "Signaux à jour envoyés";
     }
-
-    ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
-    if (!imageCourante) {
-        qDebug() << "Aucune image courante";
-        return;
-    }
-
-    qDebug() << "Image courante créée";
-    emit imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()),
-                     QString::fromStdString(imageCourante->getTitre()),
-                     QString::fromStdString(imageCourante->getCategorie()),
-                     QString::number(imageCourante->getRangDansDiaporama()),
-                     QString::fromStdString(imageCourante->getChemin()));
-
-    qDebug() << "Signaux à jour envoyés";
+    _etat = UnEtat::manuel;
 }
 
 
@@ -126,11 +132,13 @@ void Modele::reculer()
 void Modele::etatAutomatique()
 {
     _etat = UnEtat::automatique;
+    qDebug() << "Mode automatique activé";
 }
 
 void Modele::etatManuel()
 {
     _etat = UnEtat::manuel;
+    qDebug() << "Mode manuel";
 }
 
 
