@@ -25,7 +25,6 @@ public:
     lecteurVue(QWidget *parent = nullptr);
     ~lecteurVue();
     Presentation * getPresentation() const;
-    void majPresentation(Diaporama * d, Modele::UnEtat etat);
     void setPresentation(Presentation *);
     void initializeConnections();
 
@@ -41,6 +40,6 @@ public slots:
     void demanderEnleverDiapo();
     void demanderAPropos();
     void quitterApplication();
-    void majPresentationSlot(const QString &titreDiapo, const QString &titreImage, const QString &categorie, const QString &rang, const QString &chemin);
+    void majPresentation(const QString &titreDiapo, const QString &titreImage, const QString &categorie, const QString &rang, const QString &chemin);
 };
 #endif // LECTEURVUE_H

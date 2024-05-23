@@ -35,7 +35,6 @@ Diaporama *Presentation::getDiapoActuel()
 }
 
 
-// Presentation.cpp
 
 void Presentation::demanderAvancer() {
     if (!_leModele) {
@@ -55,7 +54,6 @@ void Presentation::demanderAvancer() {
         return;
     }
 
-    //_laVue->majPresentation(diapo, _leModele->getEtat());
     qDebug() << "L'image avance";
 }
 
@@ -77,7 +75,6 @@ void Presentation::demanderReculer() {
         return;
     }
 
-    //_laVue->majPresentation(diapo, _leModele->getEtat());
     qDebug() << "L'image recule";
 }
 
@@ -85,7 +82,6 @@ void Presentation::demanderReculer() {
 void Presentation::demanderDepartArretAuto()
 {
     _leModele->departArretAuto();
-    //_laVue->majPresentation(_leModele->getDiaporama(),_leModele->getEtat());
     qDebug() << "Le défilement d'image se met en pause / avance en mode auto";
 }
 
@@ -93,35 +89,30 @@ void Presentation::demanderChangerVitesse()
 {
 
     _leModele->changerVitesse();
-    //_laVue->majPresentation(_leModele->getDiaporama(),_leModele->getEtat());
     qDebug() << "La fenêtre pour changer la vitesse apparait";
 }
 
 void Presentation::demanderChangerModeAutomatique()
 {
     _leModele->etatAutomatique();
-    //_laVue->majPresentation(_leModele->getDiaporama(),_leModele->getEtat());
     qDebug() << "Le mode change en automatique";
 }
 
 void Presentation::demanderChangerModeManuel()
 {
     _leModele->etatManuel();
-    //_laVue->majPresentation(_leModele->getDiaporama(),_leModele->getEtat());
     qDebug() << "Le mode change en manuel";
 }
 
 void Presentation::demanderChargerDiapo()
 {
     _leModele->chargerDiapo();
-    //_laVue->majPresentation(_leModele->getDiaporama(),_leModele->getEtat());
     qDebug() << "On charges une nouvelle diapo";
 }
 
 void Presentation::demanderEnleverDiapo()
 {
     _leModele->enleverDiapo();
-    //_laVue->majPresentation(_leModele->getDiaporama(),_leModele->getEtat());
     qDebug() << "On retire le diapo courant";
 }
 
@@ -129,5 +120,5 @@ void Presentation::demanderAPropos()
 {
     qDebug() << "Demande à afficher la fenêtre a propos de l'application";
     _leModele->aPropos();
-    //_laVue->majPresentation(_leModele->getDiaporama(),_leModele->getEtat());
+
 }
