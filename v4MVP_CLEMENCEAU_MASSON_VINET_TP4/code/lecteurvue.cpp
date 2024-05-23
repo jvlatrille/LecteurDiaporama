@@ -29,6 +29,8 @@ lecteurVue::lecteurVue(QWidget *parent)
     QWidget::setTabOrder(ui->bPause, ui->bSuivant);
 }
 
+
+
 lecteurVue::~lecteurVue()
 {
     delete ui;
@@ -39,41 +41,19 @@ Presentation *lecteurVue::getPresentation() const
     return m_MaPresentation;
 }
 
-void lecteurVue::majPresentation(Diaporama *d, Modele::UnEtat etat)
-{
-    ui->titreDiapo->setText(QString::fromStdString(d->getTitre()));
-    ImageDansDiaporama* imageCourante = d->getImageCourante();
-    ui->titreImage->setText(QString::fromStdString(imageCourante->getTitre()));
-    ui->categorieImage->setText(QString::fromStdString(imageCourante->getCategorie()));
-    ui->rangImage->setText(QString::number(imageCourante->getRangDansDiaporama()));
-    ui->imageDiapo->setPixmap(QPixmap(QString::fromStdString(imageCourante->getChemin())));
 
-    if (getPresentation()->getDiapoActuel() == 0)
-    {
-        ui->bPrecedent->setDisabled(true);
-        ui->bSuivant->setDisabled(true);
-        //ui->bArreterDiaporama->setDisabled(true);
-        //ui->bLancerDiaporama->setDisabled(true);
-    }
-    else
-    {
-        ui->bPrecedent->setDisabled(false);
-        ui->bSuivant->setDisabled(false);
-        /*ui->bLancerDiaporama->setDisabled(false);
 
-        switch (etat) {
-        case Modele::manuel:
-            ui->bArreterDiaporama->setDisabled(true);
-            break;
-        case Modele::automatique:
-            ui->bArreterDiaporama->setDisabled(false);
-            break;
-        default:
-            ui->bArreterDiaporama->setDisabled(true);
-            break;
-        }*/
-    }
+void lecteurVue::majPresentation(const QString &titreDiapo, const QString &titreImage, const QString &categorie, const QString &rang, const QString &chemin) {
+    qDebug() << "Émission de imageChange avec: " << titreDiapo << titreImage << categorie << rang << chemin;
+    ui->titreDiapo->setText(titreDiapo);
+    ui->titreImage->setText(titreImage);
+    ui->categorieImage->setText(categorie);
+    ui->rangImage->setText(rang);
+    ui->imageDiapo->setPixmap(QPixmap(chemin));
+
+    ui->imageDiapo->repaint();
 }
+
 
 void lecteurVue::setPresentation(Presentation * p)
 {
@@ -131,3 +111,12 @@ void lecteurVue::demanderAPropos(){
     qDebug() << "On affiche la fenêtre à propos";
     m_MaPresentation->demanderAPropos();
 }
+
+
+void lecteurVue::initializeConnections() {
+    if (m_MaPresentation && m_MaPresentation->getModele()) {
+        bool connected = connect(m_MaPresentation->getModele(), &Modele::imageChange, this, &lecteurVue::majPresentation);
+        qDebug() << "Connecté ? " << connected;
+    }
+}
+

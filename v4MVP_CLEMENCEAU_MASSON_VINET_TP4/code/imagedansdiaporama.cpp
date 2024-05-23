@@ -1,10 +1,11 @@
 #include "imageDansDiaporama.h"
 
-ImageDansDiaporama::ImageDansDiaporama(unsigned int pRangDansDiaporama, string pCategorie, string pTitre, string pChemin):
-    chemin(pChemin),
-    rangDansDiaporama(pRangDansDiaporama),
-    categorie(pCategorie),
-    titre(pTitre){
+ImageDansDiaporama::ImageDansDiaporama(unsigned int pRangDansDiaporama, string pCategorie, string pTitre, string pChemin)
+{
+    rangDansDiaporama = pRangDansDiaporama;
+    categorie = pCategorie;
+    titre = pTitre;
+    chemin = pChemin;
 }
 
 ImageDansDiaporama::~ImageDansDiaporama()

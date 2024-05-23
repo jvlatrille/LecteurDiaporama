@@ -48,13 +48,11 @@ public:
     void chargerDiapo();
     void enleverDiapo();
     void aPropos();
-
-
-
-
-
     Lecteur *  getLecteur() const;
     void setLecteur(Lecteur * newLecteur);
+
+signals:
+    void imageChange(const QString &titreDiapo, const QString &titreImage, const QString &categorie, const QString &rang, const QString &chemin);
 
 private :
     UnEtat _etat;

@@ -65,12 +65,34 @@ void Modele::setDiaporama(Diaporama *diaporama)
         m_MonDiapo = diaporama;
 }
 
-void Modele::avancer()
-{
-    qDebug()<< "J'avance 1";
+void Modele::avancer() {
+    qDebug() << "Modele::avance";
     lecteur->avancer();
-    qDebug()<< "J'avance 2";
+    qDebug() << "le lecteur à avancé";
+
+    if (!lecteur->getDiaporama()) {
+        qDebug() << "Diaporama est nul";
+        return;
+    }
+
+    ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
+    if (!imageCourante) {
+        qDebug() << "Aucune image courante";
+        return;
+    }
+
+    qDebug() << "Image courante créée";
+    emit imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()),
+                     QString::fromStdString(imageCourante->getTitre()),
+                     QString::fromStdString(imageCourante->getCategorie()),
+                     QString::number(imageCourante->getRangDansDiaporama()),
+                     QString::fromStdString(imageCourante->getChemin()));
+
+    qDebug() << "Signaux à jour envoyés";
 }
+
+
+
 
 void Modele::reculer()
 {
@@ -131,14 +153,10 @@ void Modele::enleverDiapo() {
 }
 
 void Modele::aPropos() {
-    // Créer une instance de la fenêtre à propos
     QDialog* aproposDialog = new QDialog();
-    // Charger l'interface utilisateur depuis le fichier .ui
-    Ui::apropos aproposUi; // Utiliser 'apropos' au lieu de 'AProposDialog'
+    Ui::apropos aproposUi;
     aproposUi.setupUi(aproposDialog);
-    // Afficher la fenêtre à propos
     aproposDialog->exec();
-    // Libérer la mémoire utilisée par la fenêtre après sa fermeture
     delete aproposDialog;
 }
 

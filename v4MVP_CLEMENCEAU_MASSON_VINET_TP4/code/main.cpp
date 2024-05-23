@@ -16,10 +16,11 @@ int main(int argc, char *argv[])
     p->setModel(m);
     p->setVue(&w);
     w.setPresentation(p);
-    l->changerDiaporama(2, "Diapo test",2);
+    l->changerDiaporama(1, "Diapo par défaut", 1);
     m->setLecteur(l);
-    qDebug() << "Everything is set";
+    qDebug() << "Final";
 
+    w.initializeConnections();
 
     w.show();
     return a.exec();
