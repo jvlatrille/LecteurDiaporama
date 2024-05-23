@@ -18,8 +18,9 @@ int main(int argc, char *argv[])
     w.setPresentation(p);
     l->changerDiaporama(1, "Diapo test", 1);
     m->setLecteur(l);
-    qDebug() << "Everything is set";
+    qDebug() << "Final";
 
+    w.initializeConnections();
 
     w.show();
     return a.exec();

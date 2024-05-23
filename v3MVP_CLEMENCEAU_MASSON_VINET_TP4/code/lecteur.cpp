@@ -1,4 +1,5 @@
 #include "lecteur.h"
+#include <qDebug>
 
 Lecteur::Lecteur() : idDiaporama(1), diaporama(nullptr)
 {
@@ -39,16 +40,13 @@ bool Lecteur::lecteurVide() const
     return (getDiaporama() == nullptr);
 }
 
-ImageDansDiaporama *Lecteur::getImageCourante() const
-{
-    if (lecteurVide() ||
-        (!lecteurVide() && nbImages() == 0 ))
-    {
-        return nullptr;
+ImageDansDiaporama* Lecteur::getImageCourante() const {
+    if (!lecteurVide() && posImageCourante < nbImages()) {
+        return diaporama->getImages().at(posImageCourante);
     }
-
-    return diaporama->getImages().at(getPosImageCourante());
+    return nullptr;
 }
+
 
 
 unsigned int Lecteur::nbImages() const
@@ -107,10 +105,12 @@ void Lecteur::setDiaporama(Diaporama* pDiaporama)
     diaporama = pDiaporama;
 }
 
-void Lecteur::setPosImageCourante(unsigned int pPosImageCourante)
-{
-    posImageCourante = pPosImageCourante;
+void Lecteur::setPosImageCourante(unsigned int newPos) {
+    if (newPos < nbImages()) {
+        posImageCourante = newPos;
+    }
 }
+
 
 void Lecteur::changerDiaporama(unsigned int pId, string pTitre, unsigned int pVitesse)
 {
@@ -141,19 +141,18 @@ void Lecteur::changerDiaporama(unsigned int pId, string pTitre, unsigned int pVi
         }
 }
 
-void Lecteur::avancer()
-{
-    if (!lecteurVide())
-    {
-        if (getPosImageCourante() == nbImages()- 1)
-        {
+void Lecteur::avancer() {
+    qDebug() << "Position actuelle avant avancer: " << posImageCourante;
+    if (!lecteurVide()) {
+        if (getPosImageCourante() == nbImages() - 1) {
             setPosImageCourante(0);
-        }
-        else {
+        } else {
             setPosImageCourante(getPosImageCourante() + 1);
         }
     }
+    qDebug() << "Position actuelle après avancer: " << posImageCourante;
 }
+
 
 void Lecteur::reculer()
 {
@@ -161,11 +160,10 @@ void Lecteur::reculer()
     {
         if (getPosImageCourante() == 0)
         {
-            setPosImageCourante(nbImages() - 1);  // Aller à la dernière image si on est à la première
+            setPosImageCourante(nbImages()- 1);
         }
-        else
-        {
-            setPosImageCourante(getPosImageCourante() - 1);  // Aller à l'image précédente
+        else {
+            setPosImageCourante(getPosImageCourante() - 1);
         }
     }
 }
@@ -188,9 +186,3 @@ void Lecteur::viderLecteur()
         setIdDiaporama(0);
     }
 }
-
-
-
-
-
-

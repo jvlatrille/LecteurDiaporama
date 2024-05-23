@@ -65,12 +65,33 @@ void Modele::setDiaporama(Diaporama *diaporama)
         m_MonDiapo = diaporama;
 }
 
-void Modele::avancer()
-{
-    qDebug()<< "J'avance 1";
+void Modele::avancer() {
+    qDebug() << "Modele::avance";
     lecteur->avancer();
-    qDebug()<< "J'avance 2";
+    qDebug() << "le lecteur à avancé";
+
+    if (!lecteur->getDiaporama()) {
+        qDebug() << "Diaporama est nul";
+        return;
+    }
+
+    ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
+    if (!imageCourante) {
+        qDebug() << "Aucune image courante";
+        return;
+    }
+
+    qDebug() << "Image courante créée";
+    emit imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()),
+                     QString::fromStdString(imageCourante->getTitre()),
+                     QString::fromStdString(imageCourante->getCategorie()),
+                     QString::number(imageCourante->getRangDansDiaporama()),
+                     QString::fromStdString(imageCourante->getChemin()));
+
+    qDebug() << "Signaux à jour envoyés";
 }
+
+
 
 
 void Modele::reculer()
