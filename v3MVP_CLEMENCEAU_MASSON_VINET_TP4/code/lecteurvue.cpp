@@ -74,6 +74,8 @@ void lecteurVue::majPresentationSlot(const QString &titreDiapo, const QString &t
     ui->categorieImage->setText(categorie);
     ui->rangImage->setText(rang);
     ui->imageDiapo->setPixmap(QPixmap(chemin));
+
+    ui->imageDiapo->repaint();
 }
 
 
@@ -137,6 +139,8 @@ void lecteurVue::demanderAPropos(){
 
 void lecteurVue::initializeConnections() {
     if (m_MaPresentation && m_MaPresentation->getModele()) {
-        connect(m_MaPresentation->getModele(), &Modele::imageChange, this, &lecteurVue::majPresentationSlot);
+        bool connected = connect(m_MaPresentation->getModele(), &Modele::imageChange, this, &lecteurVue::majPresentationSlot);
+        qDebug() << "Connecté ? " << connected;
     }
 }
+
