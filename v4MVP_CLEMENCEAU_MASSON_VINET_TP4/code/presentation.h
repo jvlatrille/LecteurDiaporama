@@ -4,6 +4,7 @@
 #include <QObject>
 #include "modele.h"
 #include "lecteurVue.h"
+#include <QTimer>
 
 
 class Presentation : public QObject
@@ -12,9 +13,11 @@ class Presentation : public QObject
 private:
     Modele* _leModele;
     lecteurVue* _laVue;
+    QTimer* timer;
 
 public:
     Presentation();
+    ~Presentation();
 
     void setModel(Modele* m);
     void setVue(lecteurVue* v);
@@ -33,6 +36,9 @@ public:
     void demanderChargerDiapo();
     void demanderEnleverDiapo();
     void demanderAPropos();
+
+private slots:
+    void autoAdvance();
 
     /*
 signals:

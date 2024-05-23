@@ -2,6 +2,13 @@
 
 Presentation::Presentation()
 {
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &Presentation::autoAdvance);
+    timer->setInterval(2000);
+}
+
+Presentation::~Presentation() {
+    delete timer;
 }
 
 Modele *Presentation::getModele()
@@ -92,12 +99,14 @@ void Presentation::demanderChangerVitesse()
 void Presentation::demanderChangerModeAutomatique()
 {
     _leModele->etatAutomatique();
+    timer->start();
     qDebug() << "Le mode change en automatique";
 }
 
 void Presentation::demanderChangerModeManuel()
 {
     _leModele->etatManuel();
+    timer->stop();
     qDebug() << "Le mode change en manuel";
 }
 
