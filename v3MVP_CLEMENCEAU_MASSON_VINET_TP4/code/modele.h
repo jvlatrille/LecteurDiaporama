@@ -48,11 +48,6 @@ public:
     void chargerDiapo();
     void enleverDiapo();
     void aPropos();
-
-
-
-
-
     Lecteur *  getLecteur() const;
     void setLecteur(Lecteur * newLecteur);
 

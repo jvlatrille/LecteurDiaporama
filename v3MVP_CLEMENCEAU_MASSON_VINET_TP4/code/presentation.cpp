@@ -2,7 +2,6 @@
 
 Presentation::Presentation()
 {
-
 }
 
 Modele *Presentation::getModele()
@@ -36,8 +35,9 @@ Diaporama *Presentation::getDiapoActuel()
 }
 
 
-void Presentation::demanderAvancer()
-{
+// Presentation.cpp
+
+void Presentation::demanderAvancer() {
     if (!_leModele) {
         qDebug() << "_leModele est nul";
         return;
@@ -46,29 +46,20 @@ void Presentation::demanderAvancer()
         qDebug() << "_laVue est nul";
         return;
     }
-    qDebug()<< "J'avance 3";
-    _leModele->avancer();
-    qDebug()<< "J'avance 4";
 
-    Lecteur* lecteur = _leModele->getLecteur();
-    if (!lecteur)
-    {
-        qDebug() << "Lecteur est nul";
-        return;
-    }
-    Diaporama * diapo = lecteur->getDiaporama();
+    _leModele->avancer();
+
+    Diaporama *diapo = _leModele->getLecteur()->getDiaporama();
     if (!diapo) {
         qDebug() << "Diaporama est nul";
         return;
     }
 
-    _laVue->majPresentation(diapo,_leModele->getEtat());
+    _laVue->majPresentation(diapo, _leModele->getEtat());
     qDebug() << "L'image avance";
 }
 
-
-void Presentation::demanderReculer()
-{
+void Presentation::demanderReculer() {
     if (!_leModele) {
         qDebug() << "_leModele est nul";
         return;
@@ -80,15 +71,16 @@ void Presentation::demanderReculer()
 
     _leModele->reculer();
 
-    Diaporama * diapo = _leModele->getDiaporama();
+    Diaporama *diapo = _leModele->getLecteur()->getDiaporama();
     if (!diapo) {
         qDebug() << "Diaporama est nul";
         return;
     }
 
-    _laVue->majPresentation(diapo,_leModele->getEtat());
+    _laVue->majPresentation(diapo, _leModele->getEtat());
     qDebug() << "L'image recule";
 }
+
 
 void Presentation::demanderDepartArretAuto()
 {

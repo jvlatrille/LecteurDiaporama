@@ -72,6 +72,7 @@ void Modele::avancer()
     qDebug()<< "J'avance 2";
 }
 
+
 void Modele::reculer()
 {
     lecteur->reculer();

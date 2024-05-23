@@ -49,7 +49,7 @@ void lecteurVue::majPresentation(Diaporama *d, Modele::UnEtat etat)
     ui->categorieImage->setText(QString::fromStdString(imageCourante->getCategorie()));
     ui->rangImage->setText(QString::number(imageCourante->getRangDansDiaporama()));
     ui->imageDiapo->setPixmap(QPixmap(QString::fromStdString(imageCourante->getChemin())));
-
+    qDebug() << d->getPosImageCourante();
     if (d->nbImages() > 0)
     {
         ui->bPrecedent->setEnabled(true);
@@ -62,8 +62,6 @@ void lecteurVue::majPresentation(Diaporama *d, Modele::UnEtat etat)
     }
 
 }
-
-
 
 void lecteurVue::setPresentation(Presentation * p)
 {
