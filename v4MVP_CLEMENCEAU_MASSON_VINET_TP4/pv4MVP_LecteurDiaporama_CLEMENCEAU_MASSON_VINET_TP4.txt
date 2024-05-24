@@ -1,2 +1,2 @@
 Présentation de la version 4 MVP : 
-Cette version à pour but de mettre place le mode Automatique avec la vitesse de défilement et la pause.
+Cette version à pour but de mettre place le mode Automatique.
