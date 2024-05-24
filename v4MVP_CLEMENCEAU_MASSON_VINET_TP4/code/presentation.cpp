@@ -4,6 +4,9 @@ Presentation::Presentation()
 {
     _leModele = nullptr;
     _laVue = nullptr;
+
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &Presentation::demanderAvancer);
 }
 
 Presentation::~Presentation() {
@@ -84,11 +87,7 @@ void Presentation::autoAdvance() {
     _leModele->avanceAuto();  // Fait avancer le modèle automatiquement
 }
 
-void Presentation::demanderDepartArretAuto()
-{
-    _leModele->departArretAuto();
-    qDebug() << "Le défilement d'image se met en pause / avance en mode auto";
-}
+
 
 void Presentation::demanderChangerVitesse()
 {
@@ -99,10 +98,12 @@ void Presentation::demanderChangerVitesse()
 
 void Presentation::demanderChangerModeAutomatique()
 {
-    qDebug() << "Avant changement mode auto";
+
     _leModele->setEtat(Modele::automatique);
-    timer->start(2000);
-    connect(timer, &QTimer::timeout, _leModele, &Modele::avanceAuto);
+
+    timer->start(1000);
+
+
 
     qDebug() << "Le mode change en automatique";
 }

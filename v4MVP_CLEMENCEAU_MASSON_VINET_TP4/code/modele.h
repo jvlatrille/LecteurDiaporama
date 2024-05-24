@@ -23,7 +23,7 @@ private:
     ImagesDiaporama images;
     Lecteur * lecteur;
     void triCroissantRang();
-    QTimer timer;
+    QTimer* timer;
 
 public:
     Modele();
@@ -45,7 +45,7 @@ public:
     void avancer();
     void reculer();
     void avanceAuto();
-    void departArretAuto();
+
     void changerVitesse();
     void etatAutomatique();
     void etatManuel();

@@ -163,12 +163,9 @@ void Modele::avanceAuto() {
 void Modele::etatAutomatique()
 {
     setEtat(automatique);
+    qDebug() << "Avant boucle";
     while(_etat == automatique){
-            timer.start(2000);
-            avancer();
-            //if()
-
-
+        avancer();
         qDebug() << "Mode automatique activé";
     }
 
@@ -203,10 +200,6 @@ void Modele::triCroissantRang()
     }
 }
 
-
-void Modele::departArretAuto() {
-    // Implémentation du départ/arrêt automatique
-}
 
 void Modele::changerVitesse() {
     // Implémentation du changement de vitesse

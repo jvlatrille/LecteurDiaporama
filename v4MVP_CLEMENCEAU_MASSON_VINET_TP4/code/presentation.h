@@ -29,7 +29,6 @@ public:
     void demanderAvancer();
     void demanderReculer();
     void autoAdvance();
-    void demanderDepartArretAuto();
     void demanderChangerVitesse();
     void demanderChangerModeAutomatique();
     void demanderChangerModeManuel();

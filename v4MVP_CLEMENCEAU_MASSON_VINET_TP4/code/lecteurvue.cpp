@@ -12,7 +12,7 @@ lecteurVue::lecteurVue(QWidget *parent)
     // Connexions pour les boutons
     QObject::connect(ui->bSuivant, SIGNAL(clicked()), this, SLOT(demanderAvancer()));
     QObject::connect(ui->bPrecedent, SIGNAL(clicked()), this, SLOT(demanderReculer()));
-    QObject::connect(ui->bPause, SIGNAL(clicked()), this, SLOT(demanderDepartArretAuto()));
+
     QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(quitterApplication()));
 
 
@@ -25,8 +25,7 @@ lecteurVue::lecteurVue(QWidget *parent)
     QObject::connect(ui->actionAPropos, SIGNAL(triggered()), this, SLOT(demanderAPropos()));
 
     // navigation entre les bouton avec tab
-    QWidget::setTabOrder(ui->bPrecedent, ui->bPause);
-    QWidget::setTabOrder(ui->bPause, ui->bSuivant);
+    QWidget::setTabOrder(ui->bPrecedent, ui->bSuivant);
 }
 
 
@@ -73,10 +72,6 @@ void lecteurVue::demanderReculer(){
     m_MaPresentation->demanderReculer();
 }
 
-void lecteurVue::demanderDepartArretAuto(){
-    qDebug() << "Demande à arrêter / démarer diapo (en fonction de l'etat)";
-    m_MaPresentation->demanderDepartArretAuto();
-}
 
 void lecteurVue::demanderChangerVitesse(){
     qDebug() << "Demande à changer la vitesse";
