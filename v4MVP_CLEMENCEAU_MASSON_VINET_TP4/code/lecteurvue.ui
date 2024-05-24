@@ -89,6 +89,20 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="bLancerDiapo">
+          <property name="text">
+           <string>Lancer diaporama</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="bArret">
+          <property name="text">
+           <string>Arrêter diaporama</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="horizontalSpacer_2">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -147,16 +161,8 @@
     </property>
     <addaction name="actionAPropos"/>
    </widget>
-   <widget class="QMenu" name="menuMode">
-    <property name="title">
-     <string>Mode</string>
-    </property>
-    <addaction name="actionAutomatique"/>
-    <addaction name="actionManuel"/>
-   </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuParam_tres"/>
-   <addaction name="menuMode"/>
    <addaction name="menuAide"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

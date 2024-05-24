@@ -19,6 +19,15 @@ lecteurVue::lecteurVue(QWidget *parent)
         this->m_MaPresentation->demanderChangerModeManuel();
     });
 
+    QObject::connect(ui->bLancerDiapo, &QPushButton::clicked, this, [this](){
+        this->demanderChangerModeAutomatique();
+    });
+
+    QObject::connect(ui->bArret, &QPushButton::clicked,this,[this](){
+        this->demanderChangerModeManuel();
+    });
+
+
     QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(quitterApplication()));
 
 
@@ -26,8 +35,7 @@ lecteurVue::lecteurVue(QWidget *parent)
     QObject::connect(ui->actionChargerDiapo, SIGNAL(triggered()), this, SLOT(demanderChargerDiapo()));
     QObject::connect(ui->actionEnleverDiapo, SIGNAL(triggered()), this, SLOT(demanderEnleverDiapo()));
     QObject::connect(ui->actionVitesseDefilement, SIGNAL(triggered()), this, SLOT(demanderChangerVitesse()));
-    QObject::connect(ui->actionAutomatique, SIGNAL(triggered()), this, SLOT(demanderChangerModeAutomatique()));
-    QObject::connect(ui->actionManuel, SIGNAL(triggered()), this, SLOT(demanderChangerModeManuel()));
+
     QObject::connect(ui->actionAPropos, SIGNAL(triggered()), this, SLOT(demanderAPropos()));
 
     // navigation entre les bouton avec tab

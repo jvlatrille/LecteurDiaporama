@@ -112,7 +112,7 @@ void Diaporama::charger()
     case 1 : // diaporama de Pantxika
         imageACharger = new ImageDansDiaporama(3, "personnage", "Pinnochio", ":/images/cartesDisney/Disney_29.gif");
         ajouterImageEnFin(imageACharger);
-        imageACharger = new ImageDansDiaporama(2, "Blanche Neige", ":/images/cartesDisney/Disney_4.gif");
+        imageACharger = new ImageDansDiaporama(2, "personnage", "Blanche Neige", ":/images/cartesDisney/Disney_4.gif");
         ajouterImageEnFin(imageACharger);
         imageACharger = new ImageDansDiaporama(4, "personnage", "Alice", ":/images/cartesDisney/Disney_2.gif");
         ajouterImageEnFin(imageACharger);

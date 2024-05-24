@@ -5,6 +5,7 @@
 #include "modele.h"
 #include "lecteurVue.h"
 #include <QTimer>
+#include <QDebug>
 
 class Presentation : public QObject
 {
@@ -35,6 +36,7 @@ public:
     void demanderChargerDiapo();
     void demanderEnleverDiapo();
     void demanderAPropos();
+    void avancerBouble();
 
     /*
 signals:

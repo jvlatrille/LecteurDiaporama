@@ -6,7 +6,7 @@ Presentation::Presentation()
     _laVue = nullptr;
 
     timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &Presentation::demanderAvancer);
+    connect(timer, &QTimer::timeout, this, &Presentation::avancerBouble);
 }
 
 Presentation::~Presentation() {
@@ -52,8 +52,14 @@ void Presentation::demanderAvancer() {
         qDebug() << "_laVue est nul";
         return;
     }
+    if(getModele()->getEtat() == Modele::automatique)
+    {
+        demanderChangerModeManuel();
+    }
+    else{
+        _leModele->avancer();
+    }
 
-    _leModele->avancer();
 
     Diaporama *diapo = _leModele->getLecteur()->getDiaporama();
     if (!diapo) {
@@ -72,8 +78,14 @@ void Presentation::demanderReculer() {
         qDebug() << "_laVue est nul";
         return;
     }
+    if(getModele()->getEtat() == Modele::automatique)
+    {
+        demanderChangerModeManuel();
+    }
+    else{
+        _leModele->reculer();
+    }
 
-    _leModele->reculer();
 
     Diaporama *diapo = _leModele->getLecteur()->getDiaporama();
     if (!diapo) {
@@ -132,4 +144,9 @@ void Presentation::demanderAPropos()
     qDebug() << "Demande à afficher la fenêtre a propos de l'application";
     _leModele->aPropos();
 
+}
+
+void Presentation::avancerBouble()
+{
+    _leModele->avancer();
 }
