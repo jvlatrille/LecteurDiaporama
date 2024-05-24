@@ -51,14 +51,14 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Version : V4 MVP</string>
+        <string>Version : V5 MVP</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Date de création : 14 mai 2024</string>
+        <string>Date de création : 24 mai 2024</string>
        </property>
       </widget>
      </item>
