@@ -1,0 +1,2 @@
+Présentation de la version 3 MVP : 
+Cette version à pour but de charger les images en dur, ainsi que de pouvoir quitter l'application via la action Quitter dans le menu fichier dans l'onglet supérieur.
