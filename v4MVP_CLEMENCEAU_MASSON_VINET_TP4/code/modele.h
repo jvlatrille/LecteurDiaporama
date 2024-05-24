@@ -5,6 +5,7 @@
 #include <vector>
 #include "diaporama.h"
 #include "lecteur.h"
+#include <QTimer>
 
 class ImageDansDiaporama;
 typedef std::vector<ImageDansDiaporama*> ImagesDiaporama;
@@ -22,6 +23,7 @@ private:
     ImagesDiaporama images;
     Lecteur * lecteur;
     void triCroissantRang();
+    QTimer timer;
 
 public:
     Modele();
@@ -33,6 +35,7 @@ public:
     unsigned int nbImages() const;
 
     UnEtat getEtat() const;
+    void setEtat(UnEtat e);
     Diaporama* getDiaporama() const;
 
     void setVitesseDefilement(unsigned int);
@@ -41,6 +44,7 @@ public:
 
     void avancer();
     void reculer();
+    void avanceAuto();
     void departArretAuto();
     void changerVitesse();
     void etatAutomatique();
@@ -50,6 +54,7 @@ public:
     void aPropos();
     Lecteur *  getLecteur() const;
     void setLecteur(Lecteur * newLecteur);
+
 
 signals:
     void imageChange(const QString &titreDiapo, const QString &titreImage, const QString &categorie, const QString &rang, const QString &chemin);

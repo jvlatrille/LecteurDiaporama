@@ -2,13 +2,11 @@
 
 Presentation::Presentation()
 {
-    timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &Presentation::autoAdvance);
-    timer->setInterval(2000);
+    _leModele = nullptr;
+    _laVue = nullptr;
 }
 
 Presentation::~Presentation() {
-    delete timer;
 }
 
 Modele *Presentation::getModele()
@@ -82,6 +80,9 @@ void Presentation::demanderReculer() {
     qDebug() << "L'image recule";
 }
 
+void Presentation::autoAdvance() {
+    _leModele->avanceAuto();  // Fait avancer le modèle automatiquement
+}
 
 void Presentation::demanderDepartArretAuto()
 {
@@ -98,16 +99,19 @@ void Presentation::demanderChangerVitesse()
 
 void Presentation::demanderChangerModeAutomatique()
 {
-    _leModele->etatAutomatique();
-    timer->start();
+    qDebug() << "Avant changement mode auto";
+    _leModele->setEtat(Modele::automatique);
+    timer->start(2000);
+    connect(timer, &QTimer::timeout, _leModele, &Modele::avanceAuto);
+
     qDebug() << "Le mode change en automatique";
 }
 
 void Presentation::demanderChangerModeManuel()
 {
-    _leModele->etatManuel();
-    timer->stop();
-    qDebug() << "Le mode change en manuel";
+    _leModele->setEtat(Modele::manuel);
+    timer->stop();  // Arrêter le timer lorsque le mode est changé en manuel.
+    disconnect(timer, &QTimer::timeout, _leModele, &Modele::avanceAuto);
 }
 
 void Presentation::demanderChargerDiapo()

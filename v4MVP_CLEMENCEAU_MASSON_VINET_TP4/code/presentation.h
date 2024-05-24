@@ -6,7 +6,6 @@
 #include "lecteurVue.h"
 #include <QTimer>
 
-
 class Presentation : public QObject
 {
     Q_OBJECT
@@ -29,6 +28,7 @@ public:
 
     void demanderAvancer();
     void demanderReculer();
+    void autoAdvance();
     void demanderDepartArretAuto();
     void demanderChangerVitesse();
     void demanderChangerModeAutomatique();
@@ -36,9 +36,6 @@ public:
     void demanderChargerDiapo();
     void demanderEnleverDiapo();
     void demanderAPropos();
-
-private slots:
-    void autoAdvance();
 
     /*
 signals:

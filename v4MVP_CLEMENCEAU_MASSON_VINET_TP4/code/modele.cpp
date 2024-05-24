@@ -65,8 +65,16 @@ void Modele::setDiaporama(Diaporama *diaporama)
         m_MonDiapo = diaporama;
 }
 
+Modele::UnEtat Modele::getEtat() const {
+    return _etat;
+}
+
+void Modele::setEtat(UnEtat e)
+{
+    _etat = e;
+}
+
 void Modele::avancer() {
-    if (_etat != automatique) {
         qDebug() << "Modele::avance";
         lecteur->avancer();
         qDebug() << "le lecteur à avancé";
@@ -90,16 +98,13 @@ void Modele::avancer() {
                          QString::fromStdString(imageCourante->getChemin()));
 
         qDebug() << "Signaux à jour envoyés";
-    }
-    _etat = UnEtat::manuel;
+
 }
-
-
 
 
 void Modele::reculer()
 {
-    if (_etat != automatique) {
+
         qDebug() << "Modele::recule";
         lecteur->reculer();
         qDebug() << "le lecteur à reculé";
@@ -123,16 +128,51 @@ void Modele::reculer()
                          QString::fromStdString(imageCourante->getChemin()));
 
         qDebug() << "Signaux à jour envoyés";
+
+
+}
+
+void Modele::avanceAuto() {
+    if (_etat != automatique) {
+        qDebug() << "Tentative d'avance automatique alors que le mode n'est pas automatique.";
+        return;  // Assure que l'avance automatique ne fonctionne que si l'état est correct.
     }
-    _etat = UnEtat::manuel;
+
+    if (lecteur && lecteur->getDiaporama()) {
+        lecteur->avancer();  // Avance à l'image suivante dans le diaporama.
+
+        ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
+        if (imageCourante) {
+            emit imageChange(
+                QString::fromStdString(lecteur->getDiaporama()->getTitre()),
+                QString::fromStdString(imageCourante->getTitre()),
+                QString::fromStdString(imageCourante->getCategorie()),
+                QString::number(imageCourante->getRangDansDiaporama()),
+                QString::fromStdString(imageCourante->getChemin())
+            );
+        } else {
+            qDebug() << "Aucune image courante disponible après avance.";
+        }
+    } else {
+        qDebug() << "Lecteur ou diaporama nul, avance automatique non possible.";
+    }
 }
 
 
 
 void Modele::etatAutomatique()
 {
-    _etat = UnEtat::automatique;
-    qDebug() << "Mode automatique activé";
+    setEtat(automatique);
+    while(_etat == automatique){
+            timer.start(2000);
+            avancer();
+            //if()
+
+
+        qDebug() << "Mode automatique activé";
+    }
+
+
 }
 
 void Modele::etatManuel()
@@ -163,9 +203,6 @@ void Modele::triCroissantRang()
     }
 }
 
-Modele::UnEtat Modele::getEtat() const {
-    return _etat;
-}
 
 void Modele::departArretAuto() {
     // Implémentation du départ/arrêt automatique
