@@ -10,8 +10,14 @@ lecteurVue::lecteurVue(QWidget *parent)
     ui->setupUi(this);
 
     // Connexions pour les boutons
-    QObject::connect(ui->bSuivant, SIGNAL(clicked()), this, SLOT(demanderAvancer()));
-    QObject::connect(ui->bPrecedent, SIGNAL(clicked()), this, SLOT(demanderReculer()));
+    QObject::connect(ui->bSuivant, &QPushButton::clicked, this, [this]() {
+        this->demanderAvancer();
+        this->m_MaPresentation->demanderChangerModeManuel();
+    });
+    QObject::connect(ui->bPrecedent, &QPushButton::clicked, this, [this]() {
+        this->demanderReculer();
+        this->m_MaPresentation->demanderChangerModeManuel();
+    });
 
     QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(quitterApplication()));
 
@@ -64,6 +70,7 @@ void lecteurVue::setPresentation(Presentation * p)
 
 void lecteurVue::demanderAvancer(){
     qDebug() << "Demande d'avancer";
+
     m_MaPresentation->demanderAvancer();
 }
 

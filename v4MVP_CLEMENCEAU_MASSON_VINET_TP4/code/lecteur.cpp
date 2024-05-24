@@ -151,6 +151,7 @@ void Lecteur::avancer() {
         }
     }
     qDebug() << "Position actuelle après avancer: " << posImageCourante;
+
 }
 
 

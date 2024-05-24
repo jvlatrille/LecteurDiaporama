@@ -56,6 +56,10 @@ public:
     void setLecteur(Lecteur * newLecteur);
 
 
+    void avancerAuto();
+    void reculerAuto();
+
+
 signals:
     void imageChange(const QString &titreDiapo, const QString &titreImage, const QString &categorie, const QString &rang, const QString &chemin);
 
