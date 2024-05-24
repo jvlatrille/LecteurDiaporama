@@ -1,2 +1,0 @@
-Présentation de la version 4 MVP : 
-Cette version à pour but de mettre place le mode Automatique.
