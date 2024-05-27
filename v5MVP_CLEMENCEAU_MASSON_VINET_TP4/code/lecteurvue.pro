@@ -16,7 +16,8 @@ SOURCES += \
     lecteurvue.cpp \
     main.cpp \
     modele.cpp \
-    presentation.cpp
+    presentation.cpp \
+    vit.cpp
 
 HEADERS += \
     apropos.h \
@@ -25,12 +26,14 @@ HEADERS += \
     lecteur.h \
     lecteurvue.h \
     modele.h \
-    presentation.h
+    presentation.h \
+    vit.h
 
 FORMS += \
     apropos.ui \
     lecteurvue.ui \
-    lecteurvue.ui
+    lecteurvue.ui \
+    vit.ui
 
 RESOURCES += \
     ressources.qrc
