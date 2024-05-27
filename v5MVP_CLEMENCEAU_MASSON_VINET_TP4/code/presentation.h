@@ -14,6 +14,7 @@ private:
     Modele* _leModele;
     lecteurVue* _laVue;
     QTimer* timer;
+    int intervalleTimer = 1000;
 
 public:
     Presentation();
@@ -37,6 +38,7 @@ public:
     void demanderEnleverDiapo();
     void demanderAPropos();
     void avancerBouble();
+    void ajusterVitesseDiaporama(int vitesse);
 
     /*
 signals:

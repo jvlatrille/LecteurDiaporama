@@ -210,12 +210,16 @@ void Modele::triCroissantRang()
 
 
 void Modele::changerVitesse() {
-    QDialog* vitDialog = new QDialog();
+    QDialog vitDialog;
     Ui::vit vitUi;
-    vitUi.setupUi(vitDialog);
-    vitDialog->exec();
-    delete vitDialog;
+    vitUi.setupUi(&vitDialog);
+    if (vitDialog.exec() == QDialog::Accepted) {
+        int vitesse = vitUi.sVit->value();
+        emit vitesseChangee(vitesse);
+        qDebug() << "La nouvelle vitesse est :" << vitesse;
+    }
 }
+
 
 void Modele::chargerDiapo() {
     // Implémentation du chargement de diaporama

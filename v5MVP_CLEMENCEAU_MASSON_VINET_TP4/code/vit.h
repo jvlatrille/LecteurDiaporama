@@ -2,6 +2,7 @@
 #define VIT_H
 
 #include <QDialog>
+#include <QDebug>  // Assurez-vous d'inclure ceci pour utiliser qDebug()
 
 namespace Ui {
 class vit;
@@ -16,6 +17,9 @@ public:
     ~vit();
     void setSpine(int);
     int valueSpine();
+
+public slots:
+    void handleButtonBoxAccepted();
 
 private:
     Ui::vit *ui;

@@ -108,17 +108,28 @@ void Presentation::demanderChangerVitesse()
     qDebug() << "La fenêtre pour changer la vitesse apparait";
 }
 
+#include "Presentation.h"
+
 void Presentation::demanderChangerModeAutomatique()
 {
-
     _leModele->setEtat(Modele::automatique);
-
-    timer->start(1000);
-
-
-
+    connect(_leModele, SIGNAL(vitesseChangee(int)), this, SLOT(ajusterVitesseDiaporama(int)), Qt::UniqueConnection);
+    timer->start(intervalleTimer);  // Utiliser la variable d'intervalle
     qDebug() << "Le mode change en automatique";
 }
+
+void Presentation::ajusterVitesseDiaporama(int vitesse)
+{
+    if (vitesse <= 0) {
+        qDebug() << "Valeur de vitesse non valide, réglée à 1 par défaut";
+        vitesse = 1; // Pour éviter la division par zéro ou un intervalle trop long
+    }
+    intervalleTimer = 1000 / vitesse;  // Ajuster la variable d'intervalle
+    timer->start(intervalleTimer);  // Mettre à jour l'intervalle du timer
+    qDebug() << "Vitesse du diaporama ajustée à un intervalle de" << intervalleTimer << "millisecondes";
+}
+
+
 
 void Presentation::demanderChangerModeManuel()
 {

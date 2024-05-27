@@ -62,6 +62,7 @@ public:
 
 signals:
     void imageChange(const QString &titreDiapo, const QString &titreImage, const QString &categorie, const QString &rang, const QString &chemin);
+    void vitesseChangee(int vitesse);
 
 private :
     UnEtat _etat;
