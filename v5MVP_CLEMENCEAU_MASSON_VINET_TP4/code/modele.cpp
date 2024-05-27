@@ -1,6 +1,7 @@
 #include "modele.h"
 #include <QDialog>
 #include "ui_apropos.h"
+#include "ui_vit.h"
 
 
 Modele::Modele()
@@ -209,7 +210,11 @@ void Modele::triCroissantRang()
 
 
 void Modele::changerVitesse() {
-    // Implémentation du changement de vitesse
+    QDialog* vitDialog = new QDialog();
+    Ui::vit vitUi;
+    vitUi.setupUi(vitDialog);
+    vitDialog->exec();
+    delete vitDialog;
 }
 
 void Modele::chargerDiapo() {
