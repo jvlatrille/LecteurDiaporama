@@ -112,21 +112,29 @@ void Presentation::demanderChangerModeAutomatique()
 {
     _leModele->setEtat(Modele::automatique);
     connect(_leModele, SIGNAL(vitesseChangee(int)), this, SLOT(ajusterVitesseDiaporama(int)), Qt::UniqueConnection);
-    timer->start(getVitesse());  // Utiliser la variable d'intervalle
+
+    // Utiliser correctement la vitesse du Modele
+    int vitesseActuelle = _leModele->getVitesseDefilement();
+    ajusterVitesseDiaporama(vitesseActuelle);
     qDebug() << "Le mode change en automatique";
 }
 
 void Presentation::ajusterVitesseDiaporama(int vitesse) {
     if (vitesse <= 0) {
         qDebug() << "Valeur de vitesse non valide, réglée à 1 par défaut";
-        vitesse = 1; // Pour éviter la division par zéro ou un intervalle trop long
+        vitesse = 1; // Pour éviter la division par zéro ou un intervalle trop court
     }
-    intervalleTimer = 1000 / vitesse;
+
+    // Transformer la vitesse en intervalle adapté pour le timer
+    intervalleTimer = 5000 / vitesse;
+    if (intervalleTimer < 100) {
+        intervalleTimer = 100;  // Garantir un minimum pour éviter le clignotement ou le crash
+    }
+
+    timer->start(intervalleTimer);
     qDebug() << "Vitesse du diaporama ajustée à un intervalle de" << intervalleTimer << "millisecondes";
-    if (_leModele->getEtat() == Modele::automatique) {
-        timer->start(intervalleTimer);
-    }
 }
+
 
 
 int Presentation::getVitesse(){

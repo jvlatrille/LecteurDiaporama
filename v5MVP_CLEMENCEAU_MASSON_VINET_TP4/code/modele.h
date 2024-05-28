@@ -25,6 +25,7 @@ private:
     void triCroissantRang();
     QTimer* timer;
 
+
 public:
     Modele();
 
