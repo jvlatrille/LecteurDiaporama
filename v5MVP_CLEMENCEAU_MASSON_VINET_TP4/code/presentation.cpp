@@ -116,15 +116,18 @@ void Presentation::demanderChangerModeAutomatique()
     qDebug() << "Le mode change en automatique";
 }
 
-void Presentation::ajusterVitesseDiaporama(int vitesse)
-{
+void Presentation::ajusterVitesseDiaporama(int vitesse) {
     if (vitesse <= 0) {
         qDebug() << "Valeur de vitesse non valide, réglée à 1 par défaut";
         vitesse = 1; // Pour éviter la division par zéro ou un intervalle trop long
     }
     intervalleTimer = 1000 / vitesse;
     qDebug() << "Vitesse du diaporama ajustée à un intervalle de" << intervalleTimer << "millisecondes";
+    if (_leModele->getEtat() == Modele::automatique) {
+        timer->start(intervalleTimer);
+    }
 }
+
 
 int Presentation::getVitesse(){
     return intervalleTimer;

@@ -61,12 +61,15 @@ void Modele::changerVitesse() {
     Ui::vit vitUi;
     vitUi.setupUi(&vitDialog);
     if (vitDialog.exec() == QDialog::Accepted) {
-        int vitesseJsp = vitUi.sVit->value();
-        m_vitesseDefilement = m_vitesseDefilement * vitesseJsp;
-        emit vitesseChangee(m_vitesseDefilement);
-        qDebug() << "La nouvelle vitesse est :" << m_vitesseDefilement ;
+        int nouvelleVitesse = vitUi.sVit->value();
+        setVitesseDefilement(nouvelleVitesse);
+        emit vitesseChangee(nouvelleVitesse);
+        qDebug() << "La nouvelle vitesse est :" << nouvelleVitesse;
+        etatManuel();
+        etatAutomatique();
     }
 }
+
 
 void Modele::setPosImageCourante(unsigned int pPosImageCourante)
 {
