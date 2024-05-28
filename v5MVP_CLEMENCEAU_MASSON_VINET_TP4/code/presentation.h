@@ -27,6 +27,7 @@ public:
 
     ImageDansDiaporama* getImageActuelle();
     Diaporama * getDiapoActuel();
+    int getVitesse();
 
     void demanderAvancer();
     void demanderReculer();

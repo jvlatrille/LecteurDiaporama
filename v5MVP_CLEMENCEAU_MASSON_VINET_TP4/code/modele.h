@@ -15,7 +15,7 @@ class Modele : public QObject
 
 private:
     string m_titre;
-    unsigned int m_vitesseDefilement;
+    unsigned int m_vitesseDefilement = 1000;
     bool lecteurVide() const;
     unsigned int m_posImageCourante;
     vector <ImageDansDiaporama> m_localisationImages;
@@ -33,6 +33,7 @@ public:
     unsigned int getVitesseDefilement() const;
     unsigned int getPosImageCourante() const;
     unsigned int nbImages() const;
+    int* vitesse;
 
     UnEtat getEtat() const;
     void setEtat(UnEtat e);

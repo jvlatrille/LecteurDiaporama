@@ -56,6 +56,18 @@ void Modele::setVitesseDefilement(unsigned int vitesse)
     m_vitesseDefilement = vitesse;
 }
 
+void Modele::changerVitesse() {
+    QDialog vitDialog;
+    Ui::vit vitUi;
+    vitUi.setupUi(&vitDialog);
+    if (vitDialog.exec() == QDialog::Accepted) {
+        int vitesseJsp = vitUi.sVit->value();
+        m_vitesseDefilement = m_vitesseDefilement * vitesseJsp;
+        emit vitesseChangee(m_vitesseDefilement);
+        qDebug() << "La nouvelle vitesse est :" << m_vitesseDefilement ;
+    }
+}
+
 void Modele::setPosImageCourante(unsigned int pPosImageCourante)
 {
     m_posImageCourante = pPosImageCourante;
@@ -205,18 +217,6 @@ void Modele::triCroissantRang()
                 images[i+1] = pteurImage;
             }
         }
-    }
-}
-
-
-void Modele::changerVitesse() {
-    QDialog vitDialog;
-    Ui::vit vitUi;
-    vitUi.setupUi(&vitDialog);
-    if (vitDialog.exec() == QDialog::Accepted) {
-        int vitesse = vitUi.sVit->value();
-        emit vitesseChangee(vitesse);
-        qDebug() << "La nouvelle vitesse est :" << vitesse;
     }
 }
 
