@@ -11,6 +11,8 @@ lecteurVue::lecteurVue(QWidget *parent)
 {
     ui->setupUi(this);
 
+     setWindowTitle("S2.01 - Lecteur de diaporama");
+
     // Connexions pour les boutons
     QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(quitterApplication()));
 
