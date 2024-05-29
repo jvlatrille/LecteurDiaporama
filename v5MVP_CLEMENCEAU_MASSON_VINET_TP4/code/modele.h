@@ -26,7 +26,6 @@ private:
     void triCroissantRang();
     QTimer* timer;
 
-// TROUVER DEMANDER CHANGER VITESSE MODELE AVEC PARAM vit fnenetreV
 public:
     Modele();
 
@@ -49,7 +48,7 @@ public:
     void reculer();
     void avanceAuto();
 
-    void changerVitesse();
+    void changerVitesse(vit*);
     void etatAutomatique();
     void etatManuel();
     void chargerDiapo();

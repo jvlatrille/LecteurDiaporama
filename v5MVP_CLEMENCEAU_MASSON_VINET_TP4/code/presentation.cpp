@@ -101,9 +101,9 @@ void Presentation::autoAdvance() {
 
 
 
-void Presentation::demanderChangerVitesse()
+void Presentation::demanderChangerVitesse(vit* v)
 {
-    _leModele->changerVitesse();
+    _leModele->changerVitesse(v);
     qDebug() << "La fenêtre pour changer la vitesse apparait";
 }
 

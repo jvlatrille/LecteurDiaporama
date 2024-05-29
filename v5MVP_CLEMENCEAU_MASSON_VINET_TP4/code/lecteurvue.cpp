@@ -1,6 +1,7 @@
 #include "ui_lecteurvue.h"
 #include "presentation.h"
 #include "apropos.h"
+#include "vit.h"
 #include <QImage>
 
 lecteurVue::lecteurVue(QWidget *parent)
@@ -85,7 +86,8 @@ void lecteurVue::demanderChangerVitesse(){
     if(reponse == 1){
     delete fenetreV;
     qDebug() << "On affiche la fenêtre vitesse";
-    getPresentation()->demanderChangerVitesse(vit* fenetreV);}
+    getPresentation()->demanderChangerVitesse(fenetreV);
+    }
 }
 
 void lecteurVue::demanderChangerModeAutomatique(){

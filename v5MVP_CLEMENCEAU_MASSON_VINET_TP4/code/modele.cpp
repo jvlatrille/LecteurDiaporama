@@ -57,8 +57,8 @@ void Modele::setVitesseDefilement(unsigned int vitesse)
     m_vitesseDefilement = vitesse;
 }
 
-void Modele::changerVitesse() {
-    int nouvelleVitesse = vit->fenetreV->ui->sVit->value();
+void Modele::changerVitesse(vit* fenetreV) {
+    int nouvelleVitesse = fenetreV->ui->sVit->value();
     setVitesseDefilement(nouvelleVitesse);
     emit vitesseChangee(nouvelleVitesse);
     qDebug() << "La nouvelle vitesse est :" << nouvelleVitesse;

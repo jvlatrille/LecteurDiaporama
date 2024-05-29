@@ -4,6 +4,7 @@
 #include <QObject>
 #include "modele.h"
 #include "lecteurVue.h"
+#include "vit.h"
 #include <QTimer>
 #include <QDebug>
 
@@ -32,7 +33,7 @@ public:
     void demanderAvancer();
     void demanderReculer();
     void autoAdvance();
-    void demanderChangerVitesse();
+    void demanderChangerVitesse(vit* v);
     void demanderChangerModeAutomatique();
     void demanderChangerModeManuel();
     void demanderChargerDiapo();
