@@ -17,12 +17,11 @@ public:
     ~vit();
     void setSpine(int);
     int valueSpine();
+    Ui::vit *ui;
 
 public slots:
     void handleButtonBoxAccepted();
 
-private:
-    Ui::vit *ui;
 };
 
 #endif // VIT_H

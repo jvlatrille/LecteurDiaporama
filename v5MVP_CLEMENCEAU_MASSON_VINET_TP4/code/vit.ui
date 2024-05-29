@@ -36,7 +36,7 @@
    <item>
     <widget class="QLabel" name="lVit">
      <property name="text">
-      <string>choisit la nouvelle vitesse de défilment</string>
+      <string>Choisir la nouvelle vitesse de défilment</string>
      </property>
     </widget>
    </item>

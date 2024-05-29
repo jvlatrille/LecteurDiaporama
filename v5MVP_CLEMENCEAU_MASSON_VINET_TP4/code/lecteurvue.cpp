@@ -1,7 +1,7 @@
 #include "ui_lecteurvue.h"
 #include "presentation.h"
-#include "ui_apropos.h"
-#include "ui_vit.h"
+#include "vit.h"
+#include "apropos.h"
 #include <QImage>
 
 lecteurVue::lecteurVue(QWidget *parent)
@@ -12,25 +12,6 @@ lecteurVue::lecteurVue(QWidget *parent)
     ui->setupUi(this);
 
     // Connexions pour les boutons
-    /* C'est quoi cette merde ?
-    QObject::connect(ui->bSuivant, &QPushButton::clicked, this, [this]() {
-        this->demanderAvancer();
-        this->m_MaPresentation->demanderChangerModeManuel();
-    });
-    QObject::connect(ui->bPrecedent, &QPushButton::clicked, this, [this]() {
-        this->demanderReculer();
-        this->m_MaPresentation->demanderChangerModeManuel();
-    });
-
-    QObject::connect(ui->bLancerDiapo, &QPushButton::clicked, this, [this](){
-        this->demanderChangerModeAutomatique();
-    });
-
-    QObject::connect(ui->bArret, &QPushButton::clicked,this,[this](){
-        this->demanderChangerModeManuel();
-    });
-
-*/
     QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(quitterApplication()));
 
 
@@ -99,12 +80,10 @@ void lecteurVue::demanderReculer(){
 
 void lecteurVue::demanderChangerVitesse(){
     qDebug() << "Demande à changer la vitesse";
-    /*QDialog* vitDialog = new QDialog();
-    Ui::vit vitUi;
-    vitUi.setupUi(vitDialog);
-    vitDialog->exec();
-    delete vitDialog;
-    qDebug() << "On affiche la fenêtre vitesse";*/
+    vit* fenetreV = new vit();
+    fenetreV->exec();
+    delete fenetreV;
+    qDebug() << "On affiche la fenêtre vitesse";
     getPresentation()->demanderChangerVitesse();
 }
 
@@ -134,11 +113,10 @@ void lecteurVue::quitterApplication() {
 
 void lecteurVue::demanderAPropos(){
     qDebug() << "On affiche la fenêtre à propos";
-    QDialog* aproposDialog = new QDialog();
-    Ui::apropos aproposUi;
-    aproposUi.setupUi(aproposDialog);
-    aproposDialog->exec();
-    delete aproposDialog;
+    vit* fenetreAPropos = new vit();
+    fenetreAPropos->exec();
+    fenetreAPropos->exec();
+    delete fenetreAPropos;
 }
 
 
