@@ -99,12 +99,12 @@ void lecteurVue::demanderReculer(){
 
 void lecteurVue::demanderChangerVitesse(){
     qDebug() << "Demande à changer la vitesse";
-    QDialog* vitDialog = new QDialog();
+    /*QDialog* vitDialog = new QDialog();
     Ui::vit vitUi;
     vitUi.setupUi(vitDialog);
     vitDialog->exec();
     delete vitDialog;
-    qDebug() << "On affiche la fenêtre vitesse";
+    qDebug() << "On affiche la fenêtre vitesse";*/
     getPresentation()->demanderChangerVitesse();
 }
 

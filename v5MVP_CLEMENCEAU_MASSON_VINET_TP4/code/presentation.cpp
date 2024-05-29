@@ -126,9 +126,9 @@ void Presentation::ajusterVitesseDiaporama(int vitesse) {
     }
 
     // Transformer la vitesse en intervalle adapté pour le timer
-    intervalleTimer = 5000 / vitesse;
+    intervalleTimer = 1000 / vitesse;
     if (intervalleTimer < 100) {
-        intervalleTimer = 100;  // Garantir un minimum pour éviter le clignotement ou le crash
+        intervalleTimer = 1000;  // Garantir un minimum pour éviter le clignotement ou le crash
     }
 
     timer->start(intervalleTimer);
