@@ -1,6 +1,8 @@
 #include "modele.h"
+#include "ui_vit.h"
 #include "vit.h"
 #include <QDialog>
+
 
 
 Modele::Modele()
@@ -56,14 +58,11 @@ void Modele::setVitesseDefilement(unsigned int vitesse)
 }
 
 void Modele::changerVitesse() {
-    vit* fenetreV = new vit();
-    fenetreV->exec();
-    if (fenetreV->exec() == QDialog::Accepted) {
-        int nouvelleVitesse = fenetreV->ui->sVit->value();
-        setVitesseDefilement(nouvelleVitesse);
-        emit vitesseChangee(nouvelleVitesse);
-        qDebug() << "La nouvelle vitesse est :" << nouvelleVitesse;
-    }
+    int nouvelleVitesse = vit->fenetreV->ui->sVit->value();
+    setVitesseDefilement(nouvelleVitesse);
+    emit vitesseChangee(nouvelleVitesse);
+    qDebug() << "La nouvelle vitesse est :" << nouvelleVitesse;
+
 }
 
 

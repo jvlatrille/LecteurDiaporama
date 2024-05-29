@@ -1,6 +1,5 @@
 #include "ui_lecteurvue.h"
 #include "presentation.h"
-#include "vit.h"
 #include "apropos.h"
 #include <QImage>
 
@@ -81,10 +80,12 @@ void lecteurVue::demanderReculer(){
 void lecteurVue::demanderChangerVitesse(){
     qDebug() << "Demande à changer la vitesse";
     vit* fenetreV = new vit();
-    fenetreV->exec();
+    qDebug() << "Dans la vue*****";
+    reponse = fenetreV->exec();
+    if(reponse == 1){
     delete fenetreV;
     qDebug() << "On affiche la fenêtre vitesse";
-    getPresentation()->demanderChangerVitesse();
+    getPresentation()->demanderChangerVitesse(vit* fenetreV);}
 }
 
 void lecteurVue::demanderChangerModeAutomatique(){
@@ -114,7 +115,6 @@ void lecteurVue::quitterApplication() {
 void lecteurVue::demanderAPropos(){
     qDebug() << "On affiche la fenêtre à propos";
     vit* fenetreAPropos = new vit();
-    fenetreAPropos->exec();
     fenetreAPropos->exec();
     delete fenetreAPropos;
 }

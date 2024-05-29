@@ -5,6 +5,7 @@
 #include <vector>
 #include "diaporama.h"
 #include "lecteur.h"
+#include "vit.h"
 #include <QTimer>
 
 class ImageDansDiaporama;
@@ -25,7 +26,7 @@ private:
     void triCroissantRang();
     QTimer* timer;
 
-
+// TROUVER DEMANDER CHANGER VITESSE MODELE AVEC PARAM vit fnenetreV
 public:
     Modele();
 
