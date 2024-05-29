@@ -37,7 +37,6 @@ public:
     void demanderChangerModeManuel();
     void demanderChargerDiapo();
     void demanderEnleverDiapo();
-    void demanderAPropos();
     void avancerBouble();
     void ajusterVitesseDiaporama(int vitesse);
 

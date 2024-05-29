@@ -103,7 +103,6 @@ void Presentation::autoAdvance() {
 
 void Presentation::demanderChangerVitesse()
 {
-
     _leModele->changerVitesse();
     qDebug() << "La fenêtre pour changer la vitesse apparait";
 }
@@ -111,7 +110,8 @@ void Presentation::demanderChangerVitesse()
 void Presentation::demanderChangerModeAutomatique()
 {
     _leModele->setEtat(Modele::automatique);
-    connect(_leModele, SIGNAL(vitesseChangee(int)), this, SLOT(ajusterVitesseDiaporama(int)), Qt::UniqueConnection);
+    _laVue->majInterface(_leModele->getEtat());
+    //connect(_leModele, SIGNAL(vitesseChangee(int)), this, SLOT(ajusterVitesseDiaporama(int)), Qt::UniqueConnection);
 
     // Utiliser correctement la vitesse du Modele
     int vitesseActuelle = _leModele->getVitesseDefilement();
@@ -143,14 +143,18 @@ int Presentation::getVitesse(){
 
 void Presentation::demanderChangerModeManuel()
 {
-    _leModele->setEtat(Modele::manuel);
+    // Arreter le timer mode auto
     timer->stop();  // Arrêter le timer lorsque le mode est changé en manuel.
+
+    // Changer l'état & majI
+    _leModele->setEtat(Modele::manuel);
+    _laVue->majInterface(_leModele->getEtat());
     disconnect(timer, &QTimer::timeout, _leModele, &Modele::avanceAuto);
 }
 
 void Presentation::demanderChargerDiapo()
 {
-    _leModele->chargerDiapo();
+    _leModele->chargerDiapo(); // modele->changerEtat + vue->majinterface
     qDebug() << "On charges une nouvelle diapo";
 }
 
@@ -160,12 +164,6 @@ void Presentation::demanderEnleverDiapo()
     qDebug() << "On retire le diapo courant";
 }
 
-void Presentation::demanderAPropos()
-{
-    qDebug() << "Demande à afficher la fenêtre a propos de l'application";
-    _leModele->aPropos();
-
-}
 
 void Presentation::avancerBouble()
 {

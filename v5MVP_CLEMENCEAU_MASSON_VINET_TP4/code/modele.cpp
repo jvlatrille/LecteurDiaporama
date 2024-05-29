@@ -1,7 +1,6 @@
 #include "modele.h"
-#include <QDialog>
-#include "ui_apropos.h"
 #include "ui_vit.h"
+#include <QDialog>
 
 
 Modele::Modele()
@@ -65,8 +64,6 @@ void Modele::changerVitesse() {
         setVitesseDefilement(nouvelleVitesse);
         emit vitesseChangee(nouvelleVitesse);
         qDebug() << "La nouvelle vitesse est :" << nouvelleVitesse;
-        etatManuel();
-        etatAutomatique();
     }
 }
 
@@ -230,14 +227,6 @@ void Modele::chargerDiapo() {
 
 void Modele::enleverDiapo() {
     // Implémentation de l'enlèvement de diaporama
-}
-
-void Modele::aPropos() {
-    QDialog* aproposDialog = new QDialog();
-    Ui::apropos aproposUi;
-    aproposUi.setupUi(aproposDialog);
-    aproposDialog->exec();
-    delete aproposDialog;
 }
 
 

@@ -1,5 +1,7 @@
 #include "ui_lecteurvue.h"
 #include "presentation.h"
+#include "ui_apropos.h"
+#include "ui_vit.h"
 #include <QImage>
 
 lecteurVue::lecteurVue(QWidget *parent)
@@ -10,6 +12,7 @@ lecteurVue::lecteurVue(QWidget *parent)
     ui->setupUi(this);
 
     // Connexions pour les boutons
+    /* C'est quoi cette merde ?
     QObject::connect(ui->bSuivant, &QPushButton::clicked, this, [this]() {
         this->demanderAvancer();
         this->m_MaPresentation->demanderChangerModeManuel();
@@ -27,7 +30,7 @@ lecteurVue::lecteurVue(QWidget *parent)
         this->demanderChangerModeManuel();
     });
 
-
+*/
     QObject::connect(ui->actionQuitter, SIGNAL(triggered()), this, SLOT(quitterApplication()));
 
 
@@ -37,6 +40,12 @@ lecteurVue::lecteurVue(QWidget *parent)
     QObject::connect(ui->actionVitesseDefilement, SIGNAL(triggered()), this, SLOT(demanderChangerVitesse()));
 
     QObject::connect(ui->actionAPropos, SIGNAL(triggered()), this, SLOT(demanderAPropos()));
+
+
+    QObject::connect(ui->bSuivant, SIGNAL(clicked()), this, SLOT(demanderAvancer()));
+    QObject::connect(ui->bPrecedent, SIGNAL(clicked()), this, SLOT(demanderReculer()));
+    QObject::connect(ui->bLancerDiapo, SIGNAL(clicked()), this, SLOT(demanderChangerModeAutomatique()));
+    QObject::connect(ui->bArret,SIGNAL(clicked()),this,SLOT(demanderChangerModeManuel()));
 
     // navigation entre les bouton avec tab
     QWidget::setTabOrder(ui->bPrecedent, ui->bSuivant);
@@ -79,38 +88,44 @@ void lecteurVue::setPresentation(Presentation * p)
 void lecteurVue::demanderAvancer(){
     qDebug() << "Demande d'avancer";
 
-    m_MaPresentation->demanderAvancer();
+    getPresentation()->demanderAvancer();
 }
 
 void lecteurVue::demanderReculer(){
     qDebug() << "Demande à reculer";
-    m_MaPresentation->demanderReculer();
+    getPresentation()->demanderReculer();
 }
 
 
 void lecteurVue::demanderChangerVitesse(){
     qDebug() << "Demande à changer la vitesse";
-    m_MaPresentation->demanderChangerVitesse();
+    QDialog* vitDialog = new QDialog();
+    Ui::vit vitUi;
+    vitUi.setupUi(vitDialog);
+    vitDialog->exec();
+    delete vitDialog;
+    qDebug() << "On affiche la fenêtre vitesse";
+    getPresentation()->demanderChangerVitesse();
 }
 
 void lecteurVue::demanderChangerModeAutomatique(){
     qDebug() << "Demande à changer de mode en automatique";
-    m_MaPresentation->demanderChangerModeAutomatique();
+    getPresentation()->demanderChangerModeAutomatique();
 }
 
 void lecteurVue::demanderChangerModeManuel(){
     qDebug() << "Demande à changer de mode en Manuel";
-    m_MaPresentation->demanderChangerModeManuel();
+    getPresentation()->demanderChangerModeManuel();
 }
 
 void lecteurVue::demanderChargerDiapo(){
     qDebug() << "Demande à charger un nouveau diaporama";
-    m_MaPresentation->demanderChargerDiapo();
+    getPresentation()->demanderChargerDiapo();
 }
 
 void lecteurVue::demanderEnleverDiapo(){
     qDebug() << "Demande à enlever le diaporama courrant";
-    m_MaPresentation->demanderEnleverDiapo();
+    getPresentation()->demanderEnleverDiapo();
 }
 
 void lecteurVue::quitterApplication() {
@@ -119,14 +134,38 @@ void lecteurVue::quitterApplication() {
 
 void lecteurVue::demanderAPropos(){
     qDebug() << "On affiche la fenêtre à propos";
-    m_MaPresentation->demanderAPropos();
+    QDialog* aproposDialog = new QDialog();
+    Ui::apropos aproposUi;
+    aproposUi.setupUi(aproposDialog);
+    aproposDialog->exec();
+    delete aproposDialog;
 }
 
 
 void lecteurVue::initializeConnections() {
-    if (m_MaPresentation && m_MaPresentation->getModele()) {
+    if (getPresentation() && getPresentation()->getModele()) {
         bool connected = connect(m_MaPresentation->getModele(), &Modele::imageChange, this, &lecteurVue::majPresentation);
         qDebug() << "Connecté ? " << connected;
+    }
+}
+
+void lecteurVue::majInterface(Modele::UnEtat e)
+{
+    switch(e)
+    {
+        case Modele::manuel:
+            // Maj des boutons
+            ui->actionManuel->setEnabled(false);
+            ui->actionAutomatique->setEnabled(true);
+            ui->actionVitesseDefilement->setEnabled(true);
+            break;
+        case Modele::automatique:
+            // Maj des boutons
+            ui->actionAutomatique->setEnabled(false);
+            ui->actionManuel->setEnabled(true);
+            ui->actionVitesseDefilement->setEnabled(false);
+            break;
+
     }
 }
 

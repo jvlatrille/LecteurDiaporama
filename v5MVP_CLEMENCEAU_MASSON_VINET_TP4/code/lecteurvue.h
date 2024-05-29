@@ -27,6 +27,7 @@ public:
     Presentation * getPresentation() const;
     void setPresentation(Presentation *);
     void initializeConnections();
+    void majInterface(Modele::UnEtat);
 
 
 public slots:
