@@ -84,10 +84,10 @@ void lecteurVue::demanderChangerVitesse(){
     qDebug() << "Dans la vue*****";
     reponse = fenetreV->exec();
     if(reponse == 1){
-    delete fenetreV;
     qDebug() << "On affiche la fenêtre vitesse";
     getPresentation()->demanderChangerVitesse(fenetreV);
     }
+    delete fenetreV;
 }
 
 void lecteurVue::demanderChangerModeAutomatique(){
@@ -116,7 +116,7 @@ void lecteurVue::quitterApplication() {
 
 void lecteurVue::demanderAPropos(){
     qDebug() << "On affiche la fenêtre à propos";
-    vit* fenetreAPropos = new vit();
+    apropos* fenetreAPropos = new apropos();
     fenetreAPropos->exec();
     delete fenetreAPropos;
 }
