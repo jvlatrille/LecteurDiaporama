@@ -15,8 +15,6 @@ class vit : public QDialog
 public:
     explicit vit(QWidget *parent = nullptr);
     ~vit();
-    void setSpine(int);
-    int valueSpine();
     Ui::vit *ui;
 
 public slots:

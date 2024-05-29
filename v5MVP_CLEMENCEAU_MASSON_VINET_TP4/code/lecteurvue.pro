@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     apropos.cpp \
+    charger.cpp \
     diaporama.cpp \
     imagedansdiaporama.cpp \
     lecteur.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 
 HEADERS += \
     apropos.h \
+    charger.h \
     diaporama.h \
     imagedansdiaporama.h \
     lecteur.h \
@@ -31,6 +33,7 @@ HEADERS += \
 
 FORMS += \
     apropos.ui \
+    charger.ui \
     lecteurvue.ui \
     lecteurvue.ui \
     vit.ui

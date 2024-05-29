@@ -1,6 +1,19 @@
 #include "presentation.h"
 #include <QApplication>
 
+
+struct InfosDiaporama {
+    unsigned int id;    // identifiant du diaporama dans la BD
+    string titre;       // titre du diaporama
+    unsigned int vitesseDefilement;
+};
+typedef vector<InfosDiaporama> Diaporamas;
+
+
+/* Spécifications des sous-programmes utilisés par le main()
+ * ---------------------------------------------------*/
+void charger (Diaporamas& pDiaporamas);
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -13,7 +26,6 @@ int main(int argc, char *argv[])
     p->setModel(m);
     p->setVue(&w);
     w.setPresentation(p);
-    l->changerDiaporama(2, "Diapo par défaut", 2);
     m->setLecteur(l);
     qDebug() << "Final";
 

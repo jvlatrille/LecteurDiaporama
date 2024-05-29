@@ -20,12 +20,3 @@ void vit::handleButtonBoxAccepted()
     qDebug() << "La valeur choisie est :" << value;
 }
 
-void vit::setSpine(int valeur)
-{
-    ui->sVit->setValue(valeur);
-}
-
-int vit::valueSpine()
-{
-    return ui->sVit->value();
-}
