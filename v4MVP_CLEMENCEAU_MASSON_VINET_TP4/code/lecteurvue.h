@@ -32,7 +32,6 @@ public:
 public slots:
     void demanderAvancer();
     void demanderReculer();
-    void demanderDepartArretAuto();
     void demanderChangerVitesse();
     void demanderChangerModeAutomatique();
     void demanderChangerModeManuel();
