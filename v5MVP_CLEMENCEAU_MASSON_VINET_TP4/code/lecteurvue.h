@@ -21,6 +21,7 @@ private:
     Ui::lecteurVue *ui;
     Presentation * m_MaPresentation;
     Lecteur *monLecteur;
+    Diaporamas infosDiapos;
 
 
 public:
