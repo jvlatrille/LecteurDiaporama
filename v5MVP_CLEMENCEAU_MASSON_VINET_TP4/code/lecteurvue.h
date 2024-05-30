@@ -31,6 +31,7 @@ public:
     void initializeConnections();
     void majInterface(Modele::UnEtat);
     int reponse;
+    void chargerDiaporamas(Diaporamas &diaporamas);
 
 public slots:
     void demanderAvancer();

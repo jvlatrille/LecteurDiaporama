@@ -8,6 +8,15 @@
 #include "vit.h"
 #include <QTimer>
 
+struct InfosDiaporama {
+    unsigned int id;    // identifiant du diaporama dans la BD
+    string titre;       // titre du diaporama
+    float vitesseDefilement;
+};
+
+// Type nécessaire
+typedef vector<InfosDiaporama> Diaporamas;
+
 class ImageDansDiaporama;
 typedef std::vector<ImageDansDiaporama*> ImagesDiaporama;
 class Modele : public QObject

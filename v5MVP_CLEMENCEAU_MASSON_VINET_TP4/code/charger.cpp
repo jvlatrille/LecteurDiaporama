@@ -13,3 +13,11 @@ charger::~charger()
     delete ui;
 }
 
+void charger::updateDiaporamas(const Diaporamas &diaporamas)
+{
+    ui->listDiapos->clear();
+    for (const auto &diapo : diaporamas)
+    {
+        ui->listDiapos->addItem(QString::fromStdString(diapo.titre));
+    }
+}

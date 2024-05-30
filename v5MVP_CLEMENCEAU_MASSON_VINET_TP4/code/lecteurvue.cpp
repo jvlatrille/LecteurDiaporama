@@ -105,11 +105,32 @@ void lecteurVue::demanderChangerModeManuel(){
 
 void lecteurVue::demanderChargerDiapo(){
     qDebug() << "Demande à charger un nouveau diaporama";
-    charger* fenetreCharger = new charger();
+    /*charger* fenetreCharger = new charger();
     fenetreCharger->exec();
     delete fenetreCharger;
-    getPresentation()->demanderChargerDiapo();
+    getPresentation()->demanderChargerDiapo();*/
+    charger fenetreCharger;
+
+    Diaporamas diaporamas;
+    chargerDiaporamas(diaporamas); // Assurez-vous que cette méthode est implémentée correctement
+
+    fenetreCharger.updateDiaporamas(diaporamas);
+    fenetreCharger.exec();
 }
+
+void lecteurVue::chargerDiaporamas(Diaporamas &diaporamas)
+{
+    InfosDiaporama diapo1 = {1, "Diaporama de Pantxika", 1.0};
+    InfosDiaporama diapo2 = {2, "Diaporama de Thierry", 1.0};
+    InfosDiaporama diapo3 = {3, "Diaporama de Yann", 1.0};
+    InfosDiaporama diapo4 = {4, "Diaporama de Manu", 1.0};
+
+    diaporamas.push_back(diapo1);
+    diaporamas.push_back(diapo2);
+    diaporamas.push_back(diapo3);
+    diaporamas.push_back(diapo4);
+}
+
 
 void lecteurVue::demanderEnleverDiapo(){
     qDebug() << "Demande à enlever le diaporama courrant";
