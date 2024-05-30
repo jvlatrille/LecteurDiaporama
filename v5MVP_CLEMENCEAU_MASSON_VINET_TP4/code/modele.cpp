@@ -218,6 +218,14 @@ void Modele::triCroissantRang()
     }
 }
 
+void Modele::chargerDiapo(unsigned int diaporamaId)
+{
+    setEtat(Modele::manuel);
+
+    // Charger le diaporama avec l'ID donné
+    diaporama.setId(diaporamaId);
+    diaporama.charger();
+}
 
 void Modele::chargerDiapo() {
     // Implémentation du chargement de diaporama

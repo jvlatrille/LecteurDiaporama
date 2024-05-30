@@ -20,8 +20,15 @@ public:
     void updateDiaporamas(const Diaporamas &diaporamas);
     unsigned int getSelectedDiaporamaId() const;
 
+signals:
+    void diaporamaSelectionne(unsigned int diaporamaId);
+
+private slots:
+    void transmettreInformations();
+
 private:
     Ui::charger *ui;
+    Diaporamas diaporamasDisponibles; // Stocker les diaporamas disponibles pour récupérer l'id
 };
 
 #endif // CHARGER_H

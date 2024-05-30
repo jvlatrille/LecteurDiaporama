@@ -105,20 +105,28 @@ void lecteurVue::demanderChangerModeManuel(){
 
 void lecteurVue::demanderChargerDiapo(){
     qDebug() << "Demande à charger un nouveau diaporama";
-    /*charger* fenetreCharger = new charger();
-    fenetreCharger->exec();
-    delete fenetreCharger;
-    getPresentation()->demanderChargerDiapo();*/
     charger fenetreCharger;
 
     Diaporamas diaporamas;
-    chargerDiaporamas(diaporamas); // Assurez-vous que cette méthode est implémentée correctement
+    listeDiaporamas(diaporamas);
 
     fenetreCharger.updateDiaporamas(diaporamas);
+    connect(&fenetreCharger, &charger::diaporamaSelectionne, this, &lecteurVue::recevoirDiaporamaSelectionne);
     fenetreCharger.exec();
 }
 
-void lecteurVue::chargerDiaporamas(Diaporamas &diaporamas)
+void lecteurVue::recevoirDiaporamaSelectionne(unsigned int diaporamaId)
+{
+    qDebug() << "recevoirDiaporamaSelectionne called with diaporamaId:" << diaporamaId;
+    if (modele) {
+        qDebug() << "Modele instance is valid.";
+        modele->chargerDiapo(diaporamaId); // Utiliser l'objet modele correctement
+    } else {
+        qDebug() << "Modele instance is null!";
+    }
+}
+
+void lecteurVue::listeDiaporamas(Diaporamas &diaporamas)
 {
     InfosDiaporama diapo1 = {1, "Diaporama de Pantxika", 1.0};
     InfosDiaporama diapo2 = {2, "Diaporama de Thierry", 1.0};

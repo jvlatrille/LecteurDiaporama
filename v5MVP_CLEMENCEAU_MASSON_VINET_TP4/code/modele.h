@@ -52,6 +52,7 @@ public:
     void setVitesseDefilement(unsigned int);
     void setDiaporama(Diaporama *);
     void setPosImageCourante(unsigned int pPosImageCourante);
+    void chargerDiapo(unsigned int diaporamaId);
 
     void avancer();
     void reculer();
@@ -76,6 +77,7 @@ signals:
 
 private :
     UnEtat _etat;
+    Diaporama diaporama;
 };
 
 #endif // MODELE_H
