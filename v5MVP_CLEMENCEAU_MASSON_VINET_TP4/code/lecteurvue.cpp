@@ -9,7 +9,6 @@ lecteurVue::lecteurVue(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::lecteurVue)
     , m_MaPresentation(new Presentation())
-    , infosDiapos({})
 {
     ui->setupUi(this);
 
@@ -106,7 +105,7 @@ void lecteurVue::demanderChangerModeManuel(){
 
 void lecteurVue::demanderChargerDiapo(){
     qDebug() << "Demande à charger un nouveau diaporama";
-    charger* fenetreCharger = new charger(infosDiapos, this);
+    charger* fenetreCharger = new charger();
     fenetreCharger->exec();
     delete fenetreCharger;
     getPresentation()->demanderChargerDiapo();

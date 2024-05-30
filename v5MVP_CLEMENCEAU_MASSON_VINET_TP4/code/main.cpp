@@ -2,6 +2,17 @@
 #include <QApplication>
 
 
+struct InfosDiaporama {
+    unsigned int id;    // identifiant du diaporama dans la BD
+    string titre;       // titre du diaporama
+    unsigned int vitesseDefilement;
+};
+typedef vector<InfosDiaporama> Diaporamas;
+
+
+/* Spécifications des sous-programmes utilisés par le main()
+ * ---------------------------------------------------*/
+void charger (Diaporamas& pDiaporamas);
 
 int main(int argc, char *argv[])
 {

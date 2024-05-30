@@ -220,30 +220,7 @@ void Modele::triCroissantRang()
 
 
 void Modele::chargerDiapo() {
-    InfosDiaporama infosACharger;
-    // Diaporama de Pantxika
-    infosACharger.id = 1;
-    infosACharger.titre = "Diaporama Pantxika";
-    infosACharger.vitesseDefilement = 2;
-    _infosDiapos.push_back(infosACharger);
-
-     // Diaporama de Thierry
-    infosACharger.id = 2;
-    infosACharger.titre = "Diaporama Thierry";
-    infosACharger.vitesseDefilement = 4;
-    _infosDiapos.push_back(infosACharger);
-
-     // Diaporama de Yann
-    infosACharger.id = 3;
-    infosACharger.titre = "Diaporama Yann";
-    infosACharger.vitesseDefilement = 2;
-    _infosDiapos.push_back(infosACharger);
-
-     // Diaporama de Manu
-    infosACharger.id = 4;
-    infosACharger.titre = "Diaporama Manu";
-    infosACharger.vitesseDefilement = 1;
-    _infosDiapos.push_back(infosACharger);
+    // Implémentation du chargement de diaporama
 }
 
 void Modele::enleverDiapo() {
