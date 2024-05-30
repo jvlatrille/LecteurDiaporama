@@ -36,20 +36,7 @@ public:
     void demanderChargerDiapo();
     void demanderEnleverDiapo();
     void demanderAPropos();
-    void avancerBouble();
-
-    /*
-signals:
-    void s_avancer();
-    void s_reculer();
-    void s_departArret();
-    void s_changerVitesse();
-    void s_changerModeAuto();
-    void s_changerModeManuel();
-    void s_chargerDiapo();
-    void s_quitter();
-    void s_enleverDiapo();
-    void s_aPropos();*/
+    void avancerBoucle();
 
 };
 

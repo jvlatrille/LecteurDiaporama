@@ -6,7 +6,7 @@ Presentation::Presentation()
     _laVue = nullptr;
 
     timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &Presentation::avancerBouble);
+    connect(timer, &QTimer::timeout, this, &Presentation::avancerBoucle);
 }
 
 Presentation::~Presentation() {
@@ -146,7 +146,7 @@ void Presentation::demanderAPropos()
 
 }
 
-void Presentation::avancerBouble()
+void Presentation::avancerBoucle()
 {
     _leModele->avancer();
 }

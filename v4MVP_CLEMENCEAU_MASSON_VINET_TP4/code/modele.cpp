@@ -173,7 +173,7 @@ void Modele::etatAutomatique()
 {
     setEtat(automatique);
     while(_etat == automatique){
-        avancerAuto();
+        avanceAuto();
     }
 
 
@@ -226,50 +226,5 @@ void Modele::aPropos() {
     aproposUi.setupUi(aproposDialog);
     aproposDialog->exec();
     delete aproposDialog;
-}
-
-
-void Modele::avancerAuto()
-{
-    lecteur->reculer();
-    if (!lecteur->getDiaporama()) {
-        return;
-    }
-    ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
-    if (!imageCourante) {
-        return;
-    }
-    emit imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()),
-                     QString::fromStdString(imageCourante->getTitre()),
-                     QString::fromStdString(imageCourante->getCategorie()),
-                     QString::number(imageCourante->getRangDansDiaporama()),
-                     QString::fromStdString(imageCourante->getChemin()));
-}
-
-void Modele::reculerAuto()
-{
-    qDebug() << "Modele::recule";
-    lecteur->reculer();
-    qDebug() << "le lecteur à reculé";
-
-    if (!lecteur->getDiaporama()) {
-        qDebug() << "Diaporama est nul";
-        return;
-    }
-
-    ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
-    if (!imageCourante) {
-        qDebug() << "Aucune image courante";
-        return;
-    }
-
-    qDebug() << "Image courante créée";
-    emit imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()),
-                     QString::fromStdString(imageCourante->getTitre()),
-                     QString::fromStdString(imageCourante->getCategorie()),
-                     QString::number(imageCourante->getRangDansDiaporama()),
-                     QString::fromStdString(imageCourante->getChemin()));
-
-    qDebug() << "Signaux à jour envoyés";
 }
 
