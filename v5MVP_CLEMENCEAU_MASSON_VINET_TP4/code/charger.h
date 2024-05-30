@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::charger *ui;
+
+
+
 };
 
 #endif // CHARGER_H

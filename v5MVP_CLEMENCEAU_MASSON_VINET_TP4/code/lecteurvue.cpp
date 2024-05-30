@@ -2,6 +2,7 @@
 #include "presentation.h"
 #include "apropos.h"
 #include "vit.h"
+#include "charger.h"
 #include <QImage>
 
 lecteurVue::lecteurVue(QWidget *parent)
@@ -104,6 +105,9 @@ void lecteurVue::demanderChangerModeManuel(){
 
 void lecteurVue::demanderChargerDiapo(){
     qDebug() << "Demande à charger un nouveau diaporama";
+    charger* fenetreCharger = new charger();
+    fenetreCharger->exec();
+    delete fenetreCharger;
     getPresentation()->demanderChargerDiapo();
 }
 
@@ -135,6 +139,22 @@ void lecteurVue::majInterface(Modele::UnEtat e)
 {
     switch(e)
     {
+        case Modele::defaut:
+            // Maj des boutons
+            ui->actionAutomatique->setEnabled(false);
+            ui->actionManuel->setEnabled(false);
+            ui->bPrecedent->setEnabled(false);
+            ui->bSuivant->setEnabled(false);
+            ui->bLancerDiapo->setEnabled(false);
+            ui->bArret->setEnabled(false);
+            ui->actionEnleverDiapo->setEnabled(false);
+            ui->actionVitesseDefilement->setEnabled(false);
+            ui->titreDiapo->setText("");
+            ui->titreImage->setText("");
+            ui->categorieImage->setText("");
+            ui->rangImage->setText("");
+            ui->imageDiapo->setPixmap(QPixmap("Veuillez choisir un diaporama"));
+            break;
         case Modele::manuel:
             // Maj des boutons
             ui->actionManuel->setEnabled(false);
@@ -147,7 +167,6 @@ void lecteurVue::majInterface(Modele::UnEtat e)
             ui->actionManuel->setEnabled(true);
             ui->actionVitesseDefilement->setEnabled(false);
             break;
-
     }
 }
 

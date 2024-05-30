@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
 
     p->setModel(m);
     p->setVue(&w);
+    m->setEtat(Modele::defaut);
+    w.majInterface(m->getEtat());
     w.setPresentation(p);
     m->setLecteur(l);
     qDebug() << "Final";

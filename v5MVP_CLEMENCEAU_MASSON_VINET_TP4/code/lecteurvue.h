@@ -6,6 +6,7 @@
 #include <QShortcut>
 #include <QWidget>
 #include "modele.h"
+#include "lecteur.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class lecteurVue; }
@@ -19,6 +20,7 @@ class lecteurVue : public QMainWindow
 private:
     Ui::lecteurVue *ui;
     Presentation * m_MaPresentation;
+    Lecteur *monLecteur;
 
 
 public:
@@ -29,7 +31,6 @@ public:
     void initializeConnections();
     void majInterface(Modele::UnEtat);
     int reponse;
-
 
 public slots:
     void demanderAvancer();

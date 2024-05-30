@@ -29,7 +29,7 @@ private:
 public:
     Modele();
 
-    enum UnEtat {manuel, automatique};
+    enum UnEtat {manuel, automatique, defaut};
 
     unsigned int getVitesseDefilement() const;
     unsigned int getPosImageCourante() const;

@@ -12,3 +12,4 @@ charger::~charger()
 {
     delete ui;
 }
+

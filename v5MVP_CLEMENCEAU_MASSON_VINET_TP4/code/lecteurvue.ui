@@ -25,28 +25,28 @@
         <item>
          <widget class="QLabel" name="titreDiapo">
           <property name="text">
-           <string>TitreDiapo</string>
+           <string>Titre du diaporama</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="titreImage">
           <property name="text">
-           <string>TitreImage</string>
+           <string>Titre de l'image actuelle</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="categorieImage">
           <property name="text">
-           <string>Categorie</string>
+           <string>Categorie de l'image</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="rangImage">
           <property name="text">
-           <string>Rang</string>
+           <string>Rang de l'image</string>
           </property>
          </widget>
         </item>
@@ -55,7 +55,7 @@
       <item>
        <widget class="QLabel" name="imageDiapo">
         <property name="text">
-         <string>Image diapo</string>
+         <string>Veuillez choisir un diaporama</string>
         </property>
        </widget>
       </item>
