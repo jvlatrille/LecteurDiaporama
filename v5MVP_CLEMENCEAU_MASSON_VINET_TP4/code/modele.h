@@ -75,7 +75,7 @@ signals:
     void vitesseChangee(int vitesse);
 
 private :
-    UnEtat _etat = defaut;
+    UnEtat _etat;
     Diaporama diaporama;
 };
 

@@ -119,7 +119,8 @@ void lecteurVue::demanderChargerDiapo(){
 void lecteurVue::recevoirDiaporamaSelectionne(unsigned int diaporamaId)
 {
     qDebug() << "recevoirDiaporamaSelectionne called with diaporamaId:" << diaporamaId;
-    getPresentation()->demanderChargerDiapo(diaporamaId);
+    // récup les infos par rapport à l'id
+    getPresentation()->demanderChargerDiapo(diaporamaId); //Envoyer les infos etc
 }
 
 void lecteurVue::listeDiaporamas(Diaporamas &diaporamas)
@@ -174,11 +175,11 @@ void lecteurVue::majInterface(Modele::UnEtat e)
             ui->bArret->setEnabled(false);
             ui->actionEnleverDiapo->setEnabled(false);
             ui->actionVitesseDefilement->setEnabled(false);
-            ui->titreDiapo->setText("");
-            ui->titreImage->setText("");
-            ui->categorieImage->setText("");
-            ui->rangImage->setText("");
-            ui->imageDiapo->setPixmap(QPixmap("Veuillez choisir un diaporama"));
+            ui->titreDiapo->setText("Titre du diaporama");
+            ui->titreImage->setText("Titre de l'image");
+            ui->categorieImage->setText("Categorie de l'image");
+            ui->rangImage->setText("Rang de l'image");
+            ui->imageDiapo->setPixmap(QString("Veuillez choisir un diaporama"));
             break;
         case Modele::manuel:
             // Maj des boutons

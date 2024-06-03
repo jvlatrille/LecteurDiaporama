@@ -221,15 +221,21 @@ void Modele::triCroissantRang()
 void Modele::chargerDiapo(unsigned int diaporamaId)
 {
     // Charger le diaporama avec l'ID donné
-    lecteur->changerDiaporama(diaporamaId);
-    qDebug() << "Etape 1";
     ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
+    lecteur->changerDiaporama(diaporamaId, lecteur->getDiaporama()->getTitre(), getVitesseDefilement());
     qDebug() << "Etape 2";
-    imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()), QString::fromStdString(imageCourante->getTitre()), QString::fromStdString(imageCourante->getCategorie()), QString::number(imageCourante->getRangDansDiaporama()), QString::fromStdString(imageCourante->getChemin()));
+    emit imageChange(
+        QString::fromStdString(lecteur->getDiaporama()->getTitre()),
+        QString::fromStdString(imageCourante->getTitre()),
+        QString::fromStdString(imageCourante->getCategorie()),
+        QString::number(imageCourante->getRangDansDiaporama()),
+        QString::fromStdString(imageCourante->getChemin())
+    );
     qDebug() << "Etape 3";
     setEtat(manuel);
 }
 
 void Modele::enleverDiapo() {
-    // Implémentation de l'enlèvement de diaporama
+    _etat = UnEtat::defaut;
+    qDebug() << "Diapo retiré";
 }

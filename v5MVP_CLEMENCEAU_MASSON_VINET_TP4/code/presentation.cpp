@@ -154,13 +154,15 @@ void Presentation::demanderChangerModeManuel()
 
 void Presentation::demanderChargerDiapo(unsigned int diaporamaId)
 {
-    _leModele->chargerDiapo(diaporamaId); // modele->changerEtat + vue->majinterface
+    _leModele->chargerDiapo(diaporamaId);
+    _laVue->majInterface(_leModele->getEtat());
     qDebug() << "On charges une nouvelle diapo";
 }
 
 void Presentation::demanderEnleverDiapo()
 {
     _leModele->enleverDiapo();
+    _laVue->majInterface(_leModele->getEtat());
     qDebug() << "On retire le diapo courant";
 }
 
