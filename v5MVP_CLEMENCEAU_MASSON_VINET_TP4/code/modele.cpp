@@ -223,8 +223,12 @@ void Modele::chargerDiapo(unsigned int diaporamaId)
     setEtat(Modele::manuel);
 
     // Charger le diaporama avec l'ID donné
-    diaporama.setId(diaporamaId);
-    diaporama.charger();
+    lecteur->changerDiaporama(diaporamaId);
+    qDebug() << "Etape 1";
+    ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
+    qDebug() << "Etape 2";
+    imageChange("kjsgfyzie", QString::fromStdString(imageCourante->getTitre()), QString::fromStdString(imageCourante->getCategorie()), QString::number(imageCourante->getRangDansDiaporama()), QString::fromStdString(imageCourante->getChemin()));
+    qDebug() << "Etape 3";
 }
 
 void Modele::chargerDiapo() {

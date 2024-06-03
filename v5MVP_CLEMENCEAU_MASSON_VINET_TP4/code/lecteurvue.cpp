@@ -113,6 +113,7 @@ void lecteurVue::demanderChargerDiapo(){
     fenetreCharger.updateDiaporamas(diaporamas);
     connect(&fenetreCharger, &charger::diaporamaSelectionne, this, &lecteurVue::recevoirDiaporamaSelectionne);
     fenetreCharger.exec();
+
 }
 
 void lecteurVue::recevoirDiaporamaSelectionne(unsigned int diaporamaId)

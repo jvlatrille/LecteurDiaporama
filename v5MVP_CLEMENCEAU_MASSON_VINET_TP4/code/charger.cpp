@@ -41,3 +41,5 @@ void charger::transmettreInformations()
     qDebug() << "Diaporama sélectionné ID:" << diaporamaId;
     emit diaporamaSelectionne(diaporamaId); // Émettre le signal
 }
+
+

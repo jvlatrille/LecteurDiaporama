@@ -20,6 +20,7 @@ public:
     void updateDiaporamas(const Diaporamas &diaporamas);
     unsigned int getSelectedDiaporamaId() const;
 
+
 signals:
     void diaporamaSelectionne(unsigned int diaporamaId);
 
