@@ -152,9 +152,9 @@ void Presentation::demanderChangerModeManuel()
     disconnect(timer, &QTimer::timeout, _leModele, &Modele::avanceAuto);
 }
 
-void Presentation::demanderChargerDiapo()
+void Presentation::demanderChargerDiapo(unsigned int diaporamaId)
 {
-    _leModele->chargerDiapo(); // modele->changerEtat + vue->majinterface
+    _leModele->chargerDiapo(diaporamaId); // modele->changerEtat + vue->majinterface
     qDebug() << "On charges une nouvelle diapo";
 }
 

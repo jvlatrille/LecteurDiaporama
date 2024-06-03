@@ -61,7 +61,6 @@ public:
     void changerVitesse(vit*);
     void etatAutomatique();
     void etatManuel();
-    void chargerDiapo();
     void enleverDiapo();
     Lecteur *  getLecteur() const;
     void setLecteur(Lecteur * newLecteur);
@@ -76,7 +75,7 @@ signals:
     void vitesseChangee(int vitesse);
 
 private :
-    UnEtat _etat;
+    UnEtat _etat = defaut;
     Diaporama diaporama;
 };
 

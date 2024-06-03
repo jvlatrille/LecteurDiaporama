@@ -119,12 +119,7 @@ void lecteurVue::demanderChargerDiapo(){
 void lecteurVue::recevoirDiaporamaSelectionne(unsigned int diaporamaId)
 {
     qDebug() << "recevoirDiaporamaSelectionne called with diaporamaId:" << diaporamaId;
-    if (modele) {
-        qDebug() << "Modele instance is valid.";
-        modele->chargerDiapo(diaporamaId); // Utiliser l'objet modele correctement
-    } else {
-        qDebug() << "Modele instance is null!";
-    }
+    getPresentation()->demanderChargerDiapo(diaporamaId);
 }
 
 void lecteurVue::listeDiaporamas(Diaporamas &diaporamas)
@@ -190,12 +185,22 @@ void lecteurVue::majInterface(Modele::UnEtat e)
             ui->actionManuel->setEnabled(false);
             ui->actionAutomatique->setEnabled(true);
             ui->actionVitesseDefilement->setEnabled(true);
+            ui->bPrecedent->setEnabled(true);
+            ui->bSuivant->setEnabled(true);
+            ui->bLancerDiapo->setEnabled(true);
+            ui->bArret->setEnabled(false);
+            ui->actionEnleverDiapo->setEnabled(true);
             break;
         case Modele::automatique:
             // Maj des boutons
             ui->actionAutomatique->setEnabled(false);
             ui->actionManuel->setEnabled(true);
             ui->actionVitesseDefilement->setEnabled(false);
+            ui->bPrecedent->setEnabled(true);
+            ui->bSuivant->setEnabled(true);
+            ui->bLancerDiapo->setEnabled(false);
+            ui->bArret->setEnabled(true);
+            ui->actionEnleverDiapo->setEnabled(false);
             break;
     }
 }

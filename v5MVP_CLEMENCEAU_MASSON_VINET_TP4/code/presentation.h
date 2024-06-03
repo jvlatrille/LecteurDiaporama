@@ -36,7 +36,7 @@ public:
     void demanderChangerVitesse(vit* v);
     void demanderChangerModeAutomatique();
     void demanderChangerModeManuel();
-    void demanderChargerDiapo();
+    void demanderChargerDiapo(unsigned int diaporamaId);
     void demanderEnleverDiapo();
     void avancerBouble();
     void ajusterVitesseDiaporama(int vitesse);

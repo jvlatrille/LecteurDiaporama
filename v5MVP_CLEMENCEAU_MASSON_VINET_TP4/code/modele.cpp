@@ -220,19 +220,14 @@ void Modele::triCroissantRang()
 
 void Modele::chargerDiapo(unsigned int diaporamaId)
 {
-    setEtat(Modele::manuel);
-
     // Charger le diaporama avec l'ID donné
     lecteur->changerDiaporama(diaporamaId);
     qDebug() << "Etape 1";
     ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
     qDebug() << "Etape 2";
-    imageChange("kjsgfyzie", QString::fromStdString(imageCourante->getTitre()), QString::fromStdString(imageCourante->getCategorie()), QString::number(imageCourante->getRangDansDiaporama()), QString::fromStdString(imageCourante->getChemin()));
+    imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()), QString::fromStdString(imageCourante->getTitre()), QString::fromStdString(imageCourante->getCategorie()), QString::number(imageCourante->getRangDansDiaporama()), QString::fromStdString(imageCourante->getChemin()));
     qDebug() << "Etape 3";
-}
-
-void Modele::chargerDiapo() {
-    // Implémentation du chargement de diaporama
+    setEtat(manuel);
 }
 
 void Modele::enleverDiapo() {
