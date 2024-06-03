@@ -36,7 +36,7 @@ public:
     void demanderChangerVitesse(vit* v);
     void demanderChangerModeAutomatique();
     void demanderChangerModeManuel();
-    void demanderChargerDiapo(unsigned int diaporamaId);
+    void demanderChargerDiapo(unsigned int id, const QString &titre, int vitesseDefilement);
     void demanderEnleverDiapo();
     void avancerBouble();
     void ajusterVitesseDiaporama(int vitesse);

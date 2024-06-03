@@ -8,14 +8,6 @@
 #include "vit.h"
 #include <QTimer>
 
-struct InfosDiaporama {
-    unsigned int id;    // identifiant du diaporama dans la BD
-    string titre;       // titre du diaporama
-    float vitesseDefilement;
-};
-
-// Type nécessaire
-typedef vector<InfosDiaporama> Diaporamas;
 
 class ImageDansDiaporama;
 typedef std::vector<ImageDansDiaporama*> ImagesDiaporama;
@@ -52,7 +44,7 @@ public:
     void setVitesseDefilement(unsigned int);
     void setDiaporama(Diaporama *);
     void setPosImageCourante(unsigned int pPosImageCourante);
-    void chargerDiapo(unsigned int diaporamaId);
+    void chargerDiapo(unsigned int id, const QString &titre, int vitesseDefilement);
 
     void avancer();
     void reculer();

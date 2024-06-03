@@ -12,6 +12,16 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class lecteurVue; }
 QT_END_NAMESPACE
 
+struct InfosDiaporama {
+    unsigned int id;    // identifiant du diaporama dans la BD
+    string titre;       // titre du diaporama
+    float vitesseDefilement;
+};
+
+// Type nécessaire
+typedef vector<InfosDiaporama> Diaporamas;
+
+
 class Presentation;
 class lecteurVue : public QMainWindow
 {
@@ -22,6 +32,7 @@ private:
     Presentation * m_MaPresentation;
     Lecteur *monLecteur;
     Modele *modele;
+    Diaporamas diaporamas;
 
 
 public:

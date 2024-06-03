@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QComboBox>
-#include "modele.h"
+#include "lecteurvue.h"
 
 namespace Ui {
 class charger;

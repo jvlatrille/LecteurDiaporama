@@ -116,31 +116,49 @@ void lecteurVue::demanderChargerDiapo(){
 
 }
 
-void lecteurVue::recevoirDiaporamaSelectionne(unsigned int diaporamaId)
-{
-    qDebug() << "recevoirDiaporamaSelectionne called with diaporamaId:" << diaporamaId;
-    // récup les infos par rapport à l'id
-    getPresentation()->demanderChargerDiapo(diaporamaId); //Envoyer les infos etc
+void lecteurVue::recevoirDiaporamaSelectionne(unsigned int diaporamaId){
+    listeDiaporamas(this->diaporamas);
+    for (const InfosDiaporama& diapo : diaporamas) {
+        if (diapo.id == diaporamaId) {
+            qDebug() << "ID:" << diapo.id << ", Titre:" << QString::fromStdString(diapo.titre) << ", Vitesse de défilement:" << diapo.vitesseDefilement;
+            getPresentation()->demanderChargerDiapo(diapo.id, QString::fromStdString(diapo.titre), diapo.vitesseDefilement);
+        }
+    }
+    qDebug() << "Diaporama avec l'ID" << diaporamaId << "non trouvé.";
 }
 
-void lecteurVue::listeDiaporamas(Diaporamas &diaporamas)
-{
-    InfosDiaporama diapo1 = {1, "Diaporama de Pantxika", 1.0};
-    InfosDiaporama diapo2 = {2, "Diaporama de Thierry", 1.0};
-    InfosDiaporama diapo3 = {3, "Diaporama de Yann", 1.0};
-    InfosDiaporama diapo4 = {4, "Diaporama de Manu", 1.0};
+void lecteurVue::listeDiaporamas(Diaporamas &diaporamas) {
+    InfosDiaporama diapo;
+    // Diaporama de Pantxika
+    diapo.id = 1;
+    diapo.titre = "Diaporama Pantxika";
+    diapo.vitesseDefilement = 2;
+    diaporamas.push_back(diapo);
 
-    diaporamas.push_back(diapo1);
-    diaporamas.push_back(diapo2);
-    diaporamas.push_back(diapo3);
-    diaporamas.push_back(diapo4);
+     // Diaporama de Thierry
+    diapo.id = 2;
+    diapo.titre = "Diaporama Thierry";
+    diapo.vitesseDefilement = 4;
+    diaporamas.push_back(diapo);
+
+     // Diaporama de Yann
+    diapo.id = 3;
+    diapo.titre = "Diaporama Yann";
+    diapo.vitesseDefilement = 2;
+    diaporamas.push_back(diapo);
+
+     // Diaporama de Manu
+    diapo.id = 4;
+    diapo.titre = "Diaporama Manu";
+    diapo.vitesseDefilement = 1;
+    diaporamas.push_back(diapo);
 }
-
 
 void lecteurVue::demanderEnleverDiapo(){
     qDebug() << "Demande à enlever le diaporama courrant";
     getPresentation()->demanderEnleverDiapo();
 }
+
 
 void lecteurVue::quitterApplication() {
     QApplication::quit();

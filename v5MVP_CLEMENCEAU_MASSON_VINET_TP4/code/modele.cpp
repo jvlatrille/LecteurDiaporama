@@ -110,10 +110,6 @@ void Modele::avancer() {
                          QString::number(imageCourante->getRangDansDiaporama()),
                          QString::fromStdString(imageCourante->getChemin()));
 
-
-
-
-
 }
 
 
@@ -218,14 +214,13 @@ void Modele::triCroissantRang()
     }
 }
 
-void Modele::chargerDiapo(unsigned int diaporamaId)
-{
-    // Charger le diaporama avec l'ID donné
+void Modele::chargerDiapo(unsigned int id, const QString &titre, int vitesseDefilement) {
     ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
-    lecteur->changerDiaporama(diaporamaId, lecteur->getDiaporama()->getTitre(), getVitesseDefilement());
+    // Conversion de QString en std::string pour l'appel à changerDiaporama
+    lecteur->changerDiaporama(id, titre.toStdString(), vitesseDefilement);
     qDebug() << "Etape 2";
     emit imageChange(
-        QString::fromStdString(lecteur->getDiaporama()->getTitre()),
+        titre,
         QString::fromStdString(imageCourante->getTitre()),
         QString::fromStdString(imageCourante->getCategorie()),
         QString::number(imageCourante->getRangDansDiaporama()),
@@ -234,6 +229,7 @@ void Modele::chargerDiapo(unsigned int diaporamaId)
     qDebug() << "Etape 3";
     setEtat(manuel);
 }
+
 
 void Modele::enleverDiapo() {
     _etat = UnEtat::defaut;
