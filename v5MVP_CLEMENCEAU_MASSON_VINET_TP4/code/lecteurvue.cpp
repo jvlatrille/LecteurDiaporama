@@ -198,7 +198,7 @@ void lecteurVue::majInterface(Modele::UnEtat e)
             ui->categorieImage->setText("Categorie de l'image");
             ui->rangImage->setText("Rang de l'image");
             ui->imageDiapo->setPixmap(QString("Veuillez choisir un diaporama"));
-
+            ui->mode->setText("Mode : défaut");
             break;
         case Modele::manuel:
             // Maj des boutons
@@ -210,6 +210,7 @@ void lecteurVue::majInterface(Modele::UnEtat e)
             ui->bLancerDiapo->setEnabled(true);
             ui->bArret->setEnabled(false);
             ui->actionEnleverDiapo->setEnabled(true);
+            ui->mode->setText("Mode : manuel");
             break;
         case Modele::automatique:
             // Maj des boutons
@@ -221,7 +222,7 @@ void lecteurVue::majInterface(Modele::UnEtat e)
             ui->bLancerDiapo->setEnabled(false);
             ui->bArret->setEnabled(true);
             ui->actionEnleverDiapo->setEnabled(false);
+            ui->mode->setText("Mode : automatique");
             break;
     }
 }
-

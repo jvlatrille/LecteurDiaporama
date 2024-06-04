@@ -120,33 +120,33 @@ void Diaporama::charger()
         ajouterImageEnFin(imageACharger);
         break ;//
     case 2 : // diaporama de Thierry
-        imageACharger = new ImageDansDiaporama(1, "personnage", "Pinnochio", ":/images/cartesDisney/Disney_29.gif");
+        imageACharger = new ImageDansDiaporama(1, "personnage", "Timon", ":/images/cartesDisney/Disney_40.gif");
         ajouterImageEnFin(imageACharger);
-        imageACharger = new ImageDansDiaporama(2, "personnage", "Blanche Neige", ":/images/cartesDisney/Disney_4.gif");
+        imageACharger = new ImageDansDiaporama(2, "personnage", "Dragon de jsp", ":/images/cartesDisney/Disney_10.gif");
         ajouterImageEnFin(imageACharger);
-        imageACharger = new ImageDansDiaporama(3, "personnage", "Alice",":/images/cartesDisney/Disney_2.gif");
+        imageACharger = new ImageDansDiaporama(3, "personnage", "Bambi <3",":/images/cartesDisney/Disney_3.gif");
         ajouterImageEnFin(imageACharger);
-        imageACharger = new ImageDansDiaporama(4, "animal", "Mickey", ":/images/cartesDisney/Disney_19.gif");
+        imageACharger = new ImageDansDiaporama(4, "animal", "Pluto", ":/images/cartesDisney/Disney_30.gif");
         ajouterImageEnFin(imageACharger);
         break ;//
     case 3 : // diaporama de Yann
-        imageACharger = new ImageDansDiaporama(2, "personnage", "Pinnochio", ":/images/cartesDisney/Disney_29.gif");
+        imageACharger = new ImageDansDiaporama(2, "personnage", "Gepeto", ":/images/cartesDisney/Disney_25.gif");
         ajouterImageEnFin(imageACharger);
-        imageACharger = new ImageDansDiaporama(1, "personnage", "Blanche Neige", ":/images/cartesDisney/Disney_4.gif");
+        imageACharger = new ImageDansDiaporama(1, "personnage", "Cendrillon", ":/images/cartesDisney/Disney_49.gif");
         ajouterImageEnFin(imageACharger);
-        imageACharger = new ImageDansDiaporama(4, "personnage", "Alice",":/images/cartesDisney/Disney_2.gif"); //
+        imageACharger = new ImageDansDiaporama(4, "personnage", "Donald",":/images/cartesDisney/Disney_8.gif"); //
         ajouterImageEnFin(imageACharger);
-        imageACharger = new ImageDansDiaporama(3, "animal", "Mickey", ":/images/cartesDisney/Disney_19.gif");
+        imageACharger = new ImageDansDiaporama(3, "animal", "Donald mais pas content", ":/images/cartesDisney/Disney_9.gif");
         ajouterImageEnFin(imageACharger);
         break ;//
     case 4 : // diaporama de Manu
-        imageACharger = new ImageDansDiaporama(4, "personnage", "Pinnochio", ":/images/cartesDisney/Disney_29.gif");
+        imageACharger = new ImageDansDiaporama(4, "personnage", "Simba", ":/images/cartesDisney/Disney_33.gif");
         ajouterImageEnFin(imageACharger);
-        imageACharger = new ImageDansDiaporama(3, "personnage", "Blanche Neige", ":/images/cartesDisney/Disney_4.gif");
+        imageACharger = new ImageDansDiaporama(3, "personnage", "101 dalmassiens", ":/images/cartesDisney/Disney_1.gif");
         ajouterImageEnFin(imageACharger);
-        imageACharger = new ImageDansDiaporama(2, "personnage", "Alice", ":/images/cartesDisney/Disney_2.gif");
+        imageACharger = new ImageDansDiaporama(2, "personnage", "Stitch", ":/images/cartesDisney/Disney_37.gif");
         ajouterImageEnFin(imageACharger);
-        imageACharger = new ImageDansDiaporama(1, "animal", "Mickey", ":/images/cartesDisney/Disney_19.gif");
+        imageACharger = new ImageDansDiaporama(1, "animal", "La belle et le clochard", ":/images/cartesDisney/Disney_6.gif");
         ajouterImageEnFin(imageACharger);
         break ;//
     default : break;
