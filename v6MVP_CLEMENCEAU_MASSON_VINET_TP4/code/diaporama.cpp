@@ -1,5 +1,6 @@
 #include "diaporama.h"
 #include "database.h"
+#include "lecteurvue.h"
 
 Diaporama::Diaporama():id(1), titre(""), vitesseDefilement(0) {
     images.clear();
@@ -159,17 +160,66 @@ void Diaporama::charger()
 
     QSqlQuery query;
     QString requete;
-    requete = "SELECT F.nomFamille,DI.uriPhoto, DI.titrePhoto, DDD.rang, D.titreDiaporama FROM Diapos DI JOIN Familles F ON F.idFamille = DI.idFam JOIN DiaposDansDiaporama DDD ON DDD.idDiapo = DI.idphoto JOIN Diaporamas D ON D.idDiaporama = DDD.idDiaporama ORDER BY DDD.idDiapo;";
+    requete = "SELECT F.nomFamille,DI.uriPhoto, DI.titrePhoto, DDD.rang, D.idDiaporama FROM Diapos DI JOIN Familles F ON F.idFamille = DI.idFam JOIN DiaposDansDiaporama DDD ON DDD.idDiapo = DI.idphoto JOIN Diaporamas D ON D.idDiaporama = DDD.idDiaporama ORDER BY DDD.idDiapo;";
     query.prepare(requete);
+    query.bindValue(":idDiaporama", id);
 
     if (!query.exec()) {
         qDebug() << "Erreur lors de l'exécution de la requête :";
     }
-
     while (query.next()) {
         ImageDansDiaporama* imageACharger;
-        imageACharger = new ImageDansDiaporama(rang diapo, categorie, nom personnage, path);
-        ajouterImageEnFin(imageACharger);
+        switch(id) {
+        case 1 : // diaporama de Pantxikaka
+            while (query.next()){
+                int rang =query.value(3).toInt();
+                QString categorie = query.value(1).toString();
+                QString nomPersonnages = query.value(2).toString();
+                QString path = query.value(0).toString();
+                imageACharger = new ImageDansDiaporama(rang, categorie, nomPersonnages, path);
+                ajouterImageEnFin(imageACharger);
+            }
+            imageACharger = new ImageDansDiaporama(4, "personnage", "Simba", ":/images/cartesDisney/Disney_33.gif");
+            ajouterImageEnFin(imageACharger);
+            imageACharger = new ImageDansDiaporama(3, "personnage", "101 dalmassiens", ":/images/cartesDisney/Disney_1.gif");
+            ajouterImageEnFin(imageACharger);
+            imageACharger = new ImageDansDiaporama(2, "personnage", "Stitch", ":/images/cartesDisney/Disney_37.gif");
+            ajouterImageEnFin(imageACharger);
+            imageACharger = new ImageDansDiaporama(1, "animal", "La belle et le clochard", ":/images/cartesDisney/Disney_6.gif");
+            ajouterImageEnFin(imageACharger);
+            break ;//
+        case 2 : // diaporama de Thierry
+            while (query.next()){
+                int rang =query.value(3).toInt();
+                QString categorie = query.value(1).toString();
+                QString nomPersonnages = query.value(2).toString();
+                QString path = query.value(0).toString();
+                imageACharger = new ImageDansDiaporama(rang, categorie, nomPersonnages, path);
+                ajouterImageEnFin(imageACharger);
+            }
+            break ;//
+        case 3 : // diaporama de Yann
+            while (query.next()){
+                int rang =query.value(3).toInt();
+                QString categorie = query.value(1).toString();
+                QString nomPersonnages = query.value(2).toString();
+                QString path = query.value(0).toString();
+                imageACharger = new ImageDansDiaporama(rang, categorie, nomPersonnages, path);
+                ajouterImageEnFin(imageACharger);
+            }
+            break ;//
+        case 4 : // diaporama de Manu
+            while (query.next()){
+                int rang =query.value(3).toInt();
+                QString categorie = query.value(1).toString();
+                QString nomPersonnages = query.value(2).toString();
+                QString path = query.value(0).toString();
+                imageACharger = new ImageDansDiaporama(rang, categorie, nomPersonnages, path);
+                ajouterImageEnFin(imageACharger);
+            }
+            break ;//
+        default : break;
+        }
     }
 }
 
