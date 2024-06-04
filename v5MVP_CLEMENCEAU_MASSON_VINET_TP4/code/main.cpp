@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
     w.majInterface(m->getEtat());
     w.setPresentation(p);
     m->setLecteur(l);
-    qDebug() << "Final";
 
     w.initializeConnections();
 

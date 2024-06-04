@@ -174,7 +174,7 @@ void Lecteur::chargerDiaporamaCourant()
     /* Chargement des images associées au diaporama courant */
     diaporama->charger();
     if (nbImages() != 0)
-    { setPosImageCourante(1) ;}
+    { setPosImageCourante(0) ;}
 }
 
 void Lecteur::viderLecteur()

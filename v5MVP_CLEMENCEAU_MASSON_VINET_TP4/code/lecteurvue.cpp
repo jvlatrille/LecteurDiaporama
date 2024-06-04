@@ -198,6 +198,7 @@ void lecteurVue::majInterface(Modele::UnEtat e)
             ui->categorieImage->setText("Categorie de l'image");
             ui->rangImage->setText("Rang de l'image");
             ui->imageDiapo->setPixmap(QString("Veuillez choisir un diaporama"));
+
             break;
         case Modele::manuel:
             // Maj des boutons
