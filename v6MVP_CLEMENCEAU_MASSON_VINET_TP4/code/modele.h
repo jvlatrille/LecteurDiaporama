@@ -7,6 +7,7 @@
 #include "lecteur.h"
 #include "vit.h"
 #include <QTimer>
+#include "database.h"
 
 
 class ImageDansDiaporama;

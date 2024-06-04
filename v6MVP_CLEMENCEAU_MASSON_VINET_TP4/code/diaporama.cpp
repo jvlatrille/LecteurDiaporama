@@ -1,4 +1,5 @@
 #include "diaporama.h"
+#include "database.h"
 
 Diaporama::Diaporama():id(1), titre(""), vitesseDefilement(0) {
     images.clear();
@@ -102,7 +103,7 @@ void Diaporama::charger()
        Dans la version actuelle, les images sont créées 'en dur'.
        Dans une version ultérieure, les images proviendront de la Base de Données */
 
-
+/*
     ImageDansDiaporama* imageACharger;
     switch(id) {
     case 0 : // diaporama par défaut
@@ -153,7 +154,23 @@ void Diaporama::charger()
     }
 
     trierParRangCroissant();  // selon le rang de l'image dans le diaporama
-    // post-condition : nbImages() >= 0
+    // post-condition : nbImages() >= 0*/
+
+
+    QSqlQuery query;
+    QString requete;
+    requete = "SELECT F.nomFamille,DI.uriPhoto, DI.titrePhoto, DDD.rang, D.titreDiaporama FROM Diapos DI JOIN Familles F ON F.idFamille = DI.idFam JOIN DiaposDansDiaporama DDD ON DDD.idDiapo = DI.idphoto JOIN Diaporamas D ON D.idDiaporama = DDD.idDiaporama ORDER BY DDD.idDiapo;";
+    query.prepare(requete);
+
+    if (!query.exec()) {
+        qDebug() << "Erreur lors de l'exécution de la requête :";
+    }
+
+    while (query.next()) {
+        ImageDansDiaporama* imageACharger;
+        imageACharger = new ImageDansDiaporama(rang diapo, categorie, nom personnage, path);
+        ajouterImageEnFin(imageACharger);
+    }
 }
 
 void Diaporama::trierParRangCroissant()

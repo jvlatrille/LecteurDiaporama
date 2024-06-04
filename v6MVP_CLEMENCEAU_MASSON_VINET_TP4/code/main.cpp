@@ -9,7 +9,6 @@ int main(int argc, char *argv[])
     Modele* m = new Modele();
     Presentation *p = new Presentation();
 
-
     p->setModel(m);
     p->setVue(&w);
     m->setEtat(Modele::defaut);
