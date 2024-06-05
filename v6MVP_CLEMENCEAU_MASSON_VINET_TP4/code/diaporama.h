@@ -2,6 +2,7 @@
 #define DIAPORAMA_H
 #include <vector>
 #include "imageDansDiaporama.h"
+#include "database.h"
 
 typedef vector<ImageDansDiaporama*> ImagesDiaporama; // collection de pointeurs vers les images de ce
     // diaporama (= pteurs vers objets de type ImageDansDiaporama)
@@ -13,6 +14,7 @@ public:
     unsigned int getId() const;
     string getTitre() const;
     int getVitesseDefilement() const;
+    database maBD;
     ImagesDiaporama getImages() const;
     ImageDansDiaporama* getImageCourante() const; // retourne l'image courante du diaporama
     unsigned int getPosImageCourante() const; // retourne la position de l'image courante dans le diaporama

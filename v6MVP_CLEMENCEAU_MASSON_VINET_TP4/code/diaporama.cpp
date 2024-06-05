@@ -157,6 +157,7 @@ void Diaporama::charger()
     trierParRangCroissant();  // selon le rang de l'image dans le diaporama
     // post-condition : nbImages() >= 0*/
 
+    maBD.ouvrirBD();
     QSqlQuery query;
     QString requete;
     requete = "SELECT F.nomFamille,DI.uriPhoto, DI.titrePhoto, DDD.rang, D.idDiaporama FROM Diapos DI JOIN Familles F ON F.idFamille = DI.idFam JOIN DiaposDansDiaporama DDD ON DDD.idDiapo = DI.idphoto JOIN Diaporamas D ON D.idDiaporama = DDD.idDiaporama ORDER BY DDD.idDiapo;";
