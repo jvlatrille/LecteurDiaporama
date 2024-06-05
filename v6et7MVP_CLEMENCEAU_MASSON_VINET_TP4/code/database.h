@@ -6,6 +6,7 @@
 #include <QWidget>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include "QSqlError"
 
 
 #define DATABASE_NAME "nodenot_bd9"

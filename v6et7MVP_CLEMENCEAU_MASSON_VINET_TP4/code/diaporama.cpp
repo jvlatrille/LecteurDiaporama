@@ -1,7 +1,6 @@
 #include "diaporama.h"
 #include "database.h"
 #include "lecteurvue.h"
-#include "QSqlError"
 
 Diaporama::Diaporama():id(1), titre(""), vitesseDefilement(0) {
     images.clear();
@@ -158,34 +157,23 @@ void Diaporama::charger()
     trierParRangCroissant();  // selon le rang de l'image dans le diaporama
     // post-condition : nbImages() >= 0*/
 
-    database db;  // Assurez-vous que cet objet est correctement initialisé et accessible
-    if (!db.ouvrirBD()) {
-        qDebug() << "Impossible d'ouvrir la base de données";
-        return;
-    }
-
-    QSqlDatabase maBaseDeDonnees = db.getDatabase();
-    QSqlQuery query(maBaseDeDonnees);  // Utilisez l'instance de base de données obtenue
-    QString requete = "SELECT F.nomFamille, DI.uriPhoto, DI.titrePhoto, DDD.rang, D.idDiaporama "
-                      "FROM Diapos DI JOIN Familles F ON F.idFamille = DI.idFam "
-                      "JOIN DiaposDansDiaporama DDD ON DDD.idDiapo = DI.idphoto "
-                      "JOIN Diaporamas D ON D.idDiaporama = DDD.idDiaporama "
-                      "WHERE D.idDiaporama = :idDiaporama "
-                      "ORDER BY DDD.rang;";
+    maBD.ouvrirBD();
+    QSqlQuery query;
+    QString requete;
+    requete = "SELECT F.nomFamille,DI.uriPhoto, DI.titrePhoto, DDD.rang, D.idDiaporama FROM Diapos DI JOIN Familles F ON F.idFamille = DI.idFam JOIN DiaposDansDiaporama DDD ON DDD.idDiapo = DI.idphoto JOIN Diaporamas D ON D.idDiaporama = DDD.idDiaporama WHERE D.idDiaporama BETWEEN 1 AND 4 ORDER BY DDD.idDiapo;";
     query.prepare(requete);
-    query.bindValue(":idDiaporama", this->getId());
+    query.bindValue(":idDiaporama", id);
 
-    if(query.exec(requete)){
-        qDebug()<< "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    if(query.exec()){
         while (query.next()) {
             ImageDansDiaporama* imageACharger;
             switch(id) {
             case 1 : // diaporama de Pantxikaka
                 while (query.next()){
                     int rang =query.value(3).toInt();
-                    string categorie = query.value(1).toString().toStdString();
+                    string categorie = query.value(0).toString().toStdString();
                     string nomPersonnages = query.value(2).toString().toStdString();
-                    string path = query.value(0).toString().toStdString();
+                    string path = ":/images/" + query.value(1).toString().toStdString();
                     imageACharger = new ImageDansDiaporama(rang, categorie, nomPersonnages, path);
                     ajouterImageEnFin(imageACharger);
                 }
@@ -195,7 +183,7 @@ void Diaporama::charger()
                     int rang =query.value(3).toInt();
                     string categorie = query.value(1).toString().toStdString();
                     string nomPersonnages = query.value(2).toString().toStdString();
-                    string path = query.value(0).toString().toStdString();
+                    string path = ":/images" + query.value(0).toString().toStdString();
                     imageACharger = new ImageDansDiaporama(rang, categorie, nomPersonnages, path);
                     ajouterImageEnFin(imageACharger);
                 }
@@ -205,7 +193,7 @@ void Diaporama::charger()
                     int rang =query.value(3).toInt();
                     string categorie = query.value(1).toString().toStdString();
                     string nomPersonnages = query.value(2).toString().toStdString();
-                    string path = query.value(0).toString().toStdString();
+                    string path = ":/images" + query.value(0).toString().toStdString();
                     imageACharger = new ImageDansDiaporama(rang, categorie, nomPersonnages, path);
                     ajouterImageEnFin(imageACharger);
                 }
@@ -215,7 +203,7 @@ void Diaporama::charger()
                     int rang =query.value(3).toInt();
                     string categorie = query.value(1).toString().toStdString();
                     string nomPersonnages = query.value(2).toString().toStdString();
-                    string path = query.value(0).toString().toStdString();
+                    string path = ":/images" + query.value(0).toString().toStdString();
                     imageACharger = new ImageDansDiaporama(rang, categorie, nomPersonnages, path);
                     ajouterImageEnFin(imageACharger);
                 }
@@ -226,7 +214,7 @@ void Diaporama::charger()
     }
 
     else{
-        qDebug() << "Erreur lors de l'exécution de la requête" << query.lastError().text();
+        qDebug() << "Erreur lors de l'exécution de la requête" << query.lastError().text();;
     }
 
 }
