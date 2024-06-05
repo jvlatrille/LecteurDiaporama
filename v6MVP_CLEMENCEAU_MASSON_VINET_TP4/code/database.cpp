@@ -1,5 +1,5 @@
 #include "database.h"
-
+#include "QSqlError"
 
 database::database() {
     // Essayer d'ouvrir
@@ -21,12 +21,13 @@ bool database::ouvrirBD()
     maBD = QSqlDatabase::addDatabase(CONNECT_TYPE);
     maBD.setDatabaseName(DATABASE_NAME);
     if (!maBD.open()) {
-        qDebug() << "Problème de connexion à la base de donnée" ;
+        qDebug() << "Problème de connexion à la base de donnée : " << maBD.lastError().text();
         return false;
-   }
-   qDebug() << "Connexion à la bd réussie";
-   return true;
+    }
+    qDebug() << "Connexion à la bd réussie";
+    return true;
 }
+
 
 
 bool database::fermerBD()
@@ -36,6 +37,11 @@ bool database::fermerBD()
         return true;
     }
     return false;
+}
+
+QSqlDatabase database::getDatabase() const
+{
+    return maBD;
 }
 
 

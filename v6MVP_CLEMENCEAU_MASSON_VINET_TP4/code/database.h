@@ -8,7 +8,7 @@
 #include <QSqlQuery>
 
 
-#define DATABASE_NAME "jvlatrille_bd"
+#define DATABASE_NAME "nodenot_bd9"
 #define CONNECT_TYPE "QODBC"
 
 
@@ -20,6 +20,7 @@ public:
 
     bool ouvrirBD();
     bool fermerBD();
+    QSqlDatabase getDatabase() const;
     //void chargerDiaposBD();
 
 private:
