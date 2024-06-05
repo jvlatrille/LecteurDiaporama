@@ -3,6 +3,7 @@
 #include "apropos.h"
 #include "vit.h"
 #include "charger.h"
+#include "database.h"
 #include <QImage>
 
 lecteurVue::lecteurVue(QWidget *parent)
@@ -128,31 +129,32 @@ void lecteurVue::recevoirDiaporamaSelectionne(unsigned int diaporamaId){
 }
 
 void lecteurVue::listeDiaporamas(Diaporamas &diaporamas) {
-    InfosDiaporama diapo;
-    // Diaporama de Pantxika
-    diapo.id = 1;
-    diapo.titre = "Diaporama Pantxika";
-    diapo.vitesseDefilement = 2;
-    diaporamas.push_back(diapo);
+    database db;
+    if (!db.ouvrirBD()) {
+        qDebug() << "Impossible d'ouvrir la base de données";
+        return;
+    }
 
-     // Diaporama de Thierry
-    diapo.id = 2;
-    diapo.titre = "Diaporama Thierry";
-    diapo.vitesseDefilement = 4;
-    diaporamas.push_back(diapo);
+    QSqlQuery query(db.getDatabase());
+    QString requete = "SELECT idDiaporama, titreDiaporama, vitesseDefilement FROM Diaporamas ORDER BY idDiaporama;";
+    query.prepare(requete);
 
-     // Diaporama de Yann
-    diapo.id = 3;
-    diapo.titre = "Diaporama Yann";
-    diapo.vitesseDefilement = 2;
-    diaporamas.push_back(diapo);
+    if (query.exec()) {
+        while (query.next()) {
+            InfosDiaporama diapo;
+            diapo.id = query.value(0).toInt();  // idDiaporama
+            diapo.titre = query.value(1).toString().toStdString();  // titreDiaporama
+            diapo.vitesseDefilement = query.value(2).toInt();  // vitesseDefilement
+            diaporamas.push_back(diapo);
+        }
+    } else {
+        qDebug() << "Erreur lors de l'exécution de la requête: " << query.lastError().text();
+    }
 
-     // Diaporama de Manu
-    diapo.id = 4;
-    diapo.titre = "Diaporama Manu";
-    diapo.vitesseDefilement = 1;
-    diaporamas.push_back(diapo);
+    db.fermerBD(); // Assurez-vous de fermer la connexion
 }
+
+
 
 void lecteurVue::demanderEnleverDiapo(){
     qDebug() << "Demande à enlever le diaporama courrant";
