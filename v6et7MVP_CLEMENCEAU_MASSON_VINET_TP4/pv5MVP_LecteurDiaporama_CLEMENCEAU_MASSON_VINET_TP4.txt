@@ -1,2 +1,0 @@
-Présentation de la version 5 MVP : 
-Cette version à pour but d'implémenter le changement de la vitesse de défilement, le chargement d'un diaporama dans le lecteur (images "en dur" et triées par ordre croissant), et le déchargement d'un diaporama dans le lecteur. Au démarrage de l'application dans cette version, aucun diaporma n'est chargé.

@@ -1,0 +1,2 @@
+Présentation de la version 7 MVP : 
+Cette version à pour but de récupérer toutes les informations sur la base de donnée, et s'en servir à la place des données chargées en dur.
