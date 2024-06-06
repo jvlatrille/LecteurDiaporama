@@ -109,12 +109,13 @@ void Presentation::demanderChangerVitesse(vit* v)
 
 void Presentation::demanderChangerModeAutomatique()
 {
+    qDebug() << "Chaaaaaaaaanger mode autoooooooooo";
     _leModele->setEtat(Modele::automatique);
+    qDebug() << "on majjjjjjj interfaaaaaceeeeeeeeeeee";
     _laVue->majInterface(_leModele->getEtat());
-    //connect(_leModele, SIGNAL(vitesseChangee(int)), this, SLOT(ajusterVitesseDiaporama(int)), Qt::UniqueConnection);
-
-    // Utiliser correctement la vitesse du Modele
-    int vitesseActuelle = _leModele->getVitesseDefilement();
+    qDebug() << "Id du diapo : aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa " << getDiapoActuel()->getId();
+    int vitesseActuelle = _leModele->getVitesseDefilement(getDiapoActuel()->getId());
+    qDebug() << "Ajustement de la vitesse";
     ajusterVitesseDiaporama(vitesseActuelle);
     qDebug() << "Le mode change en automatique";
 }

@@ -33,7 +33,7 @@ public:
 
     enum UnEtat {manuel, automatique, defaut};
 
-    unsigned int getVitesseDefilement() const;
+    unsigned int getVitesseDefilement(unsigned int diapoActuel);
     unsigned int getPosImageCourante() const;
     unsigned int nbImages() const;
     int* vitesse;

@@ -10,10 +10,34 @@ Modele::Modele()
 
 }
 
-unsigned int Modele::getVitesseDefilement() const
+unsigned int Modele::getVitesseDefilement(unsigned int diapoActuel)
 {
-    return m_vitesseDefilement;
+    qDebug() << "zzzzzzzzzzzzzzzzzzzzzzzzzzzz on à la vitesse";
+    unsigned int vitesseDefilement = 1000; // Valeur par défaut
+    database db;
+    if (!db.ouvrirBD()) {
+        qDebug() << "BD non ouverte";
+        db.ouvrirBD();
+    }
+
+    QSqlQuery query(db.getDatabase());
+    QString requete = QString("SELECT vitesseDefilement FROM Diaporamas WHERE idDiaporama = :diapoActuel");
+    query.prepare(requete);
+    query.bindValue(":diapoActuel", diapoActuel);
+
+    if (query.exec()) {
+        if (query.next()) {
+            vitesseDefilement = query.value(0).toUInt();
+        }
+    } else {
+        qDebug() << "Erreur lors de l'exécution de la requête:" << query.lastError().text();
+    }
+
+    db.fermerBD();
+    return vitesseDefilement * 1000;
 }
+
+
 
 bool Modele::lecteurVide() const
 {
