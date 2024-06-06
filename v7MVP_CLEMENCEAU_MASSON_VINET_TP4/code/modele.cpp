@@ -58,13 +58,11 @@ void Modele::setVitesseDefilement(unsigned int vitesse)
 }
 
 void Modele::changerVitesse(vit* fenetreV) {
-    int nouvelleVitesse = fenetreV->ui->sVit->value();
+    int nouvelleVitesse = fenetreV->ui->sVit->value(); // Récupère la nouvelle vitesse depuis l'interface utilisateur
     setVitesseDefilement(nouvelleVitesse);
-    emit vitesseChangee(nouvelleVitesse);
+    emit vitesseChangee(nouvelleVitesse); // Émet un signal pour indiquer que la vitesse a changé
     qDebug() << "La nouvelle vitesse est :" << nouvelleVitesse;
-
 }
-
 
 void Modele::setPosImageCourante(unsigned int pPosImageCourante)
 {
@@ -87,85 +85,91 @@ void Modele::setEtat(UnEtat e)
 }
 
 void Modele::avancer() {
-        qDebug() << "Modele::avance";
+    qDebug() << "Modele::avance"; // Log pour indiquer que la méthode avancer est appelée
+    lecteur->avancer(); // Appeler la méthode avancer du lecteur
+    qDebug() << "le lecteur a avancé"; // Log pour confirmer que le lecteur a avancé
 
-        lecteur->avancer();
-        qDebug() << "le lecteur à avancé";
+    // Vérifier si le diaporama est valide
+    if (!lecteur->getDiaporama()) {
+        qDebug() << "Diaporama est nul"; // Log pour indiquer que le diaporama est nul
+        return; // Sortir de la méthode
+    }
 
-        if (!lecteur->getDiaporama()) {
-            qDebug() << "Diaporama est nul";
-            return;
-        }
+    // Récupérer l'image courante du lecteur
+    ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
+    if (!imageCourante) {
+        qDebug() << "Aucune image courante"; // Log pour indiquer qu'il n'y a pas d'image courante
+        return; // Sortir de la méthode
+    }
 
-        ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
-        if (!imageCourante) {
-            qDebug() << "Aucune image courante";
-            return;
-        }
-
-        qDebug() << "Image courante créée";
-        emit imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()),
-                         QString::fromStdString(imageCourante->getTitre()),
-                         QString::fromStdString(imageCourante->getCategorie()),
-                         QString::number(imageCourante->getRangDansDiaporama()),
-                         QString::fromStdString(imageCourante->getChemin()));
-
+    qDebug() << "Image courante créée"; // Log pour indiquer que l'image courante est récupérée avec succès
+    // Émettre un signal avec les informations de l'image courante
+    emit imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()),
+                     QString::fromStdString(imageCourante->getTitre()),
+                     QString::fromStdString(imageCourante->getCategorie()),
+                     QString::number(imageCourante->getRangDansDiaporama()),
+                     QString::fromStdString(imageCourante->getChemin()));
 }
 
 
 void Modele::reculer()
 {
+    qDebug() << "Modele::recule"; // Log pour indiquer que la méthode reculer est appelée
+    lecteur->reculer(); // Appeler la méthode reculer du lecteur
+    qDebug() << "le lecteur a reculé"; // Log pour confirmer que le lecteur a reculé
 
-        qDebug() << "Modele::recule";
-        lecteur->reculer();
-        qDebug() << "le lecteur à reculé";
+    // Vérifier si le diaporama est valide
+    if (!lecteur->getDiaporama()) {
+        qDebug() << "Diaporama est nul"; // Log pour indiquer que le diaporama est nul
+        return; // Sortir de la méthode
+    }
 
-        if (!lecteur->getDiaporama()) {
-            qDebug() << "Diaporama est nul";
-            return;
-        }
+    // Récupérer l'image courante du lecteur
+    ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
+    if (!imageCourante) {
+        qDebug() << "Aucune image courante"; // Log pour indiquer qu'il n'y a pas d'image courante
+        return; // Sortir de la méthode
+    }
 
-        ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
-        if (!imageCourante) {
-            qDebug() << "Aucune image courante";
-            return;
-        }
+    qDebug() << "Image courante créée"; // Log pour indiquer que l'image courante est récupérée avec succès
+    // Émettre un signal avec les informations de l'image courante
+    emit imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()),
+                     QString::fromStdString(imageCourante->getTitre()),
+                     QString::fromStdString(imageCourante->getCategorie()),
+                     QString::number(imageCourante->getRangDansDiaporama()),
+                     QString::fromStdString(imageCourante->getChemin()));
 
-        qDebug() << "Image courante créée";
-        emit imageChange(QString::fromStdString(lecteur->getDiaporama()->getTitre()),
-                         QString::fromStdString(imageCourante->getTitre()),
-                         QString::fromStdString(imageCourante->getCategorie()),
-                         QString::number(imageCourante->getRangDansDiaporama()),
-                         QString::fromStdString(imageCourante->getChemin()));
+    qDebug() << "Signaux à jour envoyés"; // Log pour confirmer que les signaux ont été envoyés
 
-        qDebug() << "Signaux à jour envoyés";
-
-        if(_etat == automatique)
-        {
-            etatManuel();
-        }
-
-
+    // Passer en mode manuel si on était en mode automatique
+    if(_etat == automatique)
+    {
+        etatManuel();
+    }
 }
 
 void Modele::avanceAuto() {
+    // Vérifier si l'état est bien automatique
     if (_etat != automatique) {
         qDebug() << "Tentative d'avance automatique alors que le mode n'est pas automatique.";
-        return;  // Assure que l'avance automatique ne fonctionne que si l'état est correct.
+        return;  // Sortir de la méthode si l'état n'est pas automatique
     }
 
+    // Vérifier que le lecteur et le diaporama sont valides
     if (lecteur && lecteur->getDiaporama()) {
-        lecteur->avancer();  // Avance à l'image suivante dans le diaporama.
+        lecteur->avancer();  // Avancer à l'image suivante dans le diaporama
 
+        // Récupérer l'image courante après l'avance
         ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
         if (imageCourante) {
+            // Émettre un signal avec les informations de l'image courante
             emit imageChange(
                 QString::fromStdString(lecteur->getDiaporama()->getTitre()),
                 QString::fromStdString(imageCourante->getTitre()),
                 QString::fromStdString(imageCourante->getCategorie()),
                 QString::number(imageCourante->getRangDansDiaporama()),
                 QString::fromStdString(imageCourante->getChemin())
-            );
+                );
         } else {
             qDebug() << "Aucune image courante disponible après avance.";
         }
@@ -215,8 +219,7 @@ void Modele::triCroissantRang()
 }
 
 void Modele::chargerDiapo(unsigned int id, const QString &titre, int vitesseDefilement) {
-    // Changer le diaporama
-    lecteur->changerDiaporama(id, titre.toStdString(), vitesseDefilement);
+    lecteur->changerDiaporama(id, titre.toStdString(), vitesseDefilement); // Changer le diaporama
 
     // Rechargez l'image courante après avoir changé le diaporama
     ImageDansDiaporama* imageCourante = lecteur->getImageCourante();
@@ -230,20 +233,18 @@ void Modele::chargerDiapo(unsigned int id, const QString &titre, int vitesseDefi
     qDebug() << "Rang dans diaporama:" << QString::number(imageCourante->getRangDansDiaporama());
     qDebug() << "Chemin image:" << QString::fromStdString(imageCourante->getChemin());
 
+    // Émettre un signal avec les informations de l'image courante
     emit imageChange(
         titre,
         QString::fromStdString(imageCourante->getTitre()),
         QString::fromStdString(imageCourante->getCategorie()),
         QString::number(imageCourante->getRangDansDiaporama()),
         QString::fromStdString(imageCourante->getChemin())
-    );
+        );
 
     qDebug() << "Etape 3";
-    setEtat(manuel);
+    setEtat(manuel); // Passer en mode manuel après avoir chargé le diaporama
 }
-
-
-
 
 void Modele::enleverDiapo() {
     _etat = UnEtat::defaut;

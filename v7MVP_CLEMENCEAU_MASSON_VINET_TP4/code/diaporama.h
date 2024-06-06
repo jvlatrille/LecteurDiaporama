@@ -21,10 +21,10 @@ public:
 
     unsigned int nbImages() const;  // nbre de pointeurs d'images contenus dans diaporama
 
-    void setId(unsigned int pId);
-    void setTitre(string pTitre);
-    void setVitesseDefilement(unsigned int pVitesseDefilement);
-    void setImages(const ImagesDiaporama& pImages);
+    void setId(unsigned int pId); // Définit l'ID du diaporama
+    void setTitre(string pTitre); // Définit le titre du diaporama
+    void setVitesseDefilement(unsigned int pVitesseDefilement); // Définit la vitesse de défilement
+    void setImages(const ImagesDiaporama& pImages);// Définit les images du diaporama
 
     void ajouterImageEnFin(ImageDansDiaporama* pImage);     // ajoute une image au diaporama (en fin de l'attribut images)
     void enleverImageEnFin();   // enlève la dernière image du diaporama, et delete l'objet image enlevé

@@ -27,49 +27,51 @@ private:
     Lecteur * lecteur;
     void triCroissantRang();
     QTimer* timer;
+    Diaporama diaporama;
 
 public:
     Modele();
 
     enum UnEtat {manuel, automatique, defaut};
 
+    // Getters
     unsigned int getVitesseDefilement() const;
     unsigned int getPosImageCourante() const;
-    unsigned int nbImages() const;
-    int* vitesse;
-
-    UnEtat getEtat() const;
-    void setEtat(UnEtat e);
     Diaporama* getDiaporama() const;
+    UnEtat getEtat() const;
+    Lecteur *  getLecteur() const;
 
+    // Setters
     void setVitesseDefilement(unsigned int);
     void setDiaporama(Diaporama *);
     void setPosImageCourante(unsigned int pPosImageCourante);
-    void chargerDiapo(unsigned int id, const QString &titre, int vitesseDefilement);
+    void setEtat(UnEtat e);
+    void setLecteur(Lecteur * newLecteur);
 
+    // Méthode pour charger un diaporama
+    void chargerDiapo(unsigned int id, const QString &titre, int vitesseDefilement);
+    unsigned int nbImages() const;
+    int* vitesse;
+
+    // Méthodes pour bouger dans le diaporama
     void avancer();
     void reculer();
     void avanceAuto();
+    void avancerAuto();
+    void reculerAuto(); // J'crois qu'elle sert à rien celle là
 
     void changerVitesse(vit*);
     void etatAutomatique();
     void etatManuel();
     void enleverDiapo();
-    Lecteur *  getLecteur() const;
-    void setLecteur(Lecteur * newLecteur);
-
-
-    void avancerAuto();
-    void reculerAuto();
-
 
 signals:
-    void imageChange(const QString &titreDiapo, const QString &titreImage, const QString &categorie, const QString &rang, const QString &chemin);
-    void vitesseChangee(int vitesse);
+    void imageChange(const QString &titreDiapo, const QString &titreImage, const QString &categorie, const QString &rang, const QString &chemin); // Signal émis quand l'image change avec toute les infos
+    void vitesseChangee(int vitesse); // Signal émis quand la vitesse change
 
-private :
+private : // Déclaré après car enum UnEtat dans le public
     UnEtat _etat;
-    Diaporama diaporama;
+
 };
 
 #endif // MODELE_H

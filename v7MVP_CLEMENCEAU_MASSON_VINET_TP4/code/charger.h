@@ -17,19 +17,19 @@ public:
     explicit charger(QWidget *parent = nullptr);
     ~charger();
 
-    void updateDiaporamas(const Diaporamas &diaporamas);
-    unsigned int getSelectedDiaporamaId() const;
+    void updateDiaporamas(const Diaporamas &diaporamas); // Mise à jour de la liste des diaporamas disponibles
+    unsigned int getSelectedDiaporamaId() const; // Récupère l'ID du diaporama sélectionné dans la fenêtre
 
 
 signals:
-    void diaporamaSelectionne(unsigned int diaporamaId);
+    void diaporamaSelectionne(unsigned int diaporamaId); // Signal émis quand un diaporama est sélectionné
 
 private slots:
-    void transmettreInformations();
+    void transmettreInformations(); // Transmet les infos du diaporama sélectionné
 
 private:
     Ui::charger *ui;
-    Diaporamas diaporamasDisponibles; // Stocker les diaporamas disponibles pour récupérer l'id
+    Diaporamas diaporamasDisponibles;
 };
 
 #endif // CHARGER_H

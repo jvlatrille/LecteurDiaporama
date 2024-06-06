@@ -58,14 +58,13 @@ void lecteurVue::majPresentation(const QString &titreDiapo, const QString &titre
     ui->rangImage->setText(rang);
     ui->imageDiapo->setPixmap(QPixmap(chemin));
 
-    ui->imageDiapo->repaint();
+    ui->imageDiapo->repaint(); // Forcer si jamais ça marche pas
 }
 
 
 void lecteurVue::setPresentation(Presentation * p)
 {
     m_MaPresentation = p;
-    //majPresentation(getPresentation()->getDiapoActuel()); fait planter le prog
 }
 
 
@@ -86,22 +85,22 @@ void lecteurVue::demanderChangerVitesse(){
     qDebug() << "Demande à changer la vitesse";
     vit* fenetreV = new vit();
     qDebug() << "Dans la vue*****";
-    reponse = fenetreV->exec();
+    reponse = fenetreV->exec(); // Afficher la fenêtre de changement de vitesse
     if(reponse == 1){
-    qDebug() << "On affiche la fenêtre vitesse";
-    getPresentation()->demanderChangerVitesse(fenetreV);
+        qDebug() << "On affiche la fenêtre vitesse";
+        getPresentation()->demanderChangerVitesse(fenetreV); // Demander à la présentation de changer la vitesse
     }
     delete fenetreV;
 }
 
 void lecteurVue::demanderChangerModeAutomatique(){
     qDebug() << "Demande à changer de mode en automatique";
-    getPresentation()->demanderChangerModeAutomatique();
+    getPresentation()->demanderChangerModeAutomatique(); // Demander à la présentation de passer en mode automatique
 }
 
 void lecteurVue::demanderChangerModeManuel(){
-    qDebug() << "Demande à changer de mode en Manuel";
-    getPresentation()->demanderChangerModeManuel();
+    qDebug() << "Demande à changer de mode en manuel";
+    getPresentation()->demanderChangerModeManuel(); // Demander à la présentation de passer en mode manuel
 }
 
 void lecteurVue::demanderChargerDiapo(){
@@ -109,24 +108,24 @@ void lecteurVue::demanderChargerDiapo(){
     charger fenetreCharger;
 
     Diaporamas diaporamas;
-    listeDiaporamas(diaporamas);
+    listeDiaporamas(diaporamas); // Lister les diaporamas disponibles
 
-    fenetreCharger.updateDiaporamas(diaporamas);
+    fenetreCharger.updateDiaporamas(diaporamas); // Mettre à jour la fenêtre de chargement avec les diaporamas disponibles
     connect(&fenetreCharger, &charger::diaporamaSelectionne, this, &lecteurVue::recevoirDiaporamaSelectionne);
-    fenetreCharger.exec();
-
+    fenetreCharger.exec(); // Afficher la fenêtre de chargement
 }
 
 void lecteurVue::recevoirDiaporamaSelectionne(unsigned int diaporamaId){
-    listeDiaporamas(this->diaporamas);
+    listeDiaporamas(this->diaporamas); // Récupérer la liste des diaporamas
     for (const InfosDiaporama& diapo : diaporamas) {
         if (diapo.id == diaporamaId) {
             qDebug() << "ID:" << diapo.id << ", Titre:" << QString::fromStdString(diapo.titre) << ", Vitesse de défilement:" << diapo.vitesseDefilement;
-            getPresentation()->demanderChargerDiapo(diapo.id, QString::fromStdString(diapo.titre), diapo.vitesseDefilement);
+            getPresentation()->demanderChargerDiapo(diapo.id, QString::fromStdString(diapo.titre), diapo.vitesseDefilement); // Charger le diaporama sélectionné
         }
     }
     qDebug() << "Diaporama avec l'ID" << diaporamaId << "non trouvé.";
 }
+
 
 void lecteurVue::listeDiaporamas(Diaporamas &diaporamas) {
     database db;
@@ -145,7 +144,7 @@ void lecteurVue::listeDiaporamas(Diaporamas &diaporamas) {
             diapo.id = query.value(0).toInt();  // idDiaporama
             diapo.titre = query.value(1).toString().toStdString();  // titreDiaporama
             diapo.vitesseDefilement = query.value(2).toInt();  // vitesseDefilement
-            diaporamas.push_back(diapo);
+            diaporamas.push_back(diapo); // Ajouter le diaporama à la liste
         }
     } else {
         qDebug() << "Erreur lors de l'exécution de la requête: " << query.lastError().text();

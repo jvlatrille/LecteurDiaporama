@@ -21,15 +21,18 @@ public:
     Presentation();
     ~Presentation();
 
-    void setModel(Modele* m);
-    void setVue(lecteurVue* v);
+    // Getters
     Modele *getModele();
     lecteurVue *getVue();
-
     ImageDansDiaporama* getImageActuelle();
     Diaporama * getDiapoActuel();
     int getVitesse();
 
+    // Setters
+    void setModel(Modele* m);
+    void setVue(lecteurVue* v);
+
+    // Autres méthodes
     void demanderAvancer();
     void demanderReculer();
     void autoAdvance();
@@ -40,20 +43,6 @@ public:
     void demanderEnleverDiapo();
     void avancerBouble();
     void ajusterVitesseDiaporama(int vitesse);
-
-    /*
-signals:
-    void s_avancer();
-    void s_reculer();
-    void s_departArret();
-    void s_changerVitesse();
-    void s_changerModeAuto();
-    void s_changerModeManuel();
-    void s_chargerDiapo();
-    void s_quitter();
-    void s_enleverDiapo();
-    void s_aPropos();*/
-
 };
 
 #endif // PRESENTATION_H

@@ -2,70 +2,42 @@
 #include "QSqlError"
 
 database::database() {
-    // Essayer d'ouvrir
+    // Essayer d'ouvrir la base de données
     if(ouvrirBD()) {
-        qDebug() << "Ouverture réussie";
+        qDebug() << "Ouverture réussie"; // Si ça marche, on le dit
     }
     else {
-        qDebug() << "Ouveture ratée";
+        qDebug() << "Ouverture ratée"; // Sinon, on le dit aussi
     }
 }
 
 database::~database()
 {
-    fermerBD();
+    fermerBD(); // Fermer la base de données quand on détruit
 }
 
 bool database::ouvrirBD()
 {
-    maBD = QSqlDatabase::addDatabase(CONNECT_TYPE);
-    maBD.setDatabaseName(DATABASE_NAME);
+    maBD = QSqlDatabase::addDatabase(CONNECT_TYPE); // Configurer le type de connexion
+    maBD.setDatabaseName(DATABASE_NAME); // Donner le nom de la base de données
     if (!maBD.open()) {
-        qDebug() << "Problème de connexion à la base de donnée : " << maBD.lastError().text();
-        return false;
+        qDebug() << "Problème de connexion à la base de données : " << maBD.lastError().text(); // En cas de problème, on affiche l'erreur
+        return false; // Retourner false si ça marche pas
     }
-    qDebug() << "Connexion à la bd réussie";
-    return true;
+    qDebug() << "Connexion à la BD réussie";
+    return true; // Retourner true si ça marche
 }
-
-
 
 bool database::fermerBD()
 {
     if (maBD.isOpen()) {
-        maBD.close();
-        return true;
+        maBD.close(); // Fermer la base de données si elle est ouverte
+        return true; // Retourner true si ça marche
     }
-    return false;
+    return false; // Retourner false si elle n'était pas ouverte
 }
 
 QSqlDatabase database::getDatabase() const
 {
     return maBD;
 }
-
-
-/*
-void database::chargerDiaposBD()
-{
-    QSqlQuery query;
-    QString requete;
-    requete = "SELECT * FROM Diapos ";
-    query.prepare(requete);
-
-    Diaporama diaporamasInfos;
-
-        if (!query.exec()) {
-            qDebug() << "Erreur lors de l'exécution de la requête :";
-        }
-
-        while (query.next()) {
-            InfosDiaporama infosDiapoCourant;
-            infosDiapoCourant.id = query.value(0).toUInt();
-            infosDiapoCourant.titre = query.value(1).toString().toStdString();
-            infosDiapoCourant.vitesseDefilement = query.value(2).toUInt();
-
-            diaporamas.push_back(infosDiapoCourant);
-        }
-}
-*/

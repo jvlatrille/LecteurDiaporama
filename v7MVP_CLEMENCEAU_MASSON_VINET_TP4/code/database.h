@@ -19,10 +19,9 @@ public:
     database();
     ~database();
 
-    bool ouvrirBD();
-    bool fermerBD();
-    QSqlDatabase getDatabase() const;
-    //void chargerDiaposBD();
+    bool ouvrirBD(); // Ouvre la connexion à la base de données
+    bool fermerBD(); // Ferme la connexion à la base de données
+    QSqlDatabase getDatabase() const; // Récupère l'objet base de données
 
 private:
     QSqlDatabase maBD;

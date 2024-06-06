@@ -38,12 +38,13 @@ private:
 public:
     lecteurVue(QWidget *parent = nullptr);
     ~lecteurVue();
-    Presentation * getPresentation() const;
-    void setPresentation(Presentation *);
-    void initializeConnections();
-    void majInterface(Modele::UnEtat);
-    int reponse;
-    void listeDiaporamas(Diaporamas &diaporamas);
+    Presentation * getPresentation() const; // Récupère la présentation
+    void setPresentation(Presentation *); // Définit la présentation
+
+    void initializeConnections(); // Initialise les connexions des signaux et slots
+    void majInterface(Modele::UnEtat); // Met à jour les boutons en fonction de l'état
+    int reponse; // Variable pour stocker la réponse
+    void listeDiaporamas(Diaporamas &diaporamas); // Liste les diaporamas disponibles
 
 public slots:
     void demanderAvancer();
@@ -59,6 +60,6 @@ public slots:
     void majPresentation(const QString &titreDiapo, const QString &titreImage, const QString &categorie, const QString &rang, const QString &chemin);
 
 signals:
-    void diaporamaSelectionne(unsigned int diaporamaId);
+    void diaporamaSelectionne(unsigned int diaporamaId); // Signal émis quand un diaporama est sélectionné avec l'ID du diapo
 };
 #endif // LECTEURVUE_H

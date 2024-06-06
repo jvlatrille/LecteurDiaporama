@@ -18,7 +18,7 @@ public:
     Ui::vit *ui;
 
 public slots:
-    void handleButtonBoxAccepted();
+    void handleButtonBoxAccepted(); // Slot pour gérer l'acceptation de la boîte de dialogue
 
 };
 

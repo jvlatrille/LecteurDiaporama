@@ -2,10 +2,10 @@
 
 ImageDansDiaporama::ImageDansDiaporama(unsigned int pRangDansDiaporama, string pCategorie, string pTitre, string pChemin)
 {
-    rangDansDiaporama = pRangDansDiaporama;
-    categorie = pCategorie;
-    titre = pTitre;
-    chemin = pChemin;
+    rangDansDiaporama = pRangDansDiaporama; // Initialiser le rang dans le diaporama
+    categorie = pCategorie; // Initialiser la catégorie de l'image
+    titre = pTitre; // Initialiser le titre de l'image
+    chemin = pChemin; // Initialiser le chemin de l'image
 }
 
 ImageDansDiaporama::~ImageDansDiaporama()

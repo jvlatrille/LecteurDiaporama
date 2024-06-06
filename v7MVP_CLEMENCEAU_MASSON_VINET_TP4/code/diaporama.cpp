@@ -88,17 +88,16 @@ void Diaporama::vider()
     unsigned int taille = nbImages();
     for (unsigned int i = 0; i < taille ; i++)
     {
-        enleverImageEnFin(); /* Removes the last element in the vector,
-                              effectively reducing the container size by one.
-                              AND deletes the removed element */
+        enleverImageEnFin();
     }
     // post-condition : nbImages() == 0
 }
 
 void Diaporama::charger()
 {
-    maBD.ouvrirBD();
-    QSqlQuery query;
+    maBD.ouvrirBD(); // Ouvrir la connexion à la base de données
+    QSqlQuery query; // Créer un objet pour exécuter des requêtes SQL
+    // Préparer la requête SQL pour récupérer les infos des images du diaporama
     QString requete = QString("SELECT F.nomFamille, DI.uriPhoto, DI.titrePhoto, DDD.rang, D.idDiaporama "
                               "FROM Diapos DI "
                               "JOIN Familles F ON F.idFamille = DI.idFam "
@@ -106,21 +105,24 @@ void Diaporama::charger()
                               "JOIN Diaporamas D ON D.idDiaporama = DDD.idDiaporama "
                               "WHERE D.idDiaporama = %1 "
                               "ORDER BY DDD.rang;").arg(id);
-    query.prepare(requete);
+    query.prepare(requete); // Préparer la requête
 
+    // Si la requête s'exécute correctement
     if(query.exec()){
-        while (query.next()) {
-            int rang = query.value(3).toInt();
-            string categorie = query.value(0).toString().toStdString();
-            string nomPersonnages = query.value(2).toString().toStdString();
-            string path = ":/images/" + query.value(1).toString().toStdString();
+        while (query.next()) { // Tant qu'il y a des résultats à lire
+            int rang = query.value(3).toInt(); // Récupérer le rang de l'image
+            string categorie = query.value(0).toString().toStdString(); // Récupérer la catégorie de l'image
+            string nomPersonnages = query.value(2).toString().toStdString(); // Récupérer le titre de l'image
+            string path = ":/images/" + query.value(1).toString().toStdString(); // Récupérer et modif pour qu'il fonctionne pour nous le chemin de l'image
+            // Créer une nouvelle image avec les infos récupérées
             ImageDansDiaporama* imageACharger = new ImageDansDiaporama(rang, categorie, nomPersonnages, path);
-            ajouterImageEnFin(imageACharger);
+            ajouterImageEnFin(imageACharger); // Ajouter l'image à la fin du diaporama
         }
     } else {
-        qDebug() << "Erreur lors de l'exécution de la requête" << query.lastError().text();
+        qDebug() << "Erreur lors de l'exécution de la requête" << query.lastError().text(); // Afficher une erreur si la requête échoue
     }
 }
+
 
 
 void Diaporama::trierParRangCroissant()

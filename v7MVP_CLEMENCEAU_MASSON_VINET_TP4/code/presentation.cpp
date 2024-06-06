@@ -2,11 +2,11 @@
 
 Presentation::Presentation()
 {
-    _leModele = nullptr;
-    _laVue = nullptr;
+    _leModele = nullptr; // Initialiser le modèle à nullptr
+    _laVue = nullptr; // Initialiser la vue à nullptr
 
-    timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &Presentation::avancerBouble);
+    timer = new QTimer(this); // Créer un nouveau timer
+    connect(timer, &QTimer::timeout, this, &Presentation::avancerBouble); // Connecter le signal timeout du timer à la méthode avancerBouble
 }
 
 Presentation::~Presentation() {
@@ -45,54 +45,52 @@ Diaporama *Presentation::getDiapoActuel()
 
 void Presentation::demanderAvancer() {
     if (!_leModele) {
-        qDebug() << "_leModele est nul";
+        qDebug() << "_leModele est nul"; // Log pour indiquer que le modèle est nul
         return;
     }
     if (!_laVue) {
-        qDebug() << "_laVue est nul";
+        qDebug() << "_laVue est nul"; // Log pour indiquer que la vue est nulle
         return;
     }
     if(getModele()->getEtat() == Modele::automatique)
     {
-        demanderChangerModeManuel();
+        demanderChangerModeManuel(); // Changer en mode manuel si l'état est automatique
     }
     else{
-        _leModele->avancer();
+        _leModele->avancer(); // Appeler la méthode avancer du modèle
     }
 
-
-    Diaporama *diapo = _leModele->getLecteur()->getDiaporama();
+    Diaporama* diapo = _leModele->getLecteur()->getDiaporama();
     if (!diapo) {
-        qDebug() << "Diaporama est nul";
+        qDebug() << "Diaporama est nul"; // Log pour indiquer que le diaporama est nul
         return;
     }
-    qDebug() << "L'image avance";
+    qDebug() << "L'image avance"; // Log pour indiquer que l'image a avancé
 }
 
 void Presentation::demanderReculer() {
     if (!_leModele) {
-        qDebug() << "_leModele est nul";
+        qDebug() << "_leModele est nul"; // Log pour indiquer que le modèle est nul
         return;
     }
     if (!_laVue) {
-        qDebug() << "_laVue est nul";
+        qDebug() << "_laVue est nul"; // Log pour indiquer que la vue est nulle
         return;
     }
     if(getModele()->getEtat() == Modele::automatique)
     {
-        demanderChangerModeManuel();
+        demanderChangerModeManuel(); // Changer en mode manuel si l'état est automatique
     }
     else{
-        _leModele->reculer();
+        _leModele->reculer(); // Appeler la méthode reculer du modèle
     }
 
-
-    Diaporama *diapo = _leModele->getLecteur()->getDiaporama();
+    Diaporama* diapo = _leModele->getLecteur()->getDiaporama();
     if (!diapo) {
-        qDebug() << "Diaporama est nul";
+        qDebug() << "Diaporama est nul"; // Log pour indiquer que le diaporama est nul
         return;
     }
-    qDebug() << "L'image recule";
+    qDebug() << "L'image recule"; // Log pour indiquer que l'image a reculé
 }
 
 void Presentation::autoAdvance() {
@@ -109,14 +107,12 @@ void Presentation::demanderChangerVitesse(vit* v)
 
 void Presentation::demanderChangerModeAutomatique()
 {
-    _leModele->setEtat(Modele::automatique);
-    _laVue->majInterface(_leModele->getEtat());
-    //connect(_leModele, SIGNAL(vitesseChangee(int)), this, SLOT(ajusterVitesseDiaporama(int)), Qt::UniqueConnection);
+    _leModele->setEtat(Modele::automatique); // Définir l'état comme automatique
+    _laVue->majInterface(_leModele->getEtat()); // Mettre à jour l'interface de la vue
 
-    // Utiliser correctement la vitesse du Modele
-    int vitesseActuelle = _leModele->getVitesseDefilement();
-    ajusterVitesseDiaporama(vitesseActuelle);
-    qDebug() << "Le mode change en automatique";
+    int vitesseActuelle = _leModele->getVitesseDefilement(); // Récupérer la vitesse actuelle du modèle
+    ajusterVitesseDiaporama(vitesseActuelle); // Ajuster la vitesse du diaporama
+    qDebug() << "Le mode change en automatique"; // Log pour indiquer que le mode a changé en automatique
 }
 
 void Presentation::ajusterVitesseDiaporama(int vitesse) {
@@ -125,13 +121,12 @@ void Presentation::ajusterVitesseDiaporama(int vitesse) {
         vitesse = 1; // Pour éviter la division par zéro ou un intervalle trop court
     }
 
-    // Transformer la vitesse en intervalle adapté pour le timer
-    intervalleTimer = 1000 / vitesse;
+    intervalleTimer = 1000 / vitesse; // Transformer la vitesse en intervalle adapté pour le timer
     if (intervalleTimer < 100) {
-        intervalleTimer = 1000;  // Garantir un minimum pour éviter le clignotement ou le crash
+        intervalleTimer = 1000; // Garantir un minimum pour éviter le clignotement ou le crash
     }
 
-    timer->start(intervalleTimer);
+    timer->start(intervalleTimer); // Démarrer le timer avec l'intervalle ajusté
     qDebug() << "Vitesse du diaporama ajustée à un intervalle de" << intervalleTimer << "millisecondes";
 }
 
