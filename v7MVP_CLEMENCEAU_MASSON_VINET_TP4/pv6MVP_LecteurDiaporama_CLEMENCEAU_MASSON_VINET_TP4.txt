@@ -1,2 +1,0 @@
-Présentation de la version 6 MVP : 
-Cette version à pour but de se connecter à la base de donnée.

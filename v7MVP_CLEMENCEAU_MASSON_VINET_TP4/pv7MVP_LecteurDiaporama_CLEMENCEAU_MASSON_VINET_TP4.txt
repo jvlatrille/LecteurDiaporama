@@ -1,0 +1,2 @@
+Présentation de la version 7 MVP : 
+Cette version comprend également la version 6 MVP, que nous avons sautée. Elle a pour but de se connecter à la base de donnée et de charger les diaporamas qui se trouvent dans la base de donnée.
