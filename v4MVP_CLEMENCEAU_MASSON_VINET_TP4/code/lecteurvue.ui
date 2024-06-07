@@ -57,6 +57,9 @@
         <property name="text">
          <string>Image diapo</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
       </item>
       <item>
@@ -138,14 +141,13 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
     <property name="title">
      <string>Fichier</string>
     </property>
-    <addaction name="actionChargerDiapo"/>
     <addaction name="actionQuitter"/>
    </widget>
    <widget class="QMenu" name="menuParam_tres">
@@ -153,6 +155,7 @@
      <string>Paramètres</string>
     </property>
     <addaction name="actionVitesseDefilement"/>
+    <addaction name="actionChargerDiapo"/>
     <addaction name="actionEnleverDiapo"/>
    </widget>
    <widget class="QMenu" name="menuAide">

@@ -63,15 +63,22 @@ void lecteurVue::majPresentation(const QString &titreDiapo, const QString &titre
     ui->categorieImage->setText(categorie);
     ui->rangImage->setText(rang);
     ui->imageDiapo->setPixmap(QPixmap(chemin));
-
-    ui->imageDiapo->repaint();
 }
 
 
 void lecteurVue::setPresentation(Presentation * p)
 {
     m_MaPresentation = p;
-    //majPresentation(getPresentation()->getDiapoActuel()); fait planter le prog
+    // Seulement les boutons dont on a besion
+    ui->actionAutomatique->setEnabled(true);
+    ui->actionManuel->setEnabled(false);
+    ui->bPrecedent->setEnabled(true);
+    ui->bSuivant->setEnabled(true);
+    ui->bLancerDiapo->setEnabled(true);
+    ui->bArret->setEnabled(true);
+    ui->actionEnleverDiapo->setEnabled(false);
+    ui->actionVitesseDefilement->setEnabled(false);
+    ui->actionChargerDiapo->setEnabled(false);
 }
 
 

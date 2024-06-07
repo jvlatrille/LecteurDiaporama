@@ -98,11 +98,6 @@ void Modele::avancer() {
                          QString::fromStdString(imageCourante->getCategorie()),
                          QString::number(imageCourante->getRangDansDiaporama()),
                          QString::fromStdString(imageCourante->getChemin()));
-
-
-
-
-
 }
 
 
