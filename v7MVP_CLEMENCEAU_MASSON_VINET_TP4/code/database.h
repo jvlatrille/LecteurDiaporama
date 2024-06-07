@@ -16,11 +16,13 @@
 class database
 {
 public:
-    database();
-    ~database();
+    database(); // Constructeur
+    ~database(); // Destructeur
 
     bool ouvrirBD(); // Ouvre la connexion à la base de données
     bool fermerBD(); // Ferme la connexion à la base de données
+
+    //Getter
     QSqlDatabase getDatabase() const; // Récupère l'objet base de données
 
 private:

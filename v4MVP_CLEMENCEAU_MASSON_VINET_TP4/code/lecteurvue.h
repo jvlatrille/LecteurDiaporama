@@ -22,10 +22,16 @@ private:
 
 
 public:
-    lecteurVue(QWidget *parent = nullptr);
-    ~lecteurVue();
+    lecteurVue(QWidget *parent = nullptr); // Constructeur
+    ~lecteurVue(); // Destructeur
+
+    //Getter
     Presentation * getPresentation() const;
+
+    //Setter
     void setPresentation(Presentation *);
+
+    // Autre méthode
     void initializeConnections();
 
 

@@ -7,8 +7,10 @@ class ImageDansDiaporama
 {
 public:
     ImageDansDiaporama(unsigned int pRangDansDiaporama=0,
-                       string pCategorie="", string pTitre="", string pChemin = "");
-    ~ImageDansDiaporama();
+                       string pCategorie="", string pTitre="", string pChemin = ""); // Constructeur
+    ~ImageDansDiaporama(); // Destructeur
+
+    //Getter
     unsigned int getRangDansDiaporama() const;
     string getCategorie() const;
     string getTitre() const;
@@ -16,6 +18,7 @@ public:
 
     void afficher();    // affiche tous les champs de l'image
 
+    // Setters
     void setRangDansDiaporama (unsigned int pRangDansDiaporama);
     void setTitre (string pTitre);
     void setCategorie (string pCategorie);

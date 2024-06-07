@@ -7,8 +7,10 @@ class ImageDansDiaporama
 {
 public:
     ImageDansDiaporama(unsigned int pRangDansDiaporama=0,
-                       string pCategorie="defaut", string pTitre="defaut", string pChemin = ":/images/Disney_tapis.gif");
-    ~ImageDansDiaporama();
+                       string pCategorie="defaut", string pTitre="defaut", string pChemin = ":/images/Disney_tapis.gif"); // Constructeur
+    ~ImageDansDiaporama(); // destructeur
+
+    // Getters
     unsigned int getRangDansDiaporama() const;
     string getCategorie() const;
     string getTitre() const;
@@ -16,6 +18,7 @@ public:
 
     void afficher();    // affiche tous les champs de l'image
 
+    // But : Setters
     void setRangDansDiaporama (unsigned int pRangDansDiaporama);
     void setTitre (string pTitre);
     void setCategorie (string pCategorie);

@@ -28,13 +28,14 @@ public:
 
     enum UnEtat {manuel, automatique};
 
+    // Getters
     unsigned int getVitesseDefilement() const;
     unsigned int getPosImageCourante() const;
     unsigned int nbImages() const;
-
     UnEtat getEtat() const;
     Diaporama* getDiaporama() const;
 
+    // Setters
     void setVitesseDefilement(unsigned int);
     void setDiaporama(Diaporama *);
     void setPosImageCourante(unsigned int pPosImageCourante);

@@ -36,14 +36,25 @@ private:
 
 
 public:
-    lecteurVue(QWidget *parent = nullptr);
-    ~lecteurVue();
+    lecteurVue(QWidget *parent = nullptr); // Constructeur
+    ~lecteurVue(); // Destructeur
+
+    // Getter
     Presentation * getPresentation() const;
+
+    // Setter
     void setPresentation(Presentation *);
+
+    //Autres méthodes
     void initializeConnections();
+    // But : Initialisation des connexions
     void majInterface(Modele::UnEtat);
-    int reponse;
+    // But : Mets à jour l'interface
+
     void listeDiaporamas(Diaporamas &diaporamas);
+    // But : Donne la liste des diaporamas
+
+    int reponse; // Réponse de l'utilisateur pour la vitesse choisie
 
 public slots:
     void demanderAvancer();

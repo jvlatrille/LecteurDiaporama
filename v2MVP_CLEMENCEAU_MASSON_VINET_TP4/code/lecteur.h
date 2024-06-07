@@ -14,18 +14,21 @@
 class Lecteur
 {
 public:
-    Lecteur();
-    ~Lecteur();
+    Lecteur(); // Constructeur
+    ~Lecteur(); // Destructeur
 
+    // Getters
     unsigned int getIdDiaporama() const;
     Diaporama* getDiaporama() const;
     unsigned int getPosImageCourante() const;
-    bool lecteurVide() const;                         // = vrai si aucun diaporama ssocié au lecteur, faux Sinon
     ImageDansDiaporama* getImageCourante() const;     // retourne le pointeur vers l'image courante
+
+    bool lecteurVide() const;                         // = vrai si aucun diaporama ssocié au lecteur, faux Sinon
     unsigned int nbImages() const;                    // taille de la collection pointée par diaporama
 
     void afficher();            // affiche les informations sur lecteur + éventuellement diaporama et image courante
 
+    // Setters
     void setIdDiaporama(unsigned int pIdDiaporama);
     void setDiaporama (Diaporama* pDiaporama);
     void setPosImageCourante(unsigned int pPosImageCourante);

@@ -36,11 +36,14 @@ private:
 
 
 public:
-    lecteurVue(QWidget *parent = nullptr);
-    ~lecteurVue();
+    lecteurVue(QWidget *parent = nullptr); // Constructeur
+    ~lecteurVue(); // Destructeur
+    // Getters
     Presentation * getPresentation() const; // Récupère la présentation
+    // Setters
     void setPresentation(Presentation *); // Définit la présentation
 
+    // Autres méthodes
     void initializeConnections(); // Initialise les connexions des signaux et slots
     void majInterface(Modele::UnEtat); // Met à jour les boutons en fonction de l'état
     int reponse; // Variable pour stocker la réponse

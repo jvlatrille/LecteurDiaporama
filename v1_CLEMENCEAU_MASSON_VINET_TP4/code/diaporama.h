@@ -11,7 +11,7 @@ class Diaporama {
 private:
     // Attributs
     string m_titre;
-    ImagesDuDiaporama m_localisationImages;
+    ImagesDuDiaporama m_localisationImages; // Chemin d'accès de l'image
     unsigned int m_vitesseDefilement;
     unsigned int m_posImageCourante;
 

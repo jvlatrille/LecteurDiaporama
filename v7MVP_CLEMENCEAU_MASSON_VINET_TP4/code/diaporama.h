@@ -9,8 +9,10 @@ typedef vector<ImageDansDiaporama*> ImagesDiaporama; // collection de pointeurs 
 class Diaporama
 {
 public:
-    Diaporama();
-    ~Diaporama();
+    Diaporama(); // Constructeur
+    ~Diaporama(); // Destructeur
+
+    // Getters
     unsigned int getId() const;
     string getTitre() const;
     int getVitesseDefilement() const;
@@ -21,11 +23,13 @@ public:
 
     unsigned int nbImages() const;  // nbre de pointeurs d'images contenus dans diaporama
 
+    // Setters
     void setId(unsigned int pId); // Définit l'ID du diaporama
     void setTitre(string pTitre); // Définit le titre du diaporama
     void setVitesseDefilement(unsigned int pVitesseDefilement); // Définit la vitesse de défilement
     void setImages(const ImagesDiaporama& pImages);// Définit les images du diaporama
 
+    // Autres méthodes
     void ajouterImageEnFin(ImageDansDiaporama* pImage);     // ajoute une image au diaporama (en fin de l'attribut images)
     void enleverImageEnFin();   // enlève la dernière image du diaporama, et delete l'objet image enlevé
     void vider();       // enlève toutes les images du diaporama, et delete chaque objet enlevé
@@ -37,7 +41,7 @@ private:
     unsigned int vitesseDefilement; // vitesse de défilement des images du diaporama
     unsigned int posImageCourante;  // position de l'image courante dans le diaporama
     ImagesDiaporama images;         // vecteur de pointeurs sur les objets ImageDansDiaporama de ce diaporama
-    void trierParRangCroissant(); // trie les images du diaporama par ordre de rang croissant
+    void trierParRangCroissant();   // trie les images du diaporama par ordre de rang croissant
 };
 
 #endif // DIAPORAMA_H

@@ -18,8 +18,8 @@ private:
     int intervalleTimer = 1000;
 
 public:
-    Presentation();
-    ~Presentation();
+    Presentation(); // Constructeur
+    ~Presentation(); // Destructeur
 
     // Getters
     Modele *getModele();

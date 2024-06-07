@@ -15,9 +15,11 @@ private:
 public:
     Presentation();
 
+    // Getters
     Modele *getModele();
     lecteurVue *getVue();
 
+    // Setters
     void setModel(Modele* m);
     void setVue(lecteurVue* v);
 

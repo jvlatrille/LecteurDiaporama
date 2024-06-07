@@ -6,7 +6,7 @@ vit::vit(QWidget *parent) :
     ui(new Ui::vit)
 {
     ui->setupUi(this);
-    connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(handleButtonBoxAccepted()));
+    connect(ui->buttonBox, SIGNAL(accepted()), this, SLOT(boutonOk()));
 }
 
 vit::~vit()
@@ -14,9 +14,9 @@ vit::~vit()
     delete ui;
 }
 
-void vit::handleButtonBoxAccepted()
+void vit::boutonOk()
 {
-    int value = ui->sVit->value();  // Remplacez 'sVit' par le nom exact de votre QSpinBox
+    int value = ui->sVit->value();
     qDebug() << "La valeur choisie est :" << value;
 }
 

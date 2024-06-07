@@ -8,8 +8,10 @@ typedef vector<ImageDansDiaporama*> ImagesDiaporama; // collection de pointeurs 
 class Diaporama
 {
 public:
-    Diaporama();
-    ~Diaporama();
+    Diaporama(); // Constructeur
+    ~Diaporama(); // Destructeur
+
+    // Getters
     unsigned int getId() const;
     string getTitre() const;
     int getVitesseDefilement() const;
@@ -17,13 +19,15 @@ public:
     ImageDansDiaporama* getImageCourante() const; // retourne l'image courante du diaporama
     unsigned int getPosImageCourante() const; // retourne la position de l'image courante dans le diaporama
 
-    unsigned int nbImages() const;  // nbre de pointeurs d'images contenus dans diaporama
+    unsigned int nbImages() const;  // nombre de pointeurs d'images contenus dans diaporama
 
+    // Setters
     void setId(unsigned int pId);
     void setTitre(string pTitre);
     void setVitesseDefilement(unsigned int pVitesseDefilement);
     void setImages(const ImagesDiaporama& pImages);
 
+    // Autres méthodes
     void ajouterImageEnFin(ImageDansDiaporama* pImage);     // ajoute une image au diaporama (en fin de l'attribut images)
     void enleverImageEnFin();   // enlève la dernière image du diaporama, et delete l'objet image enlevé
     void vider();       // enlève toutes les images du diaporama, et delete chaque objet enlevé

@@ -14,9 +14,10 @@
 class Lecteur
 {
 public:
-    Lecteur();
-    ~Lecteur();
+    Lecteur(); // constructeur
+    ~Lecteur(); // Destructeur
 
+    // Getters
     unsigned int getIdDiaporama() const;
     Diaporama* getDiaporama() const;
     unsigned int getPosImageCourante() const;
@@ -26,10 +27,12 @@ public:
 
     void afficher();            // affiche les informations sur lecteur + éventuellement diaporama et image courante
 
+    // Setters
     void setIdDiaporama(unsigned int pIdDiaporama);
     void setDiaporama (Diaporama* pDiaporama);
     void setPosImageCourante(unsigned int pPosImageCourante);
 
+    // Autres méthodes
     void changerDiaporama(unsigned int pId, string pTitre="", unsigned int pVitesse=0);
     /* Permet de choisir un diaporama, 0 si aucun souhaité.
          * 2 formes d'appels :

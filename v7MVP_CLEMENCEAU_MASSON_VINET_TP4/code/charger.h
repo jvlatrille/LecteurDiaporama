@@ -15,7 +15,7 @@ class charger : public QDialog
 
 public:
     explicit charger(QWidget *parent = nullptr);
-    ~charger();
+    ~charger(); // Destructeur
 
     void updateDiaporamas(const Diaporamas &diaporamas); // Mise à jour de la liste des diaporamas disponibles
     unsigned int getSelectedDiaporamaId() const; // Récupère l'ID du diaporama sélectionné dans la fenêtre

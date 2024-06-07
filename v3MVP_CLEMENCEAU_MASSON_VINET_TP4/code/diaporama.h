@@ -10,6 +10,8 @@ class Diaporama
 public:
     Diaporama();
     ~Diaporama();
+
+    //Getters
     unsigned int getId() const;
     string getTitre() const;
     int getVitesseDefilement() const;
@@ -19,6 +21,7 @@ public:
 
     unsigned int nbImages() const;  // nbre de pointeurs d'images contenus dans diaporama
 
+    // Setters
     void setId(unsigned int pId);
     void setTitre(string pTitre);
     void setVitesseDefilement(unsigned int pVitesseDefilement);

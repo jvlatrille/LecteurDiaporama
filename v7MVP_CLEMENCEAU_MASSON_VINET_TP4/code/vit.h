@@ -2,7 +2,7 @@
 #define VIT_H
 
 #include <QDialog>
-#include <QDebug>  // Assurez-vous d'inclure ceci pour utiliser qDebug()
+#include <QDebug>
 
 namespace Ui {
 class vit;
@@ -18,7 +18,7 @@ public:
     Ui::vit *ui;
 
 public slots:
-    void handleButtonBoxAccepted(); // Slot pour gérer l'acceptation de la boîte de dialogue
+    void boutonOk(); // Slot pour gérer l'acceptation de la boîte de dialogue
 
 };
 

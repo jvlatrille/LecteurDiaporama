@@ -57,9 +57,6 @@ public:
     void avancer();
     void reculer();
     void avanceAuto();
-    void avancerAuto();
-    void reculerAuto(); // J'crois qu'elle sert à rien celle là
-
     void changerVitesse(vit*);
     void etatAutomatique();
     void etatManuel();
@@ -71,7 +68,6 @@ signals:
 
 private : // Déclaré après car enum UnEtat dans le public
     UnEtat _etat;
-
 };
 
 #endif // MODELE_H

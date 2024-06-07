@@ -14,10 +14,12 @@ private:
     lecteurVue* _laVue;
 
 public:
-    Presentation();
+    Presentation(); // Constructeur
 
+    // Setters
     void setModel(Modele* m);
     void setVue(lecteurVue* v);
+    // Getters
     Modele *getModele();
     lecteurVue *getVue();
 

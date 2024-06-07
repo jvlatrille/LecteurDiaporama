@@ -17,7 +17,11 @@ public:
     explicit charger(QWidget *parent = nullptr);
     ~charger();
 
+
     void updateDiaporamas(const Diaporamas &diaporamas);
+    //But : Mettre à jour le diaporama
+
+    // Getter
     unsigned int getSelectedDiaporamaId() const;
 
 
