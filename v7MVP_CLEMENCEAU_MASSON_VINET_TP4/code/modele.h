@@ -26,7 +26,6 @@ private:
     ImagesDiaporama images;
     Lecteur * lecteur;
     void triCroissantRang();
-    QTimer* timer;
     Diaporama diaporama;
 
 public:
